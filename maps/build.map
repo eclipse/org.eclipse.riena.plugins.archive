@@ -61,6 +61,8 @@ plugin@org.apache.log4j=GET,http://download.eclipse.org/tools/orbit/downloads/dr
 plugin@org.easymock,2.4.0=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.easymock_2.4.0.v20090202-0900.jar
 plugin@org.eclipse.nebula.widgets.compositetable=CVS,Galileo_01,:pserver:anonymous@dev.eclipse.org:/cvsroot/technology,,org.eclipse.swt.nebula/org.eclipse.nebula.widgets.compositetable
 plugin@org.junit,3.8.2=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.junit_3.8.2.v20090203-1005.zip,unpack=true
-#plugin@org.eclipse.core.variables=GET,file:///C:/tmp2/eclipse.sdk/eclipse/plugins/org.eclipse.core.variables_3.2.200.v20090521.jar
-plugin@org.eclipse.core.variables=CVS,v20090521,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,org.eclipse.core.variables
-plugin@org.eclipse.core.net=CVS,r35x_20090812-1200,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,org.eclipse.core.net
+
+# these plugins come from c:\build3\prebuild
+# we want to ship the originals from the Eclipse Platform, and _not_ build our own
+plugin@org.eclipse.core.variables=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.variables_3.2.200.v20090521.jar
+plugin@org.eclipse.core.net=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net_1.2.1.r35x_20090812-1200.jar
