@@ -2,7 +2,11 @@ Set-up and run a build on windows
 ---------------------------------
 
 0. Create c:\build3
-1. Copy these files into it
+1. Copy these files into it. They go here:
+
+   c:\build3\build.bat
+   c:\build3\build.xml
+
 2. Create the tool structure on c:
 
    \build3\tools\apache-ant-1.7.1   -- ant lives in .\bin
