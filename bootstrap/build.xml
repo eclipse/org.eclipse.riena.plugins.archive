@@ -1,0 +1,32 @@
+<project name="Build for Riena" default="build">
+
+	<target name="checkout">
+		<cvs cvsRoot=":pserver:anonymous@dev.eclipse.org:/cvsroot/rt"
+			 package="org.eclipse.riena/org.eclipse.riena.build3"
+		     dest="tmp"/>
+		<copy todir="config">
+			<fileset dir="tmp/org.eclipse.riena/org.eclipse.riena.build3"/>
+		</copy>
+	</target>
+	
+	<target name="build" depends="checkout">
+		<property name="pluginDir" value="${basedir}/tools/eclipse.sdk/eclipse/plugins"/>
+		<property name="launcherVer" value="1.0.201.R35x_v20090715"/>
+		<property name="pdeBuildVer" value="3.5.1.R35x_20090820"/>
+		<java 
+			taskname="build"
+			jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+			fork="true"
+			failonerror="true">
+			<arg value="-application"/>
+			<arg value="org.eclipse.ant.core.antRunner"/>
+		    <arg value="-buildfile"/>
+		    <arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
+		    <arg value="-Dbuilder=${basedir}/config"/>
+		</java>
+	</target>	
+	
+	<target name="tests" depends="checkout">
+	</target>
+		
+</project>
