@@ -9,7 +9,11 @@
 		</copy>
 	</target>
 	
-	<target name="build" depends="checkout">
+	<target name="clean">
+		<delete dir="tmp/build"/>
+    </target>
+	
+	<target name="build" depends="checkout, clean">
 		<property name="pluginDir" value="${basedir}/tools/eclipse.sdk/eclipse/plugins"/>
 		<property name="launcherVer" value="1.0.201.R35x_v20090715"/>
 		<property name="pdeBuildVer" value="3.5.1.R35x_20090820"/>
