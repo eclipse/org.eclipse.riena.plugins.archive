@@ -156,12 +156,13 @@
 			todir="${buildDirectory}/buildEclipse/eclipse">
 			<fileset dir="${builder}/../target/eclipse"/>
 		</copy>
+		<tstamp/>
 		<zip 
-			destfile="${buildDirectory}/N.TestBuild/Riena-target-${DSTAMP}${TSTAMP}.zip"
+			destfile="${buildDirectory}/N.TestBuild/Riena-target-${DSTAMP}${TSTAMP}-win32.zip"
 			basedir="${buildDirectory}/buildEclipse/"/>
 		<!-- name the riena p2repo zip -->
 		<copy
-			tofile="${buildDirectory}/N.TestBuild/Riena-p2repo-${DSTAMP}${TSTAMP}.zip" 
+			tofile="${buildDirectory}/N.TestBuild/Riena-p2repo-${DSTAMP}${TSTAMP}-win32.zip" 
 			file="${buildDirectory}/N.TestBuild/org.eclipse.riena.build.feature-TestBuild-group.group.group.zip"/>
 	</target>
 

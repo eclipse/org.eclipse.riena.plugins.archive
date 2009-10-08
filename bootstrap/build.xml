@@ -6,10 +6,6 @@
 	<property name="testframeVer" value="3.5.1"/>
     <property name="pluginDir" value="${basedir}/tools/eclipse.sdk/eclipse/plugins"/>
 
-	<target name="init">
-		<tstamp/>
-	</target>
-	
 	<target name="checkout">
 		<delete dir="config"/>
 		<cvs cvsRoot=":pserver:anonymous@dev.eclipse.org:/cvsroot/rt"
@@ -20,7 +16,7 @@
 		</copy>
 	</target>
 	
-	<target name="build" depends="init, checkout">
+	<target name="build" depends="checkout">
 		<delete dir="tmp/build"/>
 		<java 
 			taskname="build"
@@ -35,7 +31,7 @@
 		</java>
 	</target>	
 	
-	<target name="tests" depends="init, checkout">
+	<target name="tests" depends="checkout">
 		<ant antfile="config/runtests.xml" target="run"/>
 	</target>
 	
