@@ -19,7 +19,23 @@
 		</copy>
 	</target>
 	
-	<target name="build">
+	<target name="prepareBuild">
+		<available
+			property="has.SDK"
+			file="tools/eclipse.sdk/eclipse"/>
+		<antcall target="prepareSDK"/>
+	</target>
+	
+	<target name="prepareSDK" unless="has.SDK">
+		<unzip
+			dest="tools/eclipse.sdk">
+			<fileset dir="tools/eclipse.sdk">
+				<include name="eclipse-SDK-*-win32.zip"/>
+			</fileset>
+		</unzip>
+	</target>
+	
+	<target name="build" depends="prepareBuild">
 		<delete dir="tmp/build"/>
 		<java 
 			taskname="build"
