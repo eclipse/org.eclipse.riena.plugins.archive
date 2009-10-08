@@ -64,8 +64,31 @@
 	<!-- Steps to do before setup -->
 	<!-- ===================================================================== -->
 	<target name="preSetup">
+		<!-- if target/eclispe does not exist, then prepare target -->
+		<available 
+			property="has.target"
+			file="${builder}/../target/eclipse"/>
+		<antcall target="prepareTarget"/>
 	</target>
-
+	
+	<target name="prepareTarget" unless="has.target">
+		<echo>repo2runable: </echo>
+		<echo>  src= file:/${builder}/../target/equinox-SDK-3.5.1.zip</echo>
+		<echo>  dest= ${builder}/../target/eclipse</echo>
+		<p2.repo2runnable 
+			destination="${builder}/../target/eclipse">
+			<source>
+				<repository location="file:/${builder}/../target/equinox-SDK-3.5.1.zip" />
+			</source>
+		</p2.repo2runnable>
+		<unzip 
+			dest="${builder}/../target">
+			<fileset dir="${builder}/../target">
+				<include name="eclipse-RCP-SDK-*.zip"/>
+			</fileset>
+		</unzip>
+	</target>
+	
 	<!-- ===================================================================== -->
 	<!-- Steps to do after setup but before starting the build proper -->
 	<!-- ===================================================================== -->

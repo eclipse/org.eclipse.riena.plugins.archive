@@ -6,8 +6,11 @@
 	<property name="testframeVer" value="3.5.1"/>
     <property name="pluginDir" value="${basedir}/tools/eclipse.sdk/eclipse/plugins"/>
 
-	<target name="checkout">
+	<target name="clean">
 		<delete dir="config"/>
+	</target>
+	
+	<target name="checkout">
 		<cvs cvsRoot=":pserver:anonymous@dev.eclipse.org:/cvsroot/rt"
 			 package="org.eclipse.riena/org.eclipse.riena.build3"
 		     dest="tmp"/>
@@ -16,7 +19,7 @@
 		</copy>
 	</target>
 	
-	<target name="build" depends="checkout">
+	<target name="build">
 		<delete dir="tmp/build"/>
 		<java 
 			taskname="build"
@@ -31,10 +34,11 @@
 		</java>
 	</target>	
 	
-	<target name="tests" depends="checkout">
+	<target name="tests">
+		<delete dir="tmp/tests"/>
 		<ant antfile="config/runtests.xml" target="run"/>
 	</target>
 	
-	<target name="runall" depends="build, tests">
+	<target name="runall" depends="clean, build, tests">
 	</target>
 </project>

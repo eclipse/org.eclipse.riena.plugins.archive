@@ -1,62 +1,60 @@
-<project name="testsuite" default="run">
+<project name="testsuite" default="run" basedir="..">
 
-	<!-- The property ${eclipse-home} should be passed into this script -->
-	<!-- Set a meaningful default value for when it is not. -->
-	<property name="eclipse-home" value="${basedir}\..\.." />
-
-	<!-- sets the properties eclipse-home, and library-file -->
-	<property name="plugin-name" value="org.eclipse.jdt.ui.tests.refactoring" />
-	<property name="library-file"
-		value="${eclipse-home}/plugins/org.eclipse.test/library.xml" />
+	<!-- These properties should be passed into this script -->
+	<!-- Set meaningful default values for when it is not.  -->
+	<property name="os"   value="win32"/>
+	<property name="ws"   value="win32"/>
+    <property name="arch" value="x86"/>
+    
+    <!-- should not need changing, unless the version changed -->
+	<property name="test-home" value="${basedir}/tmp/tests" />
+	<property name="eclipse-home" value="${test-home}/eclipse" />
+	<property name="library-file" value="${eclipse-home}/plugins/org.eclipse.test_3.2.0/library.xml"/>
 
 	<!-- This target holds all initialization code that needs to be done for
 		  all tests that are to be run. Initialization for individual tests
 	      should be done within the body of the suite target. -->
 	<target name="init">
-		<delete dir="${bas" />
-		<delete>
-			<fileset dir="${eclipse-home}" includes="org*.xml" />
-		</delete>
+		<delete 
+			dir="${eclipse-home}"/>
+		<unzip dest="${test-home}">
+			<fileset dir="${basedir}/tools/eclipse.tf/">
+				<include name="eclipse-test-framework-*.zip"/>
+			</fileset>
+		</unzip>
+		<unzip dest="${test-home}">
+			<fileset dir="${basedir}/tmp/build/N.TestBuild/">
+				<include name="Riena-target-*.zip"/>
+			</fileset>
+		</unzip>
+		<copy
+			todir="${eclipse-home}">
+			<fileset dir="${basedir}/tools/eclipse.sdk/eclipse"/>
+		</copy>
+		<sleep seconds="15"/>
 	</target>
 
 	<!-- This target defines the tests that need to be run. -->
 	<target name="suite">
-		<property name="refactoring-folder" value="${eclipse-home}/refactoring_folder" />
-		<delete dir="${refactoring-folder}" quiet="true" />
-		<ant target="ui-test" antfile="${library-file}" dir="${eclipse-home}">
-			<property name="data-dir" value="${refactoring-folder}" />
-			<property name="plugin-name" value="${plugin-name}" />
-			<property name="classname"
-				value="org.eclipse.jdt.ui.tests.refactoring.all.AllAllRefactoringTests" />
+		<property name="test-workspace" value="${eclipse-home}/workspace"/>
+		<delete dir="${test-workspace}" quiet="true" />
+		<tstamp/>
+		<ant 
+			target="core-test" 
+			antfile="${library-file}" 
+			dir="${eclipse-home}">
+		  <property name="data-dir" value="${test-workspace}"/>
+		  <property name="plugin-name" value="org.eclipse.riena.tests"/>
+		  <property name="classname" value="org.eclipse.riena.AllFastTests"/>
 		</ant>
-        <ant target="ui-test" antfile="${library-file}" dir="${eclipse-home}">
-			<property name="data-dir" value="data-folder"/>
-  			<property name="plugin-name" value="org.eclipse.foo"/>
-  			<property name="classname" value="org.eclipse.foo.bar.MyTest"/>
-		</ant>
+		<copy 
+			tofile="${eclipse-home}/org.eclipse.riena.tests.AllFastTests.log" 
+			file="${test-workspace}/.metadata/.log" 
+			failonerror="false"/>
 	</target>
 
-	<!-- This target holds code to cleanup the testing environment after -->
-	<!--
-		after all of the tests have been run. You can use this target to
-	-->
-	<!-- delete temporary files that have been created. -->
-	<target name="cleanup">
-	</target>
-
-	<!--
-		This target runs the test suite. Any actions that need to happen
-	-->
 	<!-- after all the tests have been run should go here. -->
-	<target name="run" depends="init,suite,cleanup">
-		<echo>Hello World</echo>
+	<target name="run" depends="init,suite">
+		<!-- nothing to do here, hudson collects data -->
 	</target>
-	<!-- 
-	<target name="run" depends="init,suite,cleanup">
-		<ant target="collect" antfile="${library-file}" dir="${eclipse-home}">
-			<property name="includes" value="org*.xml" />
-			<property name="output-file" value="${plugin-name}.xml" />
-		</ant>
-	</target>
-	-->
 </project>
