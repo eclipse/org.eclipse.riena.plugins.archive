@@ -1,6 +1,13 @@
-<project name="Build for Riena" default="build">
+<project name="Build for Riena" default="runall">
+
+	<!-- adjust these if you use another eclipse version -->
+	<property name="launcherVer" value="1.0.201.R35x_v20090715"/>
+	<property name="pdeBuildVer" value="3.5.1.R35x_20090820"/>
+	<property name="testframeVer" value="3.5.1"/>
+    <property name="pluginDir" value="${basedir}/tools/eclipse.sdk/eclipse/plugins"/>
 
 	<target name="checkout">
+		<delete dir="config"/>
 		<cvs cvsRoot=":pserver:anonymous@dev.eclipse.org:/cvsroot/rt"
 			 package="org.eclipse.riena/org.eclipse.riena.build3"
 		     dest="tmp"/>
@@ -12,11 +19,8 @@
 	<target name="clean">
 		<delete dir="tmp/build"/>
     </target>
-	
+
 	<target name="build" depends="checkout, clean">
-		<property name="pluginDir" value="${basedir}/tools/eclipse.sdk/eclipse/plugins"/>
-		<property name="launcherVer" value="1.0.201.R35x_v20090715"/>
-		<property name="pdeBuildVer" value="3.5.1.R35x_20090820"/>
 		<java 
 			taskname="build"
 			jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
@@ -31,6 +35,9 @@
 	</target>	
 	
 	<target name="tests" depends="checkout">
+		<ant antfile="config/runtests.xml" target="run"/>
 	</target>
-		
+	
+	<target name="runall" depends="build, tests">
+	</target>
 </project>

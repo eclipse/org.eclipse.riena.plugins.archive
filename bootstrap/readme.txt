@@ -13,9 +13,11 @@ Set-up and run a build on windows
    \build3\tools\apache-ant-1.7.1   -- ant lives in .\bin
    \build3\tools\cygwin             -- install cvs package, cvs lives in .\bin
    \build3\tools\eclipse.sdk        -- eclipse.exe lives in .\eclipse
+   \build3\tools\eclipse.tf         -- eclipse-test-framework-x.y.zip lives here 
+                                       (download from platform release page)
    \build3\tools\jdk1.5.0_18        -- javac lives in .\bin
    
-   (Adjust build.bat if you use other version numbers)
+   (Adjust c:\build3\build.{bat,xml} if you use other version numbers)
    (Adjust J2SE-1.5 in org.eclipse.riena.build3/build.properties if you 
     move java elsewehere. Need a 1.5 JDK so we compile against the 'proper' 
     version)
@@ -28,10 +30,10 @@ Set-up and run a build on windows
 
    This should contain the Eclipse RCP SDK and the Equinox SDK features and 
    plugins. Equinox does not come as plugins / features and must currently 
-   be repackaged.
+   be repackaged. You can do it manually by removing all .pack.gz files
+   and extracting the features. Or use the repo2runnable application from p2 
+   (ref help/wiki).
    
-# TODO [ev]- automate or find other solution? p2.repo2runnable
-
 4. Create the  c:\build3\prebuild\plugins  directory  and copy 
    these files into it:
 
