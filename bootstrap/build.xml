@@ -6,6 +6,10 @@
 	<property name="testframeVer" value="3.5.1"/>
     <property name="pluginDir" value="${basedir}/tools/eclipse.sdk/eclipse/plugins"/>
 
+	<target name="init">
+		<tstamp/>
+	</target>
+	
 	<target name="checkout">
 		<delete dir="config"/>
 		<cvs cvsRoot=":pserver:anonymous@dev.eclipse.org:/cvsroot/rt"
@@ -16,11 +20,8 @@
 		</copy>
 	</target>
 	
-	<target name="clean">
+	<target name="build" depends="init, checkout">
 		<delete dir="tmp/build"/>
-    </target>
-
-	<target name="build" depends="checkout, clean">
 		<java 
 			taskname="build"
 			jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
@@ -34,7 +35,7 @@
 		</java>
 	</target>	
 	
-	<target name="tests" depends="checkout">
+	<target name="tests" depends="init, checkout">
 		<ant antfile="config/runtests.xml" target="run"/>
 	</target>
 	
