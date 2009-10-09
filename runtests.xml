@@ -1,60 +1,129 @@
 <project name="testsuite" default="run" basedir="..">
 
-	<!-- These properties should be passed into this script -->
-	<!-- Set meaningful default values for when it is not.  -->
-	<property name="os"   value="win32"/>
-	<property name="ws"   value="win32"/>
-    <property name="arch" value="x86"/>
-    
     <!-- should not need changing, unless the version changed -->
-	<property name="test-home" value="${basedir}/tmp/tests" />
-	<property name="eclipse-home" value="${test-home}/eclipse" />
-	<property name="library-file" value="${eclipse-home}/plugins/org.eclipse.test_3.2.0/library.xml"/>
+	<property name="test-home" value="${basedir}/tmp/tests"/>
+	<property name="eclipse-home" value="${test-home}/eclipse"/>
+	<property name="build-output-home" value="${basedir}/tmp/build/N.TestBuild"/>
 
+	<!-- name of the plugin containing the tests -->
+	<property name="plugin-name" value="org.eclipse.riena.tests"/>
+	<property name="test-name" value="org.eclipse.riena.AllFastTests"/>
+	
+	<!-- class paths, manually constructed :-( -->
+	<path id="pde.test.listener.class.path">
+		<path location="${eclipse-home}/plugins/pde.test.utils_3.5.0.jar"/>
+		<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit_3.5.1.r351_v20090708-0800.jar"/>
+		<path location="${eclipse-home}/plugins/org.junit_3.8.2.v20090203-1005/junit.jar"/>
+		<path location="${eclipse-home}/plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-junit.jar"/>
+		<path location="${eclipse-home}/plugins/org.eclipse.equinox.common_3.5.1.R35x_v20090807-1100.jar"/>
+		<path location="${eclipse-home}/plugins/org.eclipse.ui.workbench_3.5.1.M20090826-0800a.jar"/>
+		<path location="${eclipse-home}/plugins/org.eclipse.core.runtime_3.5.0.v20090525.jar"/>
+		<path location="${eclipse-home}/plugins/org.eclipse.osgi_3.5.1.R35x_v20090827.jar"/>
+		<path location="${eclipse-home}/plugins/org.eclipse.jface_3.5.1.M20090826-0800.jar"/>
+		<path location="${eclipse-home}/plugins/org.eclipse.equinox.preferences_3.2.300.v20090520-1800.jar"/>
+		<path location="${eclipse-home}/plugins/org.eclipse.swt_3.5.1.v3555a.jar"/>
+		<path location="${eclipse-home}/plugins/org.eclipse.swt.win32.win32.x86_3.5.1.v3555a.jar"/>
+		<path location="${eclipse-home}/plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant.jar"/>
+    </path>
+	
 	<!-- This target holds all initialization code that needs to be done for
 		  all tests that are to be run. Initialization for individual tests
 	      should be done within the body of the suite target. -->
 	<target name="init">
 		<delete 
-			dir="${eclipse-home}"/>
-		<unzip dest="${test-home}">
-			<fileset dir="${basedir}/tools/eclipse.tf/">
-				<include name="eclipse-test-framework-*.zip"/>
-			</fileset>
-		</unzip>
-		<unzip dest="${test-home}">
-			<fileset dir="${basedir}/tmp/build/N.TestBuild/">
+			dir="${eclipse-home}"
+		    failonerror="false"/>
+		<copy todir="${eclipse-home}">
+			<fileset dir="${basedir}/tools/eclipse.sdk/eclipse"/>
+		</copy>
+		<unzip dest="${test-home}/eclipse/dropins">
+			<fileset dir="${build-output-home}">
 				<include name="Riena-target-*.zip"/>
 			</fileset>
 		</unzip>
-		<copy
-			todir="${eclipse-home}">
-			<fileset dir="${basedir}/tools/eclipse.sdk/eclipse"/>
+		<copy todir="${eclipse-home}/plugins">
+			<fileset dir="tools/testutils">
+				<include name="*.jar"/>
+			</fileset>
 		</copy>
-		<sleep seconds="15"/>
 	</target>
 
-	<!-- This target defines the tests that need to be run. -->
-	<target name="suite">
-		<property name="test-workspace" value="${eclipse-home}/workspace"/>
-		<delete dir="${test-workspace}" quiet="true" />
-		<tstamp/>
-		<ant 
-			target="core-test" 
-			antfile="${library-file}" 
-			dir="${eclipse-home}">
-		  <property name="data-dir" value="${test-workspace}"/>
-		  <property name="plugin-name" value="org.eclipse.riena.tests"/>
-		  <property name="classname" value="org.eclipse.riena.AllFastTests"/>
-		</ant>
-		<copy 
-			tofile="${eclipse-home}/org.eclipse.riena.tests.AllFastTests.log" 
-			file="${test-workspace}/.metadata/.log" 
-			failonerror="false"/>
+	<target name="run" depends="init">
+		<delete>
+			<fileset dir="${eclipse-home}">
+				<include name="pde_test_port.properties"/>
+				<include name="*.xml"/>
+			</fileset>
+		</delete>
+		<java 
+		    classpath="${eclipse-home}/plugins/pde.test.utils_3.5.0.jar"
+			classname="pde.test.utils.PDETestPortLocator" 
+		    dir="${eclipse-home}"
+			fork="yes"
+			failonerror="true"
+			taskname="portLocator"/>
+		<waitfor maxwait="10" maxwaitunit="second" checkevery="200" checkeveryunit="millisecond">
+			<available file="pde_test_port.properties"/>
+		</waitfor>
+		<property file="${eclipse-home}/pde_test_port.properties"/>
+		<echo message="Using port ${pde.test.port} for listening to PDE Test run"/>
+
+		<parallel>
+			<daemons>
+		    	<antcall target="run_pde_test_listener"/>
+			</daemons>
+			<sequential>
+		    	<sleep seconds="5"/> <!-- Give the listener a few seconds to start up -->
+		    	<antcall target="run_pde_tests"/>
+			</sequential>
+		</parallel>
+		
+		<!--
+		<mkdir dir="${test.reports.dir}"/>
+		    <move todir="${test.reports.dir}">
+		           <fileset dir=".">
+		               <include name="**/TEST-*.xml"/>
+		           </fileset>
+		       </move>
+		-->
+	</target>
+	
+	<target name="run_pde_test_listener">
+		<java
+			classname="pde.test.utils.PDETestResultsCollector" 
+			classpathref="pde.test.listener.class.path"
+			dir="${eclipse-home}"
+			fork="yes"
+			failonerror="true"
+			taskname="listener">
+	           <arg line="${plugin-name} ${pde.test.port}"/>
+	    </java>
 	</target>
 
-	<!-- after all the tests have been run should go here. -->
-	<target name="run" depends="init,suite">
-		<!-- nothing to do here, hudson collects data -->
-	</target>
+	 <target name="run_pde_tests">
+	 		<exec executable="c:\windows\System32\cmd.exe" dir="${eclipse-home}">
+	 			<arg value="/C"/>
+	 			<arg value="rt2.bat"/>
+	 			<arg value="${pde.test.port}"/>
+	 		</exec>
+	 	<!--
+		<java
+			jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+			dir="${eclipse-home}"
+			fork="yes"
+			failonerror="true">
+				<arg value="-application"/>
+				<arg value="org.eclipse.pde.junit.runtime.uitestapplication"/>
+				<arg value="-data"/>
+				<arg value="${eclipse-home}/workspace"/>
+				<arg value="-clean"/>
+				<arg value="-port"/>
+			    <arg value="${pde.test.port}"/>
+				<arg value="-testPluginName"/>
+				<arg value="${plugin-name}"/>
+				<arg value="-className"/>
+				<arg value="${test-name}"/>
+			</java>
+			-->
+	 </target>
 </project>
