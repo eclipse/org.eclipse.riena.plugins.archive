@@ -3,7 +3,7 @@
 	<!-- adjust these if you use another eclipse version -->
 	<property name="launcherVer" value="1.0.201.R35x_v20090715"/>
 	<property name="pdeBuildVer" value="3.5.1.R35x_20090820"/>
-	<property name="testframeVer" value="3.5.1"/>
+	<property name="sdkVer" value="3.5.1"/>
     <property name="pluginDir" value="${basedir}/tools/eclipse.sdk/eclipse/plugins"/>
 
 	<target name="clean">
