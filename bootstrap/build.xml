@@ -33,6 +33,22 @@
 				<include name="eclipse-SDK-*-win32.zip"/>
 			</fileset>
 		</unzip>
+		<echo>Install automated test framework into SDK</echo>
+		<java
+			jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+			fork="true"
+			failonerror="true">
+			<arg value="-application"/>
+			<arg value="org.eclipse.equinox.p2.director"/>
+			<arg value="-repository"/>
+			<arg value="jar:file:/c:/build3/tools/eclipse.sdk/eclipse-test-framework-${testframeVer}-p2repo.zip\!/"/>
+			<arg value="-installIU"/>
+			<arg value="org.eclipse.test"/>
+			<arg value="-destination"/>
+			<arg value="c:/build3/tools/eclipse.sdk/eclipse"/>
+			<arg value="-profile"/>
+			<arg value="SDKProfile"/>
+		</java>
 	</target>
 	
 	<target name="build" depends="prepareBuild">
