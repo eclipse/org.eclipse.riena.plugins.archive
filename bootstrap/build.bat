@@ -6,7 +6,7 @@ set PATH=%JAVA_HOME%\bin;%ANT_HOME%\bin;%CVS_HOME_BIN%
 
 c:
 cd \build3
-REM @echo off
+@echo off
 
 REM ### CHECKS
 cvs -version
@@ -14,8 +14,8 @@ echo.
 java -version
 echo.
 
-if %1 == build GOTO :BUILD
-if %1 == runtests GOTO :RUNTESTS
+if '%1' == build GOTO :BUILD
+if '%1' == runtests GOTO :RUNTESTS
 
 ant -f build.xml
 GOTO :EOF
