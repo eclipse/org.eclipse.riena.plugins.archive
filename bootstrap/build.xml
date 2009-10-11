@@ -47,10 +47,6 @@
 		</java>
 	</target>	
 	
-	<target name="prepareTests">
-		<ant antfile="config/runtests.xml" target="run"/>
-	</target>
-
 	<target name="runtests">
 		<delete dir="tmp/tests"/>
 		<ant antfile="config/runtests.xml" target="run"/>

@@ -10,6 +10,8 @@
 	<!-- name of the plugin containing the tests -->
 	<property name="plugin-name" value="org.eclipse.riena.tests"/>
 	<property name="test-name" value="org.eclipse.riena.AllTests"/>
+	<!-- property name="test-name" value="org.eclipse.riena.AllFastTests"/!-->
+	<!-- property name="test-name" value="org.eclipse.riena.core.marker.AllTests"/-->
 	
 	<!-- class paths, manually constructed :-(, need adjustment for each SDK update -->
 	<path id="pde.test.listener.class.path">
@@ -106,22 +108,6 @@
 		    	<antcall target="run_pde_tests"/>
 			</sequential>
 		</parallel>
-		
-		<mkdir dir="${test-result-dest}"/>
-		<copy 
-			todir="${test-result-dest}">
-			<fileset dir="${eclipse-home}">
-				<include name="**/TEST-*.xml"/>
-			</fileset>
-		</copy>
-		<copy 
-			todir="${test-result-dest}" 
-			file="${eclipse-home}/console.log"
-		    failonerror="false"/>
-		<copy 
-			tofile="${test-result-dest}/metadata.log" 
-			file="${eclipse-home}/workspace/.metadata/.log"
-			failonerror="false"/>
 	</target>
 	
 	<target name="run_pde_test_listener">
@@ -130,13 +116,19 @@
 			classpathref="pde.test.listener.class.path"
 			dir="${eclipse-home}"
 			fork="yes"
-			failonerror="true"
+			failonerror="false"
+			resultproperty="testresult"
 			taskname="listener">
 	           <arg line="${plugin-name} ${pde.test.port}"/>
 	    </java>
+		<condition property="testpassed" value="yes">
+			<equals arg1="${testresult}" arg2="0"/>
+		</condition>
+		<antcall target="store_results"/>
+		<fail message="One or more tests failed." unless="testpassed"/>
 	</target>
 
-	 <target name="run_pde_tests">
+	<target name="run_pde_tests">
 	 	<echo>Run ${test-name} in ${plugin-name}</echo>
 		<java
 			taskname="runtests"
@@ -158,5 +150,23 @@
 				<arg value="-console"/>
 				<arg value="-consolelog"/>
 			</java>
-	 </target>
+	</target>
+	
+	<target name="store_results">
+		<mkdir dir="${test-result-dest}"/>
+		<copy 
+			todir="${test-result-dest}">
+			<fileset dir="${eclipse-home}">
+				<include name="**/TEST-*.xml"/>
+			</fileset>
+		</copy>
+		<copy 
+			todir="${test-result-dest}" 
+			file="${eclipse-home}/console.log"
+		    failonerror="false"/>
+		<copy 
+			tofile="${test-result-dest}/metadata.log" 
+			file="${eclipse-home}/workspace/.metadata/.log"
+			failonerror="false"/>
+	</target>
 </project>
