@@ -14,8 +14,8 @@ echo.
 java -version
 echo.
 
-if '%1' == build GOTO :BUILD
-if '%1' == runtests GOTO :RUNTESTS
+if '%1' EQU 'build' GOTO :BUILD
+if '%1' EQU 'runtests' GOTO :RUNTESTS
 
 echo Usage:
 echo build build	- Build Riena
