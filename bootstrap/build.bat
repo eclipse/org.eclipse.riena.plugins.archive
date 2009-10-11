@@ -17,7 +17,9 @@ echo.
 if '%1' == build GOTO :BUILD
 if '%1' == runtests GOTO :RUNTESTS
 
-ant -f build.xml
+echo Usage:
+echo build build	- Build Riena
+echo build runtests	- Run tests (must build first)
 GOTO :EOF
 
 :BUILD
