@@ -14,11 +14,11 @@ Set-up and run a build on windows
    \build3\tools\cygwin             -- install cvs package, cvs lives in .\bin
    \build3\tools\eclipse.sdk\eclipse-SDK-3.5.1-win32.zip 
    \build3\tools\jdk1.5.0_18        -- javac lives in .\bin
-   \build3\tools\testutils\pre.test.utils_3.5.0.jar -- from riena CVS
+   \build3\tools\testutils\pde.test.utils_3.5.0.jar -- from riena CVS
                                       
    (Adjust c:\build3\build.{bat,xml} if you use other version numbers)
    (Adjust J2SE-1.5 in org.eclipse.riena.build3/build.properties if you 
-    move java elsewehere. Need a 1.5 JDK so we compile against the 'proper' 
+    move java elsewhere. Need a 1.5 JDK so we compile against the 'proper' 
     version)
 
 3. Create the target directory with these files:
