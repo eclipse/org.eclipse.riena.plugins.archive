@@ -64,7 +64,7 @@
 	<!-- Steps to do before setup -->
 	<!-- ===================================================================== -->
 	<target name="preSetup">
-		<!-- if target/eclispe does not exist, then prepare target -->
+		<!-- if target/eclipse does not exist, then prepare target -->
 		<available 
 			property="has.target"
 			file="${builder}/../target/eclipse"/>
