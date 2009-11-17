@@ -44,7 +44,7 @@
 		    <arg value="-buildfile"/>
 		    <arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
 		    <arg value="-Dbuilder=${basedir}/config"/>
-                <arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
+            <arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 		</java>
 	</target>	
 	
@@ -58,6 +58,6 @@
 		<ant antfile="config/runtests.xml" target="run"/>
 	</target>
 	
-	<target name="runall" depends="build, runtests">
+	<target name="runall" depends="clean, build, runtests">
 	</target>
 </project>
