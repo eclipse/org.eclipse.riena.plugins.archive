@@ -31,6 +31,7 @@ Set-up and run a build on windows
 
    org.eclipse.core.net_1.2.1.r35x_20090812-1200.jar
    org.eclipse.core.variables_3.2.200.v20090521.jar
+   org.junit_3.8.2.v20090203-1005.zip (http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.junit_3.8.2.v20090203-1005.zip)
    
    (for example from 3.5 a SDK - we ship those, but don't build them)
 
