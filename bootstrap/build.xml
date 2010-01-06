@@ -8,6 +8,7 @@
 
 	<target name="clean">
 		<delete dir="config"/>
+		<delete dir="tmp/org.eclipse.riena"/>
 		<cvs cvsRoot=":pserver:anonymous@dev.eclipse.org:/cvsroot/rt"
 			 package="org.eclipse.riena/org.eclipse.riena.build3"
 		     dest="tmp"/>
