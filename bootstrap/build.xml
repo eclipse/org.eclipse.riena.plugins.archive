@@ -1,9 +1,9 @@
 <project name="Build for Riena" default="runall">
 
 	<!-- adjust these if you use another eclipse version -->
-	<property name="launcherVer" value="1.0.201.R35x_v20090715"/>
-	<property name="pdeBuildVer" value="3.5.1.R35x_20090820"/>
-	<property name="sdkVer" value="3.5.1"/>
+	<property name="launcherVer" value="1.1.0.v20091116"/>
+	<property name="pdeBuildVer" value="3.6.0.v20091204"/>
+	<property name="sdkVer" value="3.6M4"/>
     <property name="pluginDir" value="${basedir}/tools/eclipse.sdk/eclipse/plugins"/>
 
 	<target name="clean">
@@ -44,7 +44,7 @@
 		    <arg value="-buildfile"/>
 		    <arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
 		    <arg value="-Dbuilder=${basedir}/config"/>
-            <arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
+                <arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 		</java>
 	</target>	
 	
@@ -58,6 +58,6 @@
 		<ant antfile="config/runtests.xml" target="run"/>
 	</target>
 	
-	<target name="runall" depends="clean, build, runtests">
+	<target name="runall" depends="build, runtests">
 	</target>
 </project>
