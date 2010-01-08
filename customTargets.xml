@@ -193,7 +193,7 @@
 		<p2.process.artifacts repositoryPath="${buildDirectory}/buildEclipse/eclipse"
 		                      normalize="true" pack="true"/>
 		
-		<p2.publish.featuresAndBundles source="${buildDirectory}/buildEclipse/eclipse" compress="true"/>
+		<!--p2.publish.featuresAndBundles source="${buildDirectory}/buildEclipse/eclipse" compress="true"/-->
 
 		<zip 
 			destfile="${buildDirectory}/N.TestBuild/Riena-target-${DSTAMP}${TSTAMP}-win32.zip"
