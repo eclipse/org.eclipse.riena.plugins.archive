@@ -73,5 +73,3 @@ plugin@org.eclipse.core.net.source=GET,file:///C:/build3/prebuild/plugins/org.ec
 plugin@org.eclipse.core.net.win32.x86=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net.win32.x86_1.0.0.I20080909.jar
 plugin@org.easymock,2.4.0=GET,file:///C:/build3/prebuild/plugins/org.easymock_2.4.0.v20090202-0900.jar
 plugin@org.junit,3.8.2=GET,file:///C:/build3/prebuild/org.junit_3.8.2.v20090203-1005.zip,unpack=true
-plugin@org.apache.commons.logging,1.1.1=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.logging_1.0.4.v200904062259.jar
-plugin@org.apache.commons.logging.source,1.1.1=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.logging.source_1.0.4.v200904062259.jar
