@@ -186,7 +186,7 @@
 		<p2.process.artifacts repositoryPath="file:/${buildDirectory}/buildEclipse/eclipse-helios"
 		                      normalize="true" pack="true"/>
 		<delete>
-			<fileset dir="${buildDirectory}/buildEclipse/eclipse-helios" includes="*.*"/>
+			<fileset dir="${buildDirectory}/buildEclipse/eclipse-helios"/>
 		</delete>
 		
 		<p2.publish.featuresAndBundles
