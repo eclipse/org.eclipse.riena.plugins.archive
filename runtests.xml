@@ -16,6 +16,7 @@
 	<!-- class paths, manually constructed :-(, need adjustment for each SDK update -->
 	<path id="pde.test.listener.class.path">
 		<path location="${eclipse-home}/plugins/pde.test.utils_3.5.0.jar"/>
+		<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit.core_3.6.0.v20091207-1800.jar"/>
 		<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit_3.6.0.v20091207-1800.jar"/>
 		<path location="${eclipse-home}/plugins/org.junit_3.8.2.v20090203-1005/junit.jar"/>
 		<path location="${eclipse-home}/plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-junit.jar"/>

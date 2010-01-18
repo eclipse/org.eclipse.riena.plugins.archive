@@ -12,7 +12,7 @@ Set-up and run a build on windows
 
    \build3\tools\apache-ant-1.7.1   -- ant lives in .\bin
    \build3\tools\cygwin             -- install cvs package, cvs lives in .\bin
-   \build3\tools\eclipse.sdk\eclipse-SDK-3.5.1-win32.zip 
+   \build3\tools\eclipse.sdk\eclipse-SDK-3.6M4-win32.zip
    \build3\tools\jdk1.5.0_18        -- javac lives in .\bin
    \build3\tools\testutils\pde.test.utils_3.5.0.jar -- from riena CVS
                                       
@@ -23,16 +23,17 @@ Set-up and run a build on windows
 
 3. Create the target directory with these files:
 
-   c:\build3\target\eclipse-RCP-SDK-3.5.1-win32.zip
-   c:\build3\target\equinox-SDK-3.5.1.zip
+   c:\build3\target\equinox-SDK-3.6M4.zip
+   c:\build3\target\org.eclipse.rcp.source-3.6M4.zip
 
-4. Create the  c:\build3\prebuild\plugins  directory  and copy 
-   these files into it:
+4. Create the  c:\build3\prebuild\plugins  directory and copy 
+   these files into it. The files can be found in a 3.6 SDK - we ship those,
+   but don't build them.
 
-   org.eclipse.core.net_1.2.1.r35x_20090812-1200.jar
-   org.eclipse.core.variables_3.2.200.v20090521.jar
-   
-   (for example from 3.5 a SDK - we ship those, but don't build them)
+   org.eclipse.core.net_1.2.1.r35x_20090812-1200.jar -- from 3.6.SDK
+   org.eclipse.core.variables_3.2.300.v20090911.jar  -- from 3.6 SDK
+   org.junit_3.8.2.v20090203-1005.zip                -- from http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.junit_3.8.2.v20090203-1005.zip
+   org.easymock_2.4.0.v20090202-0900.jar             -- from http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.easymock_2.4.0.v20090202-0900.jar
 
 Build
 -----
