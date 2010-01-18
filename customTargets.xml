@@ -185,8 +185,9 @@
 		</copy>
 		<p2.process.artifacts repositoryPath="file:/${buildDirectory}/buildEclipse/eclipse-helios"
 		                      normalize="true" pack="true"/>
+		
 		<delete>
-			<fileset dir="${buildDirectory}/buildEclipse/eclipse-helios"/>
+			<fileset dir="${buildDirectory}/buildEclipse/eclipse-helios" includes="artifacts.jar.pack.gz, content.jar.pack.gz"/>
 		</delete>
 		
 		<p2.publish.featuresAndBundles
@@ -211,9 +212,7 @@
 		<zip destfile="${buildDirectory}/N.TestBuild/Riena-p2repo-helios-${DSTAMP}${TSTAMP}-win32.zip"
 			 basedir="${buildDirectory}/buildEclipse/eclipse-helios"/>
 		
-		<delete>
-			<fileset dir="${buildDirectory}/buildEclipse/eclipse-helios"/>
-		</delete>
+		<delete dir="${buildDirectory}/buildEclipse/eclipse-helios"/>
 		<zip 
 			destfile="${buildDirectory}/N.TestBuild/Riena-target-${DSTAMP}${TSTAMP}-win32.zip"
 			basedir="${buildDirectory}/buildEclipse/"/>
