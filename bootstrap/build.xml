@@ -45,7 +45,7 @@
 		    <arg value="-buildfile"/>
 		    <arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
 		    <arg value="-Dbuilder=${basedir}/config"/>
-                <arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
+            <arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 		</java>
 	</target>	
 	
@@ -53,6 +53,33 @@
 		<delete dir="tmp/tests"/>
 		<ant antfile="config/runtests.xml" target="run"/>
 	</target>
+
+	<target name="metadata">
+		<java 
+			taskname="metadata"
+			jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+			fork="true"
+			failonerror="true">
+			<arg value="-application"/>
+			<arg value="org.eclipse.equinox.p2.metadata.generator.EclipseGenerator"/>
+			<arg value="-updateSite"/>
+			<arg value="c:/build3/signed"/>
+			<arg value="-metadataRepository"/>
+			<arg value="file:c:/build3/signed"/>
+			<arg value="-metadataRepositoryName"/>
+			<arg value="Riena Update Site"/>
+			<arg value="-artifactsRepository"/>
+			<arg value="file:c:/build3/signed"/>
+			<arg value="-artifactsRepositoryName"/>
+			<arg value="Helios Artifacts"/>
+			<arg value="-publishArtifacts"/>
+			<arg value="-publishArtifactRepository"/>
+			<arg value="-compress"/>
+			<arg value="-append"/>
+			<arg value="-noDefaultiUs"/>
+			<arg value="-reusePack200Files"/>
+		</java>
+	</target>	
 
 	<target name="runtests.dev">
 		<!-- todo ev remove -->
