@@ -23,13 +23,15 @@ set FETCHTAG_PARM=%2
 
 if '%1' EQU 'build' GOTO :BUILD
 if '%1' EQU 'runtests' GOTO :RUNTESTS
-if '%1' EQU 'metadata' GOTO :METADATA
+if '%1' EQU 'beforesign' GOTO :BEFORESIGN
+if '%1' EQU 'aftersign' GOTO :AFTERSIGN
 
 
 echo Usage:
-echo build build	- Build Riena
-echo build runtests	- Run tests (must build first)
-echo build metadata	- Create metadata
+echo build build	  - Build Riena
+echo build runtests	  - Run tests (must build first)
+echo build beforesign - Steps before sign
+echo build aftersign  - Steps after sign
 GOTO :EOF
 
 :BUILD
@@ -41,5 +43,8 @@ GOTO :EOF
 ant -f build.xml clean runtests
 GOTO :EOF
 
-:METADATA
-ant -f build.xml metadata
+:BEFORESIGN
+ant -f build.xml beforesign
+
+:AFTERSIGN
+ant -f build.xml aftersign

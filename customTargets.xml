@@ -181,7 +181,7 @@
 		</p2.repo2runnable>
 
 		<!-- some step for helios release train -->
-		<copy todir="${buildDirectory}/buildEclipse/eclipse-helios">
+<!--		<copy todir="${buildDirectory}/buildEclipse/eclipse-helios">
 			  <fileset dir="${buildDirectory}/buildEclipse/eclipse"/>
 		</copy>
 		<p2.process.artifacts repositoryPath="file:/${buildDirectory}/buildEclipse/eclipse-helios"
@@ -197,7 +197,7 @@
 		    publishArtifacts="true"
 		    compress="true"
 		    source="${buildDirectory}/buildEclipse/eclipse-helios"/>
-		
+-->		
 		<copy
 			todir="${buildDirectory}/buildEclipse/eclipse">
 			<fileset dir="${builder}/../target/eclipse"/>
@@ -210,10 +210,10 @@
                      excludes="org.eclipse.swt.win32.win32.x86_3*,org.eclipse.swt.win32.win32.x86.source*"/>
 		</delete>
 
-		<zip destfile="${buildDirectory}/N.TestBuild/Riena-p2repo-helios-${DSTAMP}${TSTAMP}-win32.zip"
+<!--		<zip destfile="${buildDirectory}/N.TestBuild/Riena-p2repo-helios-${DSTAMP}${TSTAMP}-win32.zip"
 			 basedir="${buildDirectory}/buildEclipse/eclipse-helios"/>
 		
-		<delete dir="${buildDirectory}/buildEclipse/eclipse-helios"/>
+		<delete dir="${buildDirectory}/buildEclipse/eclipse-helios"/>-->
 		<zip 
 			destfile="${buildDirectory}/N.TestBuild/Riena-target-${DSTAMP}${TSTAMP}-win32.zip"
 			basedir="${buildDirectory}/buildEclipse/"/>
@@ -222,7 +222,6 @@
 			tofile="${buildDirectory}/N.TestBuild/Riena-p2repo-${DSTAMP}${TSTAMP}-win32.zip" 
 			file="${buildDirectory}/N.TestBuild/org.eclipse.riena.build.feature-TestBuild-group.group.group.zip"/>
 	</target>
-
 
 	<!-- ===================================================================== -->
 	<!-- Steps to do after the build is done. -->

@@ -54,31 +54,82 @@
 		<ant antfile="config/runtests.xml" target="run"/>
 	</target>
 
-	<target name="metadata">
+	<target name="beforesign">
+		<!-- repack output -->
+		<delete dir="${basedir}/tmp/build/N.TestBuild/repack"/>
+		<mkdir dir="${basedir}/tmp/build/N.TestBuild/repack"/>
 		<java 
-			taskname="metadata"
-			jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
-			fork="true"
-			failonerror="true">
-			<arg value="-application"/>
-			<arg value="org.eclipse.equinox.p2.metadata.generator.EclipseGenerator"/>
-			<arg value="-updateSite"/>
-			<arg value="c:/build3/signed"/>
-			<arg value="-metadataRepository"/>
-			<arg value="file:c:/build3/signed"/>
-			<arg value="-metadataRepositoryName"/>
-			<arg value="Riena Update Site"/>
-			<arg value="-artifactsRepository"/>
-			<arg value="file:c:/build3/signed"/>
-			<arg value="-artifactsRepositoryName"/>
-			<arg value="Helios Artifacts"/>
-			<arg value="-publishArtifacts"/>
-			<arg value="-publishArtifactRepository"/>
-			<arg value="-compress"/>
-			<arg value="-append"/>
-			<arg value="-noDefaultiUs"/>
-			<arg value="-reusePack200Files"/>
+				taskname="metadata"
+				jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+				fork="true"
+				failonerror="true">
+				<arg value="-application"/>
+				<arg value="org.eclipse.update.core.siteOptimizer"/>
+	      		<arg line="-jarProcessor -processAll -repack -outputDir ${basedir}/tmp/build/N.TestBuild/repack" />
+    	  		<arg line="${basedir}/tmp/build/N.TestBuild/Riena-p2repo-*.zip" />
 		</java>
+		<copy todir="${basedir}/tmp/build/N.TestBuild">
+		    <fileset dir="${basedir}/tmp/build/N.TestBuild/repack"/>
+		</copy>
+		<delete dir="${basedir}/tmp/build/N.TestBuild/repack"/>	
+	</target>
+	
+	<target name="aftersign">
+		
+		<echo>Creating pack200 files</echo>
+		<mkdir dir="${basedir}/signed/pack200"/>
+		<java 
+				taskname="pack"
+				jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+				fork="true"
+				failonerror="true">
+				<arg value="-application"/>
+				<arg value="org.eclipse.update.core.siteOptimizer"/>
+	      		<arg line="-jarProcessor -processAll -pack -outputDir ${basedir}/signed/pack200" />
+    	  		<arg line="${basedir}/signed/Riena-p2repo-*.zip" />
+		</java>
+		
+		<echo>Unzip repo for generating metadata</echo>
+		<unzip dest="${basedir}/signed/unzip">
+			<fileset dir="${basedir}/signed/pack200/">
+			        <include name="*.zip"/>
+			    </fileset>
+		</unzip>
+		
+		<echo>Delete metadata</echo>
+		<delete>
+		    <fileset dir="${basedir}/signed/unzip" includes="*.jar,*.xml"/>
+		</delete>
+
+		<echo>Generate new metadata</echo>
+		<java 
+ 				taskname="metadata"
+				jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+				fork="true"
+				failonerror="true">
+				<arg value="-application"/>
+				<arg value="org.eclipse.equinox.p2.metadata.generator.EclipseGenerator"/>
+				<arg value="-updateSite"/>
+				<arg value="${basedir}/signed/unzip"/>
+				<arg value="-metadataRepository"/>
+				<arg value="file:${basedir}/signed/unzip"/>
+				<arg value="-metadataRepositoryName"/>
+				<arg value="Riena Update Site"/>
+				<arg value="-artifactsRepository"/>
+				<arg value="file:${basedir}/signed/unzip"/>
+				<arg value="-artifactsRepositoryName"/>
+				<arg value="Helios Artifacts"/>
+				<arg value="-publishArtifacts"/>
+				<arg value="-publishArtifactRepository"/>
+				<arg value="-compress"/>
+				<arg value="-append"/>
+				<arg value="-noDefaultiUs"/>
+				<arg value="-reusePack200Files"/>
+		</java>
+
+		<echo>Delete pack200 dir</echo>
+		<delete dir="${basedir}/signed/pack200"/>
+	
 	</target>	
 
 	<target name="runtests.dev">
