@@ -30,10 +30,12 @@ Set-up and run a build on windows
    these files into it. The files can be found in a 3.6 SDK - we ship those,
    but don't build them.
 
-   org.eclipse.core.net_1.2.1.r35x_20090812-1200.jar -- from 3.6.SDK
-   org.eclipse.core.variables_3.2.300.v20090911.jar  -- from 3.6 SDK
-   org.junit_3.8.2.v20090203-1005.zip                -- from http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.junit_3.8.2.v20090203-1005.zip
-   org.easymock_2.4.0.v20090202-0900.jar             -- from http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.easymock_2.4.0.v20090202-0900.jar
+   org.eclipse.core.net_1.2.1.r35x_20090812-1200.jar    -- from 3.6.SDK
+   org.eclipse.core.variables_3.2.300.v20090911.jar     -- from 3.6 SDK
+   org.junit_3.8.2.v20090203-1005.zip                   -- from http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.junit_3.8.2.v20090203-1005.zip
+   org.easymock_2.4.0.v20090202-0900.jar                -- from http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.easymock_2.4.0.v20090202-0900.jar
+   org.apache.log4j_1.2.13.v200903072027.jar            -- from http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.apache.log4j_1.2.13.v200903072027.jar
+   org.apache.commons.beanutils_1.7.0.v200902170505.jar -- from http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.apache.commons.beanutils_1.7.0.v200902170505.jar
 
 Build
 -----
