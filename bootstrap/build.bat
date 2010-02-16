@@ -2,6 +2,7 @@ set TOOLSROOT=c:\build3\tools
 set JAVA_HOME=%TOOLSROOT%\jdk1.5.0_18
 set ANT_HOME=%TOOLSROOT%\apache-ant-1.7.1
 set CVS_HOME_BIN=%TOOLSROOT%\cygwin\bin
+set CVS_SSH=ssh -l evolanaki dev.eclipse.org
 set PATH=%JAVA_HOME%\bin;%ANT_HOME%\bin;%CVS_HOME_BIN%
 set FETCHTAG_PARM=HEAD
 
@@ -28,8 +29,8 @@ if '%1' EQU 'aftersign' GOTO :AFTERSIGN
 
 
 echo Usage:
-echo build build	  - Build Riena
-echo build runtests	  - Run tests (must build first)
+echo build build      - Build Riena
+echo build runtests   - Run tests (must build first)
 echo build beforesign - Steps before sign
 echo build aftersign  - Steps after sign
 GOTO :EOF
