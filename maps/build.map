@@ -54,6 +54,8 @@ plugin@org.eclipse.riena.ui.ridgets=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/
 plugin@org.eclipse.riena.ui.ridgets.swt=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.ui.ridgets.swt
 plugin@org.eclipse.riena.ui.ridgets.swt.optional=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.ui.ridgets.swt.optional
 plugin@org.eclipse.riena.ui.swt=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.ui.swt
+fragment@org.eclipse.riena.ui.swt.rcp=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.ui.swt.rcp
+fragment@org.eclipse.riena.ui.swt.rap=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.ui.swt.rap
 plugin@org.eclipse.riena.ui.workarea=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.ui.workarea
 
 # external libs - from orbit, cvs or target
