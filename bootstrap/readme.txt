@@ -12,7 +12,7 @@ Set-up and run a build on windows
 
    \build3\tools\apache-ant-1.7.1   -- ant lives in .\bin
    \build3\tools\cygwin             -- install cvs package, cvs lives in .\bin
-   \build3\tools\eclipse.sdk\eclipse-SDK-3.6M5-win32.zip
+   \build3\tools\eclipse.sdk\eclipse-SDK-3.6M6-win32.zip
    \build3\tools\jdk1.5.0_18        -- javac lives in .\bin
    \build3\tools\testutils\pde.test.utils_3.5.0.jar -- from riena CVS
                                       
@@ -23,8 +23,8 @@ Set-up and run a build on windows
 
 3. Create the target directory with these files:
 
-   c:\build3\target\equinox-SDK-3.6M5.zip
-   c:\build3\target\org.eclipse.rcp.source-3.6M5.zip
+   c:\build3\target\equinox-SDK-3.6M6.zip
+   c:\build3\target\org.eclipse.rcp.source-3.6M6.zip
 
 4. Create the  c:\build3\prebuild\plugins  directory and copy 
    these files into it. The files can be found in a 3.6 SDK - we ship those,
