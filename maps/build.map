@@ -65,7 +65,7 @@ plugin@org.eclipse.riena.ui.workarea=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:
 #plugin@org.eclipse.nebula.widgets.compositetable=CVS,Galileo_01,:pserver:rienaBuild@build.eclipse.org:/cvsroot/technology,,org.eclipse.swt.nebula/org.eclipse.nebula.widgets.compositetable
 plugin@org.eclipse.nebula.widgets.compositetable=GET,http://download.eclipse.org/rt/riena/downloads/nebuladrops/Galileo_01/org.eclipse.nebula.widgets.compositetable_1.0.0.jar
 #plugin@org.junit,3.8.2=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.junit_3.8.2.v20090203-1005.zip,unpack=true
-plugin@org.pushingpixels.trident=CVS,HEAD,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.ui/bundles/org.pushingpixels.trident
+plugin@org.pushingpixels.trident=CVS,v20100204-1500,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.ui/bundles/org.pushingpixels.trident
 
 # these plugins come from c:\build3\prebuild
 # we want to ship the originals from the Eclipse Platform, and _not_ build our own
