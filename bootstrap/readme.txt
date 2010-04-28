@@ -25,6 +25,7 @@ Set-up and run a build on windows
 
    c:\build3\target\equinox-SDK-3.6M6.zip
    c:\build3\target\org.eclipse.rcp.source-3.6M6.zip
+   c:\build3\target\rap-runtime-1.3.0-xxx.zip
 
 4. Create the  c:\build3\prebuild\plugins  directory and copy 
    these files into it. The files can be found in a 3.6 SDK - we ship those,
