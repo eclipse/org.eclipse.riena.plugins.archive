@@ -23,15 +23,16 @@ set FETCHTAG_PARM=%2
 :CONT
 
 if '%1' EQU 'build' GOTO :BUILD
+if '%1' EQU 'buildrap' GOTO :BUILDRAP
 if '%1' EQU 'runtests' GOTO :RUNTESTS
 if '%1' EQU 'beforesign' GOTO :BEFORESIGN
 if '%1' EQU 'aftersign' GOTO :AFTERSIGN
 
 
 echo Usage:
-echo build build      - Build Riena
+echo build build      - Build Riena against RCP
 echo build buildrap	 - Build Riena against RAP
-echo build runtests   - Run tests (must build first)
+echo build runtests   - Run tests (must build against RCP first)
 echo build beforesign - Steps before sign
 echo build aftersign  - Steps after sign
 GOTO :EOF
