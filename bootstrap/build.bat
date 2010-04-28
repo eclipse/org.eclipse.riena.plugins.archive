@@ -30,6 +30,7 @@ if '%1' EQU 'aftersign' GOTO :AFTERSIGN
 
 echo Usage:
 echo build build      - Build Riena
+echo build buildrap	 - Build Riena against RAP
 echo build runtests   - Run tests (must build first)
 echo build beforesign - Steps before sign
 echo build aftersign  - Steps after sign
@@ -39,6 +40,10 @@ GOTO :EOF
 echo Building version %FETCHTAG_PARM%
 ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% clean build
 GOTO :EOF
+
+:BUILDRAP
+echo Building version %FETCHTAG_PARM% against RAP
+ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% clean buildrap
 
 :RUNTESTS
 ant -f build.xml clean runtests
