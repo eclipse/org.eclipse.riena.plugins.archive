@@ -23,7 +23,7 @@
 		<path location="${eclipse-home}/plugins/org.eclipse.equinox.common_3.6.0.v20100503.jar"/>
 		<path location="${eclipse-home}/plugins/org.eclipse.ui.workbench_3.6.0.I20100520-0800.jar"/>
 		<path location="${eclipse-home}/plugins/org.eclipse.core.runtime_3.6.0.v20100505.jar"/>
-		<path location="${eclipse-home}/plugins/org.eclipse.osgi_3.6.0.v20100512.jar"/>
+		<path location="${eclipse-home}/plugins/org.eclipse.osgi_3.6.0.v20100517.jar"/>
 		<path location="${eclipse-home}/plugins/org.eclipse.jface_3.6.0.I20100512-1930.jar"/>
 		<path location="${eclipse-home}/plugins/org.eclipse.equinox.preferences_3.3.0.v20100503.jar"/>
 		<path location="${eclipse-home}/plugins/org.eclipse.swt_3.6.0.v3649.jar"/>
