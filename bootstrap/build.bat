@@ -47,7 +47,7 @@ echo Building version %FETCHTAG_PARM% against RAP
 ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% clean buildrap
 
 :RUNTESTS
-ant -f build.xml clean runtests
+ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% clean runtests
 GOTO :EOF
 
 :BEFORESIGN
