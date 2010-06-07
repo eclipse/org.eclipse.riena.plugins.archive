@@ -11,11 +11,11 @@
 		<delete dir="config.rap"/>
 		<delete dir="tmp/org.eclipse.riena"/>
 		<cvs
-       cvsRoot=":ext:rienaBuild@build.eclipse.org:/cvsroot/rt"
-       cvsRsh="ssh"
+             cvsRoot=":ext:rienaBuild@build.eclipse.org:/cvsroot/rt"
+             cvsRsh="ssh"
 			 package="org.eclipse.riena/org.eclipse.riena.build3"
-		   dest="tmp"
-       failonerror="true"/>
+		     dest="tmp"
+             failonerror="true" tag="${FETCHTAG_PARM}"/>
 		<copy todir="config">
 			<fileset dir="tmp/org.eclipse.riena/org.eclipse.riena.build3/config"/>
 		</copy>
