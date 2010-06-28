@@ -57,9 +57,9 @@
 			failonerror="true">
 			<arg value="-application"/>
 			<arg value="org.eclipse.equinox.p2.director"/>
-				<arg value="-metadataRepository"/>
-				<arg value="file:${build-repo-home},jar:file:${target-home}/equinox-SDK-${sdkVer}.zip\!/"/>
-				<arg value="-artifactRepository"/>
+			<arg value="-metadataRepository"/>
+			<arg value="file:${build-repo-home},jar:file:${target-home}/equinox-SDK-${sdkVer}.zip\!/"/>
+			<arg value="-artifactRepository"/>
 			<arg value="file:${build-repo-home},jar:file:${target-home}/equinox-SDK-${sdkVer}.zip\!/"/>
 			<arg value="-installIU"/>
 			<arg value="org.eclipse.riena.build.feature.core.sdk.feature.group"/>
