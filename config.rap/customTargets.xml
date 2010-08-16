@@ -173,9 +173,9 @@
 		<zip 
 			destfile="${buildDirectory}/N.TestBuild/Riena-on-RAP-target-${DSTAMP}${TSTAMP}.zip"
 			basedir="${buildDirectory}/buildEclipse/"/>
-		<copy
-			tofile="${buildDirectory}/N.TestBuild/Riena-on-RAP-p2repo-${DSTAMP}${TSTAMP}.zip" 
-			file="${buildDirectory}/N.TestBuild/org.eclipse.riena.build.feature.rap.sdk-TestBuild-group.group.group.zip"/>
+		<rename
+			dest="${buildDirectory}/N.TestBuild/Riena-on-RAP-p2repo-${DSTAMP}${TSTAMP}.zip" 
+			src="${buildDirectory}/N.TestBuild/org.eclipse.riena.build.feature.rap.sdk-TestBuild-group.group.group.zip"/>
 	</target>
 
 	<!-- ===================================================================== -->
