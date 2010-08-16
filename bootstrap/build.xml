@@ -13,7 +13,7 @@
 		<cvs
              cvsRoot=":ext:rienaBuild@build.eclipse.org:/cvsroot/rt"
              cvsRsh="ssh"
-			 package="org.eclipse.riena/org.eclipse.riena.build3"
+			 package="org.eclipse.riena/org.eclipse.riena.build3/config org.eclipse.riena/org.eclipse.riena.build3/config.rap"
 		     dest="tmp"
              failonerror="true" tag="${FETCHTAG_PARM}"/>
 		<copy todir="config">

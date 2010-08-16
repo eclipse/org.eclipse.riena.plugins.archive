@@ -61,8 +61,9 @@ plugin@org.eclipse.riena.ui.swt.rcp=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/
 plugin@org.eclipse.riena.ui.swt.rap=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.ui.swt.rap
 plugin@org.eclipse.riena.ui.workarea=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.ui.workarea
 
-# these plugins only needed by RAP (otherwise part of RCP/Equinox)
+# these plugins only needed when building against RAP
 plugin@org.eclipse.equinox.security=CVS,v20100301,:pserver:anonymous@dev.eclipse.org:/cvsroot/rt,,org.eclipse.equinox/security/bundles/org.eclipse.equinox.security 
+plugin@org.eclipse.equinox.log=CVS,v20100118,:pserver:anonymous@dev.eclipse.org:/cvsroot/rt,,org.eclipse.equinox/compendium/bundles/org.eclipse.equinox.log 
 
 # external libs - from orbit, cvs or target
 #plugin@org.apache.commons.beanutils,1.7.0=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.apache.commons.beanutils_1.7.0.v200902170505.jar
