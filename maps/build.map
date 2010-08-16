@@ -3,6 +3,7 @@ feature@org.eclipse.riena.build.feature=CVS,HEAD,:ext:rienaBuild@build.eclipse.o
 feature@org.eclipse.riena.build.feature.sdk=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.build.feature.sdk
 feature@org.eclipse.riena.build.feature.core=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.build.feature.core
 feature@org.eclipse.riena.build.feature.core.sdk=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.build.feature.core.sdk
+feature@org.eclipse.riena.build.feature.rap.sdk=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.build.feature.rap.sdk
 feature@org.eclipse.riena.build.feature.samples=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.build.feature.samples
 feature@org.eclipse.riena.build.feature.samples.sdk=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.build.feature.samples.sdk
 
