@@ -1,5 +1,4 @@
-<project name="Build for Riena" default="runall">
-
+<project name="Build for Riena">
 	<!-- adjust these if you use another eclipse version -->
 	<property name="launcherVer" value="1.1.0.v20100507"/>
 	<property name="pdeBuildVer" value="3.6.0.v20100603"/>
@@ -29,6 +28,10 @@
 			property="has.SDK"
 			file="tools/eclipse.sdk/eclipse"/>
 		<antcall target="prepareSDK"/>
+		<available
+		    property="has.prebuild"
+		    file="prebuild/plugins"/>
+		<antcall target="preparePrebuild"/>
 	</target>
 	
 	<target name="prepareSDK" unless="has.SDK">
@@ -38,6 +41,10 @@
 				<include name="eclipse-SDK-*-win32.zip"/>
 			</fileset>
 		</unzip>
+	</target>
+	
+	<target name="preparePrebuild" unless="has.prebuild">
+		<antcall target="update"/>
 	</target>
 	
 	<target name="build" depends="prepareBuild">
@@ -98,7 +105,6 @@
 	</target>
 	
 	<target name="aftersign">
-		
 		<echo>Creating pack200 files</echo>
 		<mkdir dir="${basedir}/signed/pack200"/>
 		<java 
@@ -152,14 +158,18 @@
 
 		<echo>Delete pack200 dir</echo>
 		<delete dir="${basedir}/signed/pack200"/>
-	
 	</target>	
 
-	<target name="runtests.dev">
-		<!-- todo ev remove -->
-		<ant antfile="config/runtests.xml" target="run"/>
-	</target>
-	
-	<target name="runall" depends="build, runtests">
+	<target name="update">
+		<delete dir="prebuild"/>
+		<cvs
+             cvsRoot=":ext:rienaBuild@build.eclipse.org:/cvsroot/rt"
+             cvsRsh="ssh"
+			 package="org.eclipse.riena/org.eclipse.riena.build3/prebuild"
+		     dest="tmp"
+             failonerror="true" tag="${FETCHTAG_PARM}"/>
+		<copy todir="prebuild">
+			<fileset dir="tmp/org.eclipse.riena/org.eclipse.riena.build3/prebuild"/>
+		</copy>
 	</target>
 </project>

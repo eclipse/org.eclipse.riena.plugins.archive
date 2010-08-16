@@ -1,7 +1,7 @@
 set TOOLSROOT=c:\build3\tools
 set JAVA_HOME=%TOOLSROOT%\jdk1.5.0_18
 set ANT_HOME=%TOOLSROOT%\apache-ant-1.7.1
-set CVS_HOME_BIN=c:\cygwin\bin
+set CVS_HOME_BIN=c:\build3\tools\cygwin\bin
 set CVS_SSH=ssh -l rienaBuild
 set PATH=%JAVA_HOME%\bin;%ANT_HOME%\bin;%CVS_HOME_BIN%
 set FETCHTAG_PARM=HEAD
@@ -27,14 +27,15 @@ if '%1' EQU 'buildrap' GOTO :BUILDRAP
 if '%1' EQU 'runtests' GOTO :RUNTESTS
 if '%1' EQU 'beforesign' GOTO :BEFORESIGN
 if '%1' EQU 'aftersign' GOTO :AFTERSIGN
-
+if '%1' EQU 'update' GOTO :UPDATE
 
 echo Usage:
 echo build build      - Build Riena against RCP
-echo build buildrap	 - Build Riena against RAP
+echo build buildrap   - Build Riena against RAP
 echo build runtests   - Run tests (must build against RCP first)
 echo build beforesign - Steps before sign
 echo build aftersign  - Steps after sign
+echo build update     - Update ./prebuild dir from server (run when needed) 
 GOTO :EOF
 
 :BUILD
@@ -45,6 +46,7 @@ GOTO :EOF
 :BUILDRAP
 echo Building version %FETCHTAG_PARM% against RAP
 ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% clean buildrap
+GOTO :EOF
 
 :RUNTESTS
 ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% clean runtests
@@ -52,6 +54,11 @@ GOTO :EOF
 
 :BEFORESIGN
 ant -f build.xml beforesign
+GOTO :EOF
 
 :AFTERSIGN
 ant -f build.xml aftersign
+GOTO :EOF
+
+:UPDATE
+ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% update
