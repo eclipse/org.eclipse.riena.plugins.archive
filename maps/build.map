@@ -28,6 +28,7 @@ plugin@org.eclipse.riena.demo.common=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:
 plugin@org.eclipse.riena.demo.server=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.demo.server
 plugin@org.eclipse.riena.documents=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.documents
 plugin@org.eclipse.riena.example.client=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.example.client
+plugin@org.eclipse.riena.example.client.optional=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.example.client.optional
 plugin@org.eclipse.riena.example.ping.client=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.example.ping.client
 plugin@org.eclipse.riena.monitor.client=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.monitor.client
 plugin@org.eclipse.riena.monitor.common=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.monitor.common
