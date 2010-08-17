@@ -173,15 +173,18 @@
 		<zip 
 			destfile="${buildDirectory}/N.TestBuild/Riena-on-RAP-target-${DSTAMP}${TSTAMP}.zip"
 			basedir="${buildDirectory}/buildEclipse/"/>
-		<move
-			file="${buildDirectory}/N.TestBuild/org.eclipse.riena.build.feature.rap.sdk-TestBuild-group.group.group.zip"
-			tofile="${buildDirectory}/N.TestBuild/Riena-on-RAP-p2repo-${DSTAMP}${TSTAMP}.zip"/> 
+		<copy
+			tofile="${buildDirectory}/N.TestBuild/Riena-on-RAP-p2repo-${DSTAMP}${TSTAMP}.zip" 
+			file="${buildDirectory}/N.TestBuild/org.eclipse.riena.build.feature.rap.sdk-TestBuild-group.group.group.zip"/>
 	</target>
 
 	<!-- ===================================================================== -->
 	<!-- Steps to do after the build is done. -->
 	<!-- ===================================================================== -->
 	<target name="postBuild">
+		<delete	
+			file="${buildDirectory}/N.TestBuild/org.eclipse.riena.build.feature.rap.sdk-TestBuild-group.group.group.zip"
+		    failonerror="false" />
 	</target>
 
 	<!-- ===================================================================== -->
