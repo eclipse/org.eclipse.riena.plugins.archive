@@ -74,7 +74,7 @@
 	<target name="prepareTarget" unless="has.target">
 		<unzip 
 			dest="${builder}/../target/rap" 
-			src="${builder}/../target/rap-runtime-1.4.0-M2-20100928-1710.zip" />
+			src="${builder}/../target/rap-runtime-1.4.0-M2-20100928-1646.zip" />
 	</target>
 	
 	<!-- ===================================================================== -->
