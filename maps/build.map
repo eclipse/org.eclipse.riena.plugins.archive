@@ -60,7 +60,7 @@ plugin@org.eclipse.riena.ui.swt=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsr
 plugin@org.eclipse.riena.ui.swt.rcp=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.ui.swt.rcp
 plugin@org.eclipse.riena.ui.swt.rap=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.ui.swt.rap
 plugin@org.eclipse.riena.ui.workarea=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.ui.workarea
-plugin@org.eclipse.riena.rap.mocks=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.rap.mocks
+fragment@org.eclipse.riena.rap.mocks=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.rap.mocks
 
 # these plugins only needed when building against RAP
 plugin@org.eclipse.equinox.security=CVS,v20100301,:pserver:anonymous@dev.eclipse.org:/cvsroot/rt,,org.eclipse.equinox/security/bundles/org.eclipse.equinox.security 
