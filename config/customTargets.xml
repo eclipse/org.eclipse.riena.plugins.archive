@@ -64,7 +64,8 @@
 	<!-- Steps to do before setup -->
 	<!-- ===================================================================== -->
 	<target name="preSetup">
-		<!-- if target/eclipse does not exist, then prepare target -->
+		<!-- always extract target -->
+		<delete dir="${builder}/../target/eclipse"/>
 		<available 
 			property="has.target"
 			file="${builder}/../target/eclipse"/>
