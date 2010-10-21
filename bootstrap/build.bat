@@ -24,6 +24,7 @@ set FETCHTAG_PARM=%2
 :CONT
 
 if '%1' EQU 'build' GOTO :BUILD
+if '%1' EQU 'buildindigo' GOTO :BUILDINDIGO
 if '%1' EQU 'buildrap' GOTO :BUILDRAP
 if '%1' EQU 'runtests' GOTO :RUNTESTS
 if '%1' EQU 'beforesign' GOTO :BEFORESIGN
@@ -42,6 +43,11 @@ GOTO :EOF
 :BUILD
 echo Building version %FETCHTAG_PARM%
 ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% clean build
+GOTO :EOF
+
+:BUILDINDIGO
+echo Building version %FETCHTAG_PARM%
+ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% clean buildindigo
 GOTO :EOF
 
 :BUILDRAP

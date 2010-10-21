@@ -18,6 +18,9 @@
 		<copy todir="config">
 			<fileset dir="tmp/org.eclipse.riena/org.eclipse.riena.build3/config"/>
 		</copy>
+		<copy todir="config.indigo">
+			<fileset dir="tmp/org.eclipse.riena/org.eclipse.riena.build3/config.indigo"/>
+		</copy>
 		<copy todir="config.rap">
 			<fileset dir="tmp/org.eclipse.riena/org.eclipse.riena.build3/config.rap"/>
 		</copy>
@@ -59,6 +62,22 @@
 		    <arg value="-buildfile"/>
 		    <arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
 		    <arg value="-Dbuilder=${basedir}/config"/>
+            <arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
+		</java>
+	</target>
+
+	<target name="buildindigo" depends="prepareBuild">
+		<delete dir="tmp/build"/>
+		<java 
+			taskname="build"
+			jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+			fork="true"
+			failonerror="true">
+			<arg value="-application"/>
+			<arg value="org.eclipse.ant.core.antRunner"/>
+		    <arg value="-buildfile"/>
+		    <arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
+		    <arg value="-Dbuilder=${basedir}/config.indigo"/>
             <arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 		</java>
 	</target>
