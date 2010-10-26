@@ -1,7 +1,7 @@
 set TOOLSROOT=c:\build3\tools
 set JAVA_HOME=%TOOLSROOT%\jdk1.5.0_18
 set ANT_HOME=%TOOLSROOT%\apache-ant-1.7.1
-// must use the installed cygwin version, otherwise it fails......
+REM must use the installed cygwin version, otherwise it fails......
 set CVS_HOME_BIN=c:\cygwin\bin
 set CVS_SSH=ssh -l rienaBuild
 set PATH=%JAVA_HOME%\bin;%ANT_HOME%\bin;%CVS_HOME_BIN%
