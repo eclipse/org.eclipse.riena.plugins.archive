@@ -6,6 +6,7 @@
 	<property name="target-home" value="${basedir}/target"/>
 	<property name="build-repo-home" value="${basedir}/tmp/build/buildRepo"/>
 	<property name="test-result-dest" value="${basedir}/tmp/build/N.TestBuild/testlogs"/>
+	<property name="sdkVer" value="3.7"/>
 
 	<!-- name of the plugin containing the tests -->
 	<property name="plugin-name" value="org.eclipse.riena.tests"/>
