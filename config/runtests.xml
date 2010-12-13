@@ -16,18 +16,18 @@
 	<!-- class paths, manually constructed :-(, need adjustment for each SDK update -->
 	<path id="pde.test.listener.class.path">
 			<path location="${eclipse-home}/plugins/pde.test.utils_3.5.0.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit.core_3.7.0.v20100912-2000.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit_3.7.0.v20101012-0800.jar"/>
-			<path location="${eclipse-home}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/junit.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit.core_3.7.0.v20101025-2000.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit_3.7.0.v20101123-0800.jar"/>
+			<path location="${eclipse-home}/plugins/org.junit_3.8.2.v20090203-1005/junit.jar"/>
 			<path location="${eclipse-home}/plugins/org.apache.ant_1.7.1.v20100518-1145/lib/ant-junit.jar"/>
 			<path location="${eclipse-home}/plugins/org.eclipse.equinox.common_3.6.0.v20100503.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.ui.workbench_3.7.0.I20101028.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.core.runtime_3.6.100.v20100628.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.osgi_3.7.0.v20101022.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.jface_3.7.0.I20101025-1300.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.equinox.preferences_3.3.0.v20100503.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.swt_3.7.0.v3712b.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.swt.win32.win32.x86_3.7.0.v3712b.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.ui.workbench_3.7.0.I20101208.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.core.runtime_3.6.100.v20101122.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.osgi_3.7.0.v20101207.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.jface_3.7.0.I20101206-1300.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.equinox.preferences_3.3.0.v20101204.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.swt_3.7.0.v3716.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.swt.win32.win32.x86_3.7.0.v3716.jar"/>
 			<path location="${eclipse-home}/plugins/org.apache.ant_1.7.1.v20100518-1145/lib/ant.jar"/>
 	  </path>
 	
