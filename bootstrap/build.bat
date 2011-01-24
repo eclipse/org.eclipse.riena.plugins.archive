@@ -32,12 +32,13 @@ if '%1' EQU 'aftersign' GOTO :AFTERSIGN
 if '%1' EQU 'update' GOTO :UPDATE
 
 echo Usage:
-echo build build      - Build Riena against RCP
-echo build buildrap   - Build Riena against RAP
-echo build runtests   - Run tests (must build against RCP first)
-echo build beforesign - Steps before sign
-echo build aftersign  - Steps after sign
-echo build update     - Update ./prebuild dir from server (run when needed) 
+echo build build       - Build Riena against RCP / Helios
+echo build buildindigo - Build Riena against RCP / Indigo
+echo build buildrap    - Build Riena against RAP
+echo build runtests    - Run tests (must build against RCP first)
+echo build beforesign  - Steps before sign
+echo build aftersign   - Steps after sign
+echo build update      - Update ./prebuild dir from server (run when needed) 
 GOTO :EOF
 
 :BUILD
