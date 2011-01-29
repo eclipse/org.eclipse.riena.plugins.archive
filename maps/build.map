@@ -14,6 +14,7 @@ plugin@org.eclipse.riena.client=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsr
 plugin@org.eclipse.riena.client.communication=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.client.communication
 plugin@org.eclipse.riena.client.ridgets=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.client.ridgets
 plugin@org.eclipse.riena.communication.console=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.communication.console
+plugin@org.eclipse.riena.communication.client.ui=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.communication.client.ui
 plugin@org.eclipse.riena.communication.core=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.communication.core
 plugin@org.eclipse.riena.communication.discovery=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.communication.discovery
 plugin@org.eclipse.riena.communication.factory.hessian=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.communication.factory.hessian
