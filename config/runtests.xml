@@ -22,7 +22,7 @@
 			<path location="${eclipse-home}/plugins/org.apache.ant_1.7.1.v20100518-1145/lib/ant-junit.jar"/>
 			<path location="${eclipse-home}/plugins/org.eclipse.equinox.common_3.6.0.v20110110.jar"/>
 			<path location="${eclipse-home}/plugins/org.eclipse.ui.workbench_3.7.0.I20110127-0800.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.core.runtime_3.6.100.v20110110.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.core.runtime_3.7.0.v20110110.jar"/>
 			<path location="${eclipse-home}/plugins/org.eclipse.osgi_3.7.0.v20110124-0830.jar"/>
 			<path location="${eclipse-home}/plugins/org.eclipse.jface_3.7.0.I20110118-0800.jar"/>
 			<path location="${eclipse-home}/plugins/org.eclipse.equinox.preferences_3.4.0.v20110124-0830.jar"/>
