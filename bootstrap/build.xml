@@ -1,8 +1,8 @@
 <project name="Build for Riena">
 	<!-- adjust these if you use another eclipse version -->
-	<property name="launcherVer" value="1.2.0.v20101119"/>
-	<property name="pdeBuildVer" value="3.6.100.v20101122"/>
-	<property name="sdkVer" value="3.6"/>
+	<property name="launcherVer" value="1.2.0.v20110124-0830"/>
+	<property name="pdeBuildVer" value="3.6.100.v20110121-1730"/>
+	<property name="sdkVer" value="3.7M5"/>
     <property name="pluginDir" value="${basedir}/tools/eclipse.sdk/eclipse/plugins"/>
 
 	<target name="clean">
