@@ -65,7 +65,7 @@ fragment@org.eclipse.riena.rap.mocks=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:
 
 # these plugins only needed when building against RAP
 #plugin@org.eclipse.equinox.security=CVS,v20100301,:pserver:anonymous@dev.eclipse.org:/cvsroot/rt,,org.eclipse.equinox/security/bundles/org.eclipse.equinox.security
-plugin@org.eclipse.equinox.security=GET,file:///C:/build3/prebuild/plugins/org.eclipse.equinox.security_1.1.0.v20101004.jar 
+plugin@org.eclipse.equinox.security=GET,file:///C:/build3/prebuild/plugins/org.eclipse.equinox.security_1.1.0.v20110124-0830.jar 
 #plugin@org.eclipse.equinox.log=CVS,v20100118,:pserver:anonymous@dev.eclipse.org:/cvsroot/rt,,org.eclipse.equinox/compendium/bundles/org.eclipse.equinox.log
 plugin@org.eclipse.equinox.log=GET,file:///C:/build3/prebuild/plugins/org.eclipse.equinox.log_1.2.100.v20100503.jar 
 
