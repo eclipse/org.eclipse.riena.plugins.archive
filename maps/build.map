@@ -72,8 +72,8 @@ plugin@org.eclipse.equinox.log=GET,file:///C:/build3/prebuild/plugins/org.eclips
 # external libs - from orbit, cvs or target
 #plugin@org.apache.commons.beanutils,1.7.0=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.apache.commons.beanutils_1.7.0.v200902170505.jar
 #plugin@org.apache.commons.logging,1.0.4=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20100519200754/bundles/org.apache.commons.logging_1.0.4.v201005080501.jar
-#plugin@org.apache.oro=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20100114021427/bundles/org.apache.oro_2.0.8.v200903061218.jar
 #plugin@org.apache.log4j=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.apache.log4j_1.2.13.v200903072027.jar
+#plugin@org.apache.oro=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20100114021427/bundles/org.apache.oro_2.0.8.v200903061218.jar
 #plugin@org.easymock,2.4.0=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.easymock_2.4.0.v20090202-0900.jar
 #plugin@org.eclipse.nebula.widgets.compositetable=CVS,Galileo_01,:pserver:rienaBuild@build.eclipse.org:/cvsroot/technology,,org.eclipse.swt.nebula/org.eclipse.nebula.widgets.compositetable
 #plugin@org.eclipse.nebula.widgets.compositetable=GET,http://download.eclipse.org/rt/riena/downloads/nebuladrops/Galileo_01/org.eclipse.nebula.widgets.compositetable_1.0.0.jar
@@ -84,8 +84,9 @@ plugin@org.eclipse.equinox.log=GET,file:///C:/build3/prebuild/plugins/org.eclips
 # we want to ship the originals from the Eclipse Platform, and _not_ build our own
 plugin@org.apache.commons.beanutils,1.7.0=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.beanutils_1.7.0.v200902170505.jar
 plugin@org.apache.commons.logging,1.0.4=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.logging_1.0.4.v201101211617.jar
-plugin@org.apache.oro=GET,file:///C:/build3/prebuild/plugins/org.apache.oro_2.0.8.v200903061218.jar
+plugin@org.apache.jasper,5.5.17=GET,file:///C:/build3/prebuild/plugins/org.apache.jasper_5.5.17.v201101211617.jar
 plugin@org.apache.log4j=GET,file:///C:/build3/prebuild/plugins/org.apache.log4j_1.2.13.v200903072027.jar
+plugin@org.apache.oro=GET,file:///C:/build3/prebuild/plugins/org.apache.oro_2.0.8.v200903061218.jar
 plugin@org.easymock,2.4.0=GET,file:///C:/build3/prebuild/plugins/org.easymock_2.4.0.v20090202-0900.jar
 #plugin@org.eclipse.core.variables=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.variables_3.2.500.v20101213_2.jar
 plugin@org.eclipse.core.net=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net_1.2.100.I20110118-0800.jar
