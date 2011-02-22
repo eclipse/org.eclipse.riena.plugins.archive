@@ -75,7 +75,7 @@
 		<delete dir="${builder}/../target/rap"/>
 		<unzip 
 			dest="${builder}/../target/rap" 
-			src="${builder}/../target/rap-runtime-1.4.0-M3-20101109-2119.zip" />
+			src="${builder}/../target/rap-runtime-1.4.0-M5-20110201-1534.zip" />
 	</target>
 	
 	<!-- ===================================================================== -->
