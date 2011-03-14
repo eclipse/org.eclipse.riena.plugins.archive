@@ -21,14 +21,14 @@
 			<path location="${eclipse-home}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/junit.jar"/>
 			<path location="${eclipse-home}/plugins/org.apache.ant_1.7.1.v20100518-1145/lib/ant-junit.jar"/>
 			<path location="${eclipse-home}/plugins/org.eclipse.equinox.common_3.6.0.v20110110.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.ui.workbench_3.7.0.I20110127-0800.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.ui.workbench_3.7.0.I20110307-1300.jar"/>
 			<path location="${eclipse-home}/plugins/org.eclipse.core.runtime_3.7.0.v20110110.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.osgi_3.7.0.v20110124-0830.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.jface_3.7.0.I20110118-0800.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.osgi_3.7.0.v20110304.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.jface_3.7.0.I20110309-1300.jar"/>
 			<path location="${eclipse-home}/plugins/org.eclipse.equinox.preferences_3.4.0.v20110124-0830.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.swt_3.7.0.v3721b.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.swt.win32.win32.x86_3.7.0.v3721b6.jar"/>
-			<path location="${eclipse-home}/plugins/org.apache.ant_1.7.1.v20100518-1145/lib/ant.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.swt_3.7.0.v3724c.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.swt.win32.win32.x86_3.7.0.v3724c.jar"/>
+			<path location="${eclipse-home}/plugins/org.apache.ant_1.8.2.v20110117-1200/lib/ant.jar"/>
 	  </path>
 	
 	<!-- This target holds all initialization code that needs to be done for
