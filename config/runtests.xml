@@ -16,10 +16,10 @@
 	<!-- class paths, manually constructed :-(, need adjustment for each SDK update -->
 	<path id="pde.test.listener.class.path">
 			<path location="${eclipse-home}/plugins/pde.test.utils_3.5.0.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit.core_3.7.0.v20110111-0800.jar"/>
-			<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit_3.7.0.v20110126-1300.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit.core_3.7.0.v20110309-1800.jar"/>
+			<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit_3.7.0.v20110306-1700.jar"/>
 			<path location="${eclipse-home}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/junit.jar"/>
-			<path location="${eclipse-home}/plugins/org.apache.ant_1.7.1.v20100518-1145/lib/ant-junit.jar"/>
+			<path location="${eclipse-home}/plugins/org.apache.ant_1.8.2.v20110117-1200/lib/ant-junit.jar"/>
 			<path location="${eclipse-home}/plugins/org.eclipse.equinox.common_3.6.0.v20110110.jar"/>
 			<path location="${eclipse-home}/plugins/org.eclipse.ui.workbench_3.7.0.I20110307-1300.jar"/>
 			<path location="${eclipse-home}/plugins/org.eclipse.core.runtime_3.7.0.v20110110.jar"/>
