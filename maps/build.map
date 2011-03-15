@@ -67,7 +67,7 @@ fragment@org.eclipse.riena.rap.mocks=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:
 #plugin@org.eclipse.equinox.security=CVS,v20100301,:pserver:anonymous@dev.eclipse.org:/cvsroot/rt,,org.eclipse.equinox/security/bundles/org.eclipse.equinox.security
 plugin@org.eclipse.equinox.security=GET,file:///C:/build3/prebuild/plugins/org.eclipse.equinox.security_1.1.0.v20110124-0830.jar 
 #plugin@org.eclipse.equinox.log=CVS,v20100118,:pserver:anonymous@dev.eclipse.org:/cvsroot/rt,,org.eclipse.equinox/compendium/bundles/org.eclipse.equinox.log
-plugin@org.eclipse.equinox.log=GET,file:///C:/build3/prebuild/plugins/org.eclipse.equinox.log_1.2.100.v20100503.jar 
+plugin@org.eclipse.equinox.log=GET,file:///C:/build3/prebuild/plugins/org.eclipse.equinox.log_1.2.200.v20110110.jar 
 
 # external libs - from orbit, cvs or target
 #plugin@org.apache.commons.beanutils,1.7.0=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.apache.commons.beanutils_1.7.0.v200902170505.jar
