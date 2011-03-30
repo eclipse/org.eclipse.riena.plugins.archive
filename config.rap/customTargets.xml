@@ -11,7 +11,7 @@
 	<target name="allElements">
 		<antcall target="allElementsDelegator" />
 	</target>
-	
+
 	<!-- ===================================================================== -->
 	<!-- ===================================================================== -->
 	<target name="getBaseComponents" depends="checkLocalBase" unless="skipBase">
@@ -65,19 +65,19 @@
 	<!-- ===================================================================== -->
 	<target name="preSetup">
 		<!-- if target/eclipse does not exist, then prepare target -->
-		<available 
+		<available
 			property="has.target"
 			file="${builder}/../target/rap"/>
 		<antcall target="prepareTarget"/>
 	</target>
-	
+
 	<target name="prepareTarget" unless="has.target">
 		<delete dir="${builder}/../target/rap"/>
-		<unzip 
-			dest="${builder}/../target/rap" 
-			src="${builder}/../target/rap-runtime-1.4.0-M5-20110201-1534.zip" />
+		<unzip
+			dest="${builder}/../target/rap"
+			src="${builder}/../target/rap-runtime-1.4.0-M6-20110315-1602.zip" />
 	</target>
-	
+
 	<!-- ===================================================================== -->
 	<!-- Steps to do after setup but before starting the build proper -->
 	<!-- ===================================================================== -->
@@ -108,7 +108,7 @@
 	<!-- ===================================================================== -->
 	<target name="postProcessRepos">
 	</target>
-	
+
 	<!-- ===================================================================== -->
 	<!-- Steps to do before generating the build scripts. -->
 	<!-- ===================================================================== -->
@@ -158,7 +158,7 @@
 	<target name="postPackage">
 		<!-- build the Riena-on-RAP target platform zip -->
 		<delete dir="${buildDirectory}/buildEclipse"/>
-		<p2.repo2runnable 
+		<p2.repo2runnable
 			destination="${buildDirectory}/buildEclipse/eclipse">
 			<source>
 				<repository location="file:/${buildDirectory}/${buildLabel}/org.eclipse.riena.build.feature.rap.sdk-TestBuild-group.group.group.zip" />
@@ -171,11 +171,11 @@
 		</copy>
 		<tstamp/>
 		<!-- create the build results -->
-		<zip 
+		<zip
 			destfile="${buildDirectory}/N.TestBuild/Riena-on-RAP-target-${DSTAMP}${TSTAMP}.zip"
 			basedir="${buildDirectory}/buildEclipse/"/>
 		<copy
-			tofile="${buildDirectory}/N.TestBuild/Riena-on-RAP-p2repo-${DSTAMP}${TSTAMP}.zip" 
+			tofile="${buildDirectory}/N.TestBuild/Riena-on-RAP-p2repo-${DSTAMP}${TSTAMP}.zip"
 			file="${buildDirectory}/N.TestBuild/org.eclipse.riena.build.feature.rap.sdk-TestBuild-group.group.group.zip"/>
 	</target>
 
@@ -183,7 +183,7 @@
 	<!-- Steps to do after the build is done. -->
 	<!-- ===================================================================== -->
 	<target name="postBuild">
-		<delete	
+		<delete
 			file="${buildDirectory}/N.TestBuild/org.eclipse.riena.build.feature.rap.sdk-TestBuild-group.group.group.zip"
 		    failonerror="false" />
 	</target>
