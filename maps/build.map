@@ -49,6 +49,7 @@ plugin@org.eclipse.riena.security.common=CVS,HEAD,:ext:rienaBuild@build.eclipse.
 plugin@org.eclipse.riena.security.server=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.security.server
 plugin@org.eclipse.riena.security.services=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.security.services
 plugin@org.eclipse.riena.security.simpleservices=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.security.simpleservices
+plugin@org.eclipse.riena.security.ui=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.security.ui
 plugin@org.eclipse.riena.server=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.server
 plugin@org.eclipse.riena.tests=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.tests
 plugin@org.eclipse.riena.ui.common=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.ui.common
