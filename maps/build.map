@@ -26,6 +26,8 @@ plugin@org.eclipse.riena.communication.sample.pingpong.common=CVS,HEAD,:ext:rien
 plugin@org.eclipse.riena.communication.sample.pingpong.server=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.communication.sample.pingpong.server
 plugin@org.eclipse.riena.core=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.core
 plugin@org.eclipse.riena.demo.client=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.demo.client
+plugin@org.eclipse.riena.demo.client.rcp=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.demo.client.rcp
+fragment@org.eclipse.riena.demo.client.webtheme=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.demo.client.webtheme
 plugin@org.eclipse.riena.demo.common=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.demo.common
 plugin@org.eclipse.riena.demo.server=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.demo.server
 plugin@org.eclipse.riena.documents=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.documents
@@ -66,9 +68,9 @@ fragment@org.eclipse.riena.rap.mocks=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:
 
 # these plugins only needed when building against RAP
 #plugin@org.eclipse.equinox.security=CVS,v20100301,:pserver:anonymous@dev.eclipse.org:/cvsroot/rt,,org.eclipse.equinox/security/bundles/org.eclipse.equinox.security
-plugin@org.eclipse.equinox.security=GET,file:///C:/build3/prebuild/plugins/org.eclipse.equinox.security_1.1.0.v20110124-0830.jar 
+plugin@org.eclipse.equinox.security=GET,file:///C:/build3/prebuild/plugins/org.eclipse.equinox.security_1.1.0.v20110124-0830.jar
 #plugin@org.eclipse.equinox.log=CVS,v20100118,:pserver:anonymous@dev.eclipse.org:/cvsroot/rt,,org.eclipse.equinox/compendium/bundles/org.eclipse.equinox.log
-plugin@org.eclipse.equinox.log=GET,file:///C:/build3/prebuild/plugins/org.eclipse.equinox.log_1.2.200.v20110314.jar 
+plugin@org.eclipse.equinox.log=GET,file:///C:/build3/prebuild/plugins/org.eclipse.equinox.log_1.2.200.v20110314.jar
 
 # external libs - from orbit, cvs or target
 #plugin@org.apache.commons.beanutils,1.7.0=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.apache.commons.beanutils_1.7.0.v200902170505.jar
