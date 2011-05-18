@@ -8,7 +8,7 @@ feature@org.eclipse.riena.build.feature.samples=CVS,HEAD,:ext:rienaBuild@build.e
 feature@org.eclipse.riena.build.feature.samples.sdk=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.build.feature.samples.sdk
 
 # list of riena plugins
-plugin@com.caucho.hessian=CVS,v3_2_0,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/com.caucho.hessian
+plugin@com.caucho.hessian=CVS,v3_2_0_update,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/com.caucho.hessian
 plugin@org.eclipse.riena.beans.common=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.beans.common
 plugin@org.eclipse.riena.client=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.client
 plugin@org.eclipse.riena.client.communication=CVS,HEAD,:ext:rienaBuild@build.eclipse.org:/cvsroot/rt,,org.eclipse.riena/org.eclipse.riena.client.communication
