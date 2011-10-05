@@ -80,7 +80,7 @@ plugin@org.eclipse.equinox.log=GET,file:///C:/build3/prebuild/plugins/org.eclips
 #plugin@org.easymock,2.4.0=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.easymock_2.4.0.v20090202-0900.jar
 #plugin@org.eclipse.nebula.widgets.compositetable=CVS,Galileo_01,:pserver:rienaBuild@build.eclipse.org:/cvsroot/technology,,org.eclipse.swt.nebula/org.eclipse.nebula.widgets.compositetable
 #plugin@org.eclipse.nebula.widgets.compositetable=GET,http://download.eclipse.org/rt/riena/downloads/nebuladrops/Galileo_01/org.eclipse.nebula.widgets.compositetable_1.0.0.jar
-plugin@org.eclipse.nebula.widgets.grid=GET,http://download.eclipse.org/technology/nebula/grid/update-N/plugins/org.eclipse.nebula.widgets.grid_1.0.0.HEAD.jar
+#plugin@org.eclipse.nebula.widgets.grid=GET,http://download.eclipse.org/technology/nebula/grid/update-N/plugins/org.eclipse.nebula.widgets.grid_1.0.0.HEAD.jar
 #plugin@org.junit,3.8.2=GET,http://download.eclipse.org/tools/orbit/downloads/drops/S20100831105311/bundles/org.junit_3.8.2.v3_8_2_v20100427-1100.zip,unpack=true
 #plugin@org.pushingpixels.trident=CVS,v20110609,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.ui/bundles/org.pushingpixels.trident
 
@@ -98,5 +98,6 @@ plugin@org.eclipse.core.net.source=GET,file:///C:/build3/prebuild/plugins/org.ec
 plugin@org.eclipse.core.net.win32.x86=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net.win32.x86_1.0.100.I20110331-0827.jar
 plugin@org.eclipse.nebula.widgets.compositetable=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.compositetable_1.0.0.jar
 plugin@org.eclipse.nebula.widgets.compositetable.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.compositetable.source_1.0.0.jar
+plugin@org.eclipse.nebula.widgets.grid=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.grid_1.0.0.HEAD.jar
 plugin@org.junit,3.8.2=GET,file:///C:/build3/prebuild/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100.zip,unpack=true
 plugin@org.pushingpixels.trident=GET,file:///C:/build3/prebuild/plugins/org.pushingpixels.trident_1.2.0.v20110609.jar
