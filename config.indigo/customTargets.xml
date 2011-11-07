@@ -83,7 +83,7 @@
 			</source>
 		</p2.repo2runnable>
 		
-		<echo>Copying files that we add to equinox from directory 'dropins'</echo>
+		<echo>Copying files that we add to eclipse target platform from directory 'dropins'</echo>
 		<copy todir="${builder}/../target/eclipse/plugins">
 		    <fileset dir="${builder}/../target/dropins"/>
 		  </copy>
