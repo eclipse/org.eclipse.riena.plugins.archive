@@ -84,7 +84,9 @@
 		</p2.repo2runnable>
 		
 		<echo>Copying files that we add to equinox from directory 'dropins'</echo>
-		<copydir dest="file:/${builder}/../target/eclipse/plugins" src="file:/${builder}/../target/dropins"></copydir>
+		<copy todir="${builder}/../target/eclipse/plugins">
+		    <fileset dir="${builder}/../target/dropins"/>
+		  </copy>
 		
         <echo>repo2runable: </echo>
 		<echo>  src= file:/${builder}/../target/org.eclipse.rcp.source-3.7.zip</echo>
