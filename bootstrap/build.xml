@@ -151,7 +151,7 @@
 		</delete>
 
 		<echo>Generate new metadata</echo>
-		<java 
+		<!--java 
  				taskname="metadata"
 				jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
 				fork="true"
@@ -174,6 +174,22 @@
 				<arg value="-append"/>
 				<arg value="-noDefaultiUs"/>
 				<arg value="-reusePack200Files"/>
+		</java -->
+		<java 
+ 				taskname="metadata"
+				jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+				fork="true"
+				failonerror="true">
+				<arg value="-application"/>
+				<arg value="org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher"/>
+			    <arg value="-metadataRepository"/>
+				<arg value="file:${basedir}/signed/unzip"/>
+    		    <arg value="-artifactRepository"/>
+				<arg value="file:${basedir}/signed/unzip"/>
+			    <arg value="-source"/>
+				<arg value="${basedir}/signed/unzip"/>
+ 				<arg value="-publishArtifacts"/>
+				<arg value="-compress"/>
 		</java>
 
 		<echo>Delete pack200 dir</echo>
