@@ -45,6 +45,10 @@
 				<include name="eclipse-SDK-*-win32.zip"/>
 			</fileset>
 		</unzip>
+		<copy todir="tools/eclipse.sdk/eclipse">
+		    <fileset dir="tools/gitfetchfactory"/>
+		  </copy>
+
 	</target>
 	
 	<target name="preparePrebuild" unless="has.prebuild">
