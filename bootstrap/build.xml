@@ -7,20 +7,20 @@
 
 	<target name="clean">
 		<delete dir="config"/>
+		<delete dir="config.git"/>
 		<delete dir="config.rap"/>
-		<delete dir="config.indigo"/>
 		<delete dir="tmp/org.eclipse.riena"/>
 		<cvs
              cvsRoot=":ext:rienaBuild@build.eclipse.org:/cvsroot/rt"
              cvsRsh="ssh"
-			 package="org.eclipse.riena/org.eclipse.riena.build3/config org.eclipse.riena/org.eclipse.riena.build3/config.rap org.eclipse.riena/org.eclipse.riena.build3/config.indigo"
+			 package="org.eclipse.riena/org.eclipse.riena.build3/config org.eclipse.riena/org.eclipse.riena.build3/config.rap org.eclipse.riena/org.eclipse.riena.build3/config.git"
 		     dest="tmp"
              failonerror="true" tag="${FETCHTAG_PARM}"/>
 		<copy todir="config">
 			<fileset dir="tmp/org.eclipse.riena/org.eclipse.riena.build3/config"/>
 		</copy>
-		<copy todir="config.indigo">
-			<fileset dir="tmp/org.eclipse.riena/org.eclipse.riena.build3/config.indigo"/>
+		<copy todir="config.git">
+			<fileset dir="tmp/org.eclipse.riena/org.eclipse.riena.build3/config.git"/>
 		</copy>
 		<copy todir="config.rap">
 			<fileset dir="tmp/org.eclipse.riena/org.eclipse.riena.build3/config.rap"/>
@@ -66,8 +66,8 @@
             <arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 		</java>
 	</target>
-
-	<target name="buildindigo" depends="prepareBuild">
+	
+	<target name="buildgit" depends="prepareBuild">
 		<delete dir="tmp/build"/>
 		<java 
 			taskname="build"
@@ -78,11 +78,11 @@
 			<arg value="org.eclipse.ant.core.antRunner"/>
 		    <arg value="-buildfile"/>
 		    <arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
-		    <arg value="-Dbuilder=${basedir}/config.indigo"/>
+		    <arg value="-Dbuilder=${basedir}/config-git"/>
             <arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 		</java>
 	</target>
-	
+
 	<target name="buildrap" depends="prepareBuild">
 			<delete dir="tmp/build"/>
 			<java 

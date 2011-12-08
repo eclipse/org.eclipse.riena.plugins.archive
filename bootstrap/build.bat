@@ -32,8 +32,8 @@ if '%1' EQU 'aftersign' GOTO :AFTERSIGN
 if '%1' EQU 'update' GOTO :UPDATE
 
 echo Usage:
-echo build build       - Build Riena against RCP / Helios
-echo build buildindigo - Build Riena against RCP / Indigo
+echo build build       - Build Riena against RCP
+echo build buildgit    - Build Riena against Git repo
 echo build buildrap    - Build Riena against RAP
 echo build runtests    - Run tests (must build against RCP first)
 echo build beforesign  - Steps before sign
@@ -44,11 +44,6 @@ GOTO :EOF
 :BUILD
 echo Building version %FETCHTAG_PARM%
 ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% clean build
-GOTO :EOF
-
-:BUILDINDIGO
-echo Building version %FETCHTAG_PARM%
-ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% clean buildindigo
 GOTO :EOF
 
 :BUILDRAP
