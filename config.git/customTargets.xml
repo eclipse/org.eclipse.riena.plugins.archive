@@ -30,13 +30,15 @@
 	<target name="getMapFiles" depends="checkLocalMaps" unless="skipMaps">
 		<property name="mapsCheckoutTag" value="HEAD" />
 		<mkdir dir="${buildDirectory}/maps" />
-		<exec executable="git" dir="${buildDirectory}/maps" output="${buildDirectory}/maps/maps.tar">
-		    <arg line="archive --format=tar" />
-		    <arg line="--remote=git://dev.eclipse.org/org.eclipse.riena/org.eclipse.riena.git" />
+		<!--exec executable="git" dir="${buildDirectory}/maps" output="${buildDirectory}/maps/maps.tar">
+		    <arg line="archive -format=tar" />
+		    <arg line="-remote=git://dev.eclipse.org/org.eclipse.riena/org.eclipse.riena.git" />
 		    <arg line="master org.eclipse.riena.build3/maps" />
 		</exec>
-		<untar src="${buildDirectory}/maps/maps.tar" dest="${buildDirectory}/maps" />
+		<untar src="${buildDirectory}/maps/maps.tar" dest="${buildDirectory}/maps" /-->
 		<cvs cvsRoot="${mapsRepo}" package="${mapsRoot}" dest="${buildDirectory}/maps" tag="${mapsCheckoutTag}" />
+		<delete dir="${buildDirectory}/maps" file="build.map"/>
+		<move file="${buildDirectory}/maps/build-git.map" toFile="${buildDirectory}/maps/build.map"/>
 	</target>
 
 	<target name="checkLocalMaps">
