@@ -37,7 +37,7 @@
 		</exec>
 		<untar src="${buildDirectory}/maps/maps.tar" dest="${buildDirectory}/maps" /-->
 		<cvs cvsRoot="${mapsRepo}" package="${mapsRoot}" dest="${buildDirectory}/maps" tag="${mapsCheckoutTag}" />
-		<delete dir="${buildDirectory}/maps" file="build.map"/>
+		<move file="${buildDirectory}/maps/build.map" toFile="${buildDirectory}/maps/build-cvs.map"/>
 		<move file="${buildDirectory}/maps/build-git.map" toFile="${buildDirectory}/maps/build.map"/>
 	</target>
 
