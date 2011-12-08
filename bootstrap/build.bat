@@ -4,8 +4,9 @@ set ANT_HOME=%TOOLSROOT%\apache-ant-1.7.1
 REM must use the installed cygwin version, otherwise it fails......
 set CVS_HOME_BIN=c:\cygwin\bin
 set CVS_SSH=ssh -l rienaBuild
-set PATH=%JAVA_HOME%\bin;%ANT_HOME%\bin;%CVS_HOME_BIN%
+set PATH=%JAVA_HOME%\bin;%ANT_HOME%\bin;%CVS_HOME_BIN%;%GITHOME%
 set FETCHTAG_PARM=HEAD
+set FETCHTAG_GIT_PARM=origin/master
 
 c:
 cd \build3
@@ -14,17 +15,20 @@ cd \build3
 REM ### CHECKS
 cvs -version
 echo.
+git --version
+echo.
 java -version
 echo.
 
 if '%2' EQU '' GOTO :CONT
 
 set FETCHTAG_PARM=%2
+set FETCHTAG_GIT_PARM=%2
 
 :CONT
 
 if '%1' EQU 'build' GOTO :BUILD
-if '%1' EQU 'buildindigo' GOTO :BUILDINDIGO
+if '%1' EQU 'buildgit' GOTO :BUILDGIT
 if '%1' EQU 'buildrap' GOTO :BUILDRAP
 if '%1' EQU 'runtests' GOTO :RUNTESTS
 if '%1' EQU 'beforesign' GOTO :BEFORESIGN
@@ -44,6 +48,11 @@ GOTO :EOF
 :BUILD
 echo Building version %FETCHTAG_PARM%
 ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% clean build
+GOTO :EOF
+
+:BUILDGIT
+echo Building version %FETCHTAG_PARM%
+ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% clean buildgit
 GOTO :EOF
 
 :BUILDRAP
