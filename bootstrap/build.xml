@@ -82,7 +82,7 @@
 			<arg value="org.eclipse.ant.core.antRunner"/>
 		    <arg value="-buildfile"/>
 		    <arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
-		    <arg value="-Dbuilder=${basedir}/config-git"/>
+		    <arg value="-Dbuilder=${basedir}/config.git"/>
             <arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 		</java>
 	</target>
