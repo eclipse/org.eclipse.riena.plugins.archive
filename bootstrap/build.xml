@@ -85,7 +85,7 @@
 		    <arg value="-Dbuilder=${basedir}/config.git"/>
             <arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 			<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
-			<arg value="-BUILD_QUALIFIER=${BUILD_QUALIFIER}"/>
+			<arg value="-DBUILD_QUALIFIER=${BUILD_QUALIFIER}"/>
 		</java>
 	</target>
 
