@@ -47,21 +47,21 @@ GOTO :EOF
 
 :BUILD
 echo Building version %FETCHTAG_PARM%
-ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% clean build
+ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% clean build
 GOTO :EOF
 
 :BUILDGIT
 echo Building version %FETCHTAG_PARM%
-ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% clean buildgit
+ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% clean buildgit
 GOTO :EOF
 
 :BUILDRAP
 echo Building version %FETCHTAG_PARM% against RAP
-ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% clean buildrap
+ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% clean buildrap
 GOTO :EOF
 
 :RUNTESTS
-ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% clean runtests
+ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% clean runtests
 GOTO :EOF
 
 :BEFORESIGN
@@ -73,4 +73,4 @@ ant -f build.xml aftersign
 GOTO :EOF
 
 :UPDATE
-ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% update
+ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% update
