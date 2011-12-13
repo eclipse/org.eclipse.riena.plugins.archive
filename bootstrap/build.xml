@@ -10,6 +10,7 @@
 		<delete dir="config.git"/>
 		<delete dir="config.rap"/>
 		<delete dir="tmp/org.eclipse.riena"/>
+		<echo> CVS=${FETCHTAG_PARM} GIT=${FETCHTAG_GIT_PARM}</echo>
 		<cvs
              cvsRoot=":ext:rienaBuild@build.eclipse.org:/cvsroot/rt"
              cvsRsh="ssh"
@@ -84,6 +85,7 @@
 		    <arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
 		    <arg value="-Dbuilder=${basedir}/config.git"/>
             <arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
+			<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
 		</java>
 	</target>
 

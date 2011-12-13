@@ -46,17 +46,17 @@ echo build update      - Update ./prebuild dir from server (run when needed)
 GOTO :EOF
 
 :BUILD
-echo Building version %FETCHTAG_PARM%
+echo Building version %FETCHTAG_PARM% %FETCHTAG_GIT_PARM%
 ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% clean build
 GOTO :EOF
 
 :BUILDGIT
-echo Building version %FETCHTAG_PARM%
+echo Building version %FETCHTAG_PARM% %FETCHTAG_GIT_PARM%
 ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% clean buildgit
 GOTO :EOF
 
 :BUILDRAP
-echo Building version %FETCHTAG_PARM% against RAP
+echo Building version %FETCHTAG_PARM% %FETCHTAG_GIT_PARM% against RAP
 ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% clean buildrap
 GOTO :EOF
 
