@@ -7,6 +7,7 @@ set CVS_SSH=ssh -l rienaBuild
 set PATH=%JAVA_HOME%\bin;%ANT_HOME%\bin;%CVS_HOME_BIN%;%GITHOME%
 set FETCHTAG_PARM=HEAD
 set FETCHTAG_GIT_PARM=origin/master
+set BUILD_QUALIFIER=HEAD
 
 c:
 cd \build3
@@ -24,6 +25,7 @@ if '%2' EQU '' GOTO :CONT
 
 set FETCHTAG_PARM=%2
 set FETCHTAG_GIT_PARM=%2
+set BUILD_QUALIFIER=%2
 
 :CONT
 
@@ -46,17 +48,17 @@ echo build update      - Update ./prebuild dir from server (run when needed)
 GOTO :EOF
 
 :BUILD
-echo Building version %FETCHTAG_PARM% %FETCHTAG_GIT_PARM%
-ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% clean build
+echo Building version CVS=%FETCHTAG_PARM% GIT=%FETCHTAG_GIT_PARM% BUILD_%BUILD_QUALIFIER%
+ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% -DBUILD_QUALIFIER=%BUILD_QUALIFIER% clean build
 GOTO :EOF
 
 :BUILDGIT
-echo Building version %FETCHTAG_PARM% %FETCHTAG_GIT_PARM%
+echo Building version CVS=%FETCHTAG_PARM% GIT=%FETCHTAG_GIT_PARM% BUILD_%BUILD_QUALIFIER%
 ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% clean buildgit
 GOTO :EOF
 
 :BUILDRAP
-echo Building version %FETCHTAG_PARM% %FETCHTAG_GIT_PARM% against RAP
+echo Building version CVS=%FETCHTAG_PARM% GIT=%FETCHTAG_GIT_PARM% BUILD_%BUILD_QUALIFIER% against RAP
 ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% clean buildrap
 GOTO :EOF
 
