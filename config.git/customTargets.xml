@@ -36,9 +36,9 @@
 		    <arg line="master org.eclipse.riena.build3/maps" />
 		</exec>
 		<untar src="${buildDirectory}/maps/maps.tar" dest="${buildDirectory}/maps" /-->
-		<cvs cvsRoot="${mapsRepo}" package="${mapsRoot}" dest="${buildDirectory}/maps" tag="${mapsCheckoutTag}" />
-		<delete file="${buildDirectory}/maps/${mapsRoot}/build.map"/>
-		<move file="${buildDirectory}/maps/${mapsRoot}/build-git.map" toFile="${buildDirectory}/maps/${mapsRoot}/build.map"/>
+		<!--cvs cvsRoot="${mapsRepo}" package="${mapsRoot}" dest="${buildDirectory}/maps" tag="${mapsCheckoutTag}" /-->
+		<!--delete file="${buildDirectory}/maps/${mapsRoot}/*.map"/-->
+		<copy file="${gitCache}/${mapsRoot}/build-git.map" toFile="${buildDirectory}/maps/${mapsRoot}/build.map"/>
 	</target>
 
 	<target name="checkLocalMaps">

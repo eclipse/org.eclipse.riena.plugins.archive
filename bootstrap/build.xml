@@ -4,26 +4,27 @@
 	<property name="pdeBuildVer" value="3.7.0.v20110512-1320"/>
 	<property name="sdkVer" value="3.7"/>
     <property name="pluginDir" value="${basedir}/tools/eclipse.sdk/eclipse/plugins"/>
+	<property name="gitCache" value="${basedir}/scmCache/git___dev_eclipse_org_org_eclipse_riena_org_eclipse_riena_git"/>
 
 	<target name="clean">
 		<delete dir="config"/>
 		<delete dir="config.git"/>
 		<delete dir="config.rap"/>
 		<delete dir="tmp/org.eclipse.riena"/>
-		<cvs
+		<!--cvs
              cvsRoot=":ext:rienaBuild@build.eclipse.org:/cvsroot/rt"
              cvsRsh="ssh"
 			 package="org.eclipse.riena/org.eclipse.riena.build3/config org.eclipse.riena/org.eclipse.riena.build3/config.rap org.eclipse.riena/org.eclipse.riena.build3/config.git"
 		     dest="tmp"
-             failonerror="true" tag="${FETCHTAG_PARM}"/>
+             failonerror="true" tag="${FETCHTAG_PARM}"/-->
 		<copy todir="config">
-			<fileset dir="tmp/org.eclipse.riena/org.eclipse.riena.build3/config"/>
+			<fileset dir="${gitCache}/org.eclipse.riena/org.eclipse.riena.build3/config"/>
 		</copy>
 		<copy todir="config.git">
-			<fileset dir="tmp/org.eclipse.riena/org.eclipse.riena.build3/config.git"/>
+			<fileset dir="${gitCache}/org.eclipse.riena/org.eclipse.riena.build3/config.git"/>
 		</copy>
 		<copy todir="config.rap">
-			<fileset dir="tmp/org.eclipse.riena/org.eclipse.riena.build3/config.rap"/>
+			<fileset dir="${gitCache}/org.eclipse.riena/org.eclipse.riena.build3/config.rap"/>
 		</copy>
 	</target>
 	
