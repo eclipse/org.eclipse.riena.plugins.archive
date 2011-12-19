@@ -32,7 +32,7 @@
 		<mkdir dir="${buildDirectory}/maps" />
 		<!--exec executable="git" dir="${buildDirectory}/maps" output="${buildDirectory}/maps/maps.tar">
 		    <arg line="archive -format=tar" />
-		    <arg line="-remote=git://dev.eclipse.org/org.eclipse.riena/org.eclipse.riena.git" />
+		    <arg line="-remote=ssh://rienaBuild@git.eclipse.org/gitroot/riena/org.eclipse.riena.git" />
 		    <arg line="master org.eclipse.riena.build3/maps" />
 		</exec>
 		<untar src="${buildDirectory}/maps/maps.tar" dest="${buildDirectory}/maps" /-->
