@@ -18,13 +18,13 @@
 		     dest="tmp"
              failonerror="true" tag="${FETCHTAG_PARM}"/-->
 		<copy todir="config">
-			<fileset dir="${gitCache}/org.eclipse.riena/org.eclipse.riena.build3/config"/>
+			<fileset dir="${gitCache}/org.eclipse.riena.build3/config"/>
 		</copy>
 		<copy todir="config.git">
-			<fileset dir="${gitCache}/org.eclipse.riena/org.eclipse.riena.build3/config.git"/>
+			<fileset dir="${gitCache}org.eclipse.riena.build3/config.git"/>
 		</copy>
 		<copy todir="config.rap">
-			<fileset dir="${gitCache}/org.eclipse.riena/org.eclipse.riena.build3/config.rap"/>
+			<fileset dir="${gitCache}/org.eclipse.riena.build3/config.rap"/>
 		</copy>
 	</target>
 	
