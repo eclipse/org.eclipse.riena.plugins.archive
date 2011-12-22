@@ -5,7 +5,7 @@
 	<property name="sdkVer" value="3.7"/>
     <property name="pluginDir" value="${basedir}/tools/eclipse.sdk/eclipse/plugins"/>
 	<property name="fetchCacheLocation" value="c:/scmCache"/>
-	<property name="gitCache" value="${fetchCacheLocation}/ssh___rienaBuild_git_eclipse_org_gitroot_riena_org_eclipse_riena_git"/>
+	<property name="gitCache" value="${fetchCacheLocation}/ssh___rienaBuild_build_eclipse_org_gitroot_riena_org_eclipse_riena_git"/>
 
 	<target name="clean">
 		<delete dir="config"/>
@@ -106,6 +106,10 @@
 			    <arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
 			    <arg value="-Dbuilder=${basedir}/config.rap"/>
 	            <arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
+				<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
+				<arg value="-DBUILD_QUALIFIER=${BUILD_QUALIFIER}"/>
+				<arg value="-DgitCache=${gitCache}"/>
+				<arg value="-DfetchCacheLocation=${fetchCacheLocation}"/>
 			</java>
 		</target>	
 	
