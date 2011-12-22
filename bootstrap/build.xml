@@ -49,7 +49,7 @@
 		</unzip>
 		<copy todir="tools/eclipse.sdk/eclipse">
 		    <fileset dir="tools/gitfetchfactory"/>
-		  </copy>
+		</copy>
 
 	</target>
 	

@@ -29,7 +29,7 @@
 	<!-- ===================================================================== -->
 	<target name="getMapFiles" depends="checkLocalMaps" unless="skipMaps">
 		<property name="mapsCheckoutTag" value="HEAD" />
-		<mkdir dir="${buildDirectory}/maps" />
+		<mkdir dir="${buildDirectory}/maps"/>
 		<!--exec executable="git" dir="${buildDirectory}/maps" output="${buildDirectory}/maps/maps.tar">
 		    <arg line="archive -format=tar" />
 		    <arg line="-remote=ssh://rienaBuild@git.eclipse.org/gitroot/riena/org.eclipse.riena.git" />
