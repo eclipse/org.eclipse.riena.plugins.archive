@@ -29,7 +29,9 @@
 	<!-- ===================================================================== -->
 	<target name="getMapFiles" depends="checkLocalMaps" unless="skipMaps">
 		<property name="mapsCheckoutTag" value="HEAD" />
-		<cvs cvsRoot="${mapsRepo}" package="${mapsRoot}" dest="${buildDirectory}/maps" tag="${mapsCheckoutTag}" />
+		<mkdir dir="${buildDirectory}/maps"/>
+		<!--cvs cvsRoot="${mapsRepo}" package="${mapsRoot}" dest="${buildDirectory}/maps" tag="${mapsCheckoutTag}" /-->
+		<copy file="${gitCache}/${mapsRoot}/build.map" toFile="${buildDirectory}/maps/build.map"/>
 	</target>
 
 	<target name="checkLocalMaps">
@@ -75,7 +77,7 @@
 		<delete dir="${builder}/../target/rap"/>
 		<unzip
 			dest="${builder}/../target/rap"
-			src="${builder}/../target/rap-runtime-1.4.0-RC4a-20110614-2335.zip" />
+			src="${builder}/../target/rap-runtime-1.5.0-M4-20111213-2043.zip" />
 	</target>
 
 	<!-- ===================================================================== -->
