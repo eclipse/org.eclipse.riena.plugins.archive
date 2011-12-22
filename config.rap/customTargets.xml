@@ -69,14 +69,14 @@
 		<!-- if target/eclipse does not exist, then prepare target -->
 		<available
 			property="has.target"
-			file="${builder}/../target/rap"/>
+			file="${builder}/../target/rap/eclipse"/>
 		<antcall target="prepareTarget"/>
 	</target>
 
 	<target name="prepareTarget" unless="has.target">
-		<delete dir="${builder}/../target/rap"/>
+		<delete dir="${builder}/../target/rap/eclipse"/>
 		<unzip
-			dest="${builder}/../target/rap"
+			dest="${builder}/../target/rap/eclipse"
 			src="${builder}/../target/rap-runtime-1.5.0-M4-20111213-2043.zip" />
 	</target>
 
