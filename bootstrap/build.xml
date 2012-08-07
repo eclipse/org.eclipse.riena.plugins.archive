@@ -1,8 +1,8 @@
 <project name="Build for Riena">
 	<!-- adjust these if you use another eclipse version -->
-	<property name="launcherVer" value="1.2.0.v20110502"/>
-	<property name="pdeBuildVer" value="3.7.0.v20110512-1320"/>
-	<property name="sdkVer" value="3.7"/>
+	<property name="launcherVer" value="1.3.0.v20120522-1813"/>
+	<property name="pdeBuildVer" value="3.8.0.v20120523-1555"/>
+	<property name="sdkVer" value="3.8"/>
     <property name="pluginDir" value="${basedir}/tools/eclipse.sdk/eclipse/plugins"/>
 	<property name="fetchCacheLocation" value="c:/scmCache"/>
 	<property name="gitCache" value="${fetchCacheLocation}/ssh___rienaBuild_build_eclipse_org_gitroot_riena_org_eclipse_riena_git"/>
