@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+   <extension-point id="applicationModelCreators" name="Riena Application Model Creators" schema="schema/applicationModelCreators.exsd"/>
+
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            name="org.eclipse.riena.e4.launcher"
+            application="org.eclipse.e4.ui.workbench.swt.E4Application">
+         <property
+               name="appName"
+               value="org.eclipse.riena.navigation.ui.e4">
+         </property>
+         <property
+               name="applicationXMI"
+               value="org.eclipse.riena.e4.launcher/Application.e4xmi">
+         </property>
+         <property
+               name="applicationCSS"
+               value="platform:/plugin/org.eclipse.riena.e4.launcher/css/default.css">
+         </property>
+         <property
+               name="lifeCycleURI"
+               value="bundleclass://org.eclipse.riena.e4.launcher/org.eclipse.riena.navigation.ui.e4.ApplicationLifeCycle">
+         </property>
+         <property
+               name="rendererFactoryUri"
+               value="bundleclass://org.eclipse.riena.e4.launcher/org.eclipse.riena.navigation.ui.e4.rendering.RienaRenderingFactory">
+         </property>
+      </product>
+   </extension>
+
+</plugin>
