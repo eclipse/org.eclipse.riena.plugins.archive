@@ -14,12 +14,13 @@ package org.eclipse.riena.navigation.ui.e4;
  * Constants used in <tt>Application.e4xmi</tt>
  */
 public class E4XMIConstants {
-	public static final String CONTENT_PART_STACK_ID = "org.eclipse.riena.navigation.ui.e4.contentPartStack"; //$NON-NLS-1$
-	public static final String PERSPECTIVE_STACK_ID = "org.eclipse.riena.navigation.ui.e4.perspectiveStack"; //$NON-NLS-1$
-	public static final String HEADER_PART_ID = "org.eclipse.riena.navigation.ui.e4.headerPart"; //$NON-NLS-1$
-	public static final String MAIN_MENU_PART_ID = "org.eclipse.riena.navigation.ui.e4.mainMenuPart"; //$NON-NLS-1$
-	public static final String MAIN_TOOLBAR_PART_ID = "org.eclipse.riena.navigation.ui.e4.mainToolBarPart"; //$NON-NLS-1$
-	public static final String STATUSLINE_PART_ID = "org.eclipse.riena.navigation.ui.e4.statusLinePart"; //$NON-NLS-1$
+	public static final String CONTENT_PART_STACK_ID = "org.eclipse.riena.e4.launcher.contentPartStack"; //$NON-NLS-1$
+	public static final String PERSPECTIVE_STACK_ID = "org.eclipse.riena.e4.launcher.perspectiveStack"; //$NON-NLS-1$
+	public static final String HEADER_PART_ID = "org.eclipse.riena.e4.launcher.headerPart"; //$NON-NLS-1$
+	public static final String MAIN_MENU_PART_ID = "org.eclipse.riena.e4.launcher.mainMenuPart"; //$NON-NLS-1$
+	public static final String MAIN_TOOLBAR_PART_ID = "org.eclipse.riena.e4.launcher.mainToolBarPart"; //$NON-NLS-1$
+	public static final String STATUSLINE_PART_ID = "org.eclipse.riena.e4.launcher.statusLinePart"; //$NON-NLS-1$
 	public static final String NAVIGATION_PART_ID = "org.eclipse.riena.navigation.ui.swt.views.navigationViewPart"; //$NON-NLS-1$
+	public static final String MAIN_TOOL_BAR_PART_ID = "org.eclipse.riena.e4.launcher.mainToolBarPart"; //$NON-NLS-1$
 
 }

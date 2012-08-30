@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmi:id="__ZZNYJQ8EeG59bq66SmkvQ" elementId="org.eclipse.e4.ide.application">
   <children xsi:type="basic:TrimmedWindow" xmi:id="__ZZNd5Q8EeG59bq66SmkvQ" elementId="" label="org.eclipse.riena.navigation.ui.e4">
-    <children xsi:type="basic:Part" xmi:id="_2-_TQJREEeG59bq66SmkvQ" elementId="org.eclipse.riena.navigation.ui.e4.headerPart" contributionURI="bundleclass://org.eclipse.riena.e4.launcher/org.eclipse.riena.navigation.ui.e4.part.HeaderPart" label=""/>
-    <children xsi:type="basic:Part" xmi:id="_2ntmsNDUEeGyTLD0kJoGSg" elementId="org.eclipse.riena.navigation.ui.e4.mainMenuPart" contributionURI="bundleclass://org.eclipse.riena.e4.launcher/org.eclipse.riena.navigation.ui.e4.part.MainMenuPart"/>
-    <children xsi:type="basic:Part" xmi:id="_8f47ANDUEeGyTLD0kJoGSg" elementId="org.eclipse.riena.navigation.ui.e4.mainToolBarPart" contributionURI="bundleclass://org.eclipse.riena.e4.launcher/org.eclipse.riena.navigation.ui.e4.part.MainToolBarPart"/>
-    <children xsi:type="advanced:PerspectiveStack" xmi:id="__ZZ0dJQ8EeG59bq66SmkvQ" elementId="org.eclipse.riena.navigation.ui.e4.perspectiveStack"/>
-    <children xsi:type="basic:Part" xmi:id="_Z2Hl0Jt6EeGrg9jvc5pekw" elementId="org.eclipse.riena.navigation.ui.e4.statusLinePart" contributionURI="bundleclass://org.eclipse.riena.e4.launcher/org.eclipse.riena.navigation.ui.e4.part.StatusLinePart"/>
+    <children xsi:type="basic:Part" xmi:id="_2-_TQJREEeG59bq66SmkvQ" elementId="org.eclipse.riena.e4.launcher.headerPart" contributionURI="bundleclass://org.eclipse.riena.e4.launcher/org.eclipse.riena.navigation.ui.e4.part.HeaderPart" label=""/>
+    <children xsi:type="basic:Part" xmi:id="_2ntmsNDUEeGyTLD0kJoGSg" elementId="org.eclipse.riena.e4.launcher.mainMenuPart" contributionURI="bundleclass://org.eclipse.riena.e4.launcher/org.eclipse.riena.navigation.ui.e4.part.MainMenuPart"/>
+    <children xsi:type="basic:Part" xmi:id="_8f47ANDUEeGyTLD0kJoGSg" elementId="org.eclipse.riena.e4.launcher.mainToolBarPart" contributionURI="bundleclass://org.eclipse.riena.e4.launcher/org.eclipse.riena.navigation.ui.e4.part.MainToolBarPart"/>
+    <children xsi:type="advanced:PerspectiveStack" xmi:id="__ZZ0dJQ8EeG59bq66SmkvQ" elementId="org.eclipse.riena.e4.launcher.perspectiveStack"/>
+    <children xsi:type="basic:Part" xmi:id="_Z2Hl0Jt6EeGrg9jvc5pekw" elementId="org.eclipse.riena.e4.launcher.statusLinePart" contributionURI="bundleclass://org.eclipse.riena.e4.launcher/org.eclipse.riena.navigation.ui.e4.part.StatusLinePart"/>
   </children>
   <addons xmi:id="__ZZNZJQ8EeG59bq66SmkvQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="__ZZNZZQ8EeG59bq66SmkvQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>

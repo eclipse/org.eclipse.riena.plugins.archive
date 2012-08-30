@@ -39,8 +39,6 @@ import org.eclipse.riena.navigation.ui.swt.views.SubModuleView;
  */
 @SuppressWarnings("restriction")
 public class MySubModuleNodeListener extends SubModuleNodeListener {
-	private static final String MAIN_MENU_PART_ID = "org.eclipse.riena.navigation.ui.e4.mainMenuPart"; //$NON-NLS-1$
-	private static final String MAIN_TOOL_BAR_PART_ID = "org.eclipse.riena.navigation.ui.e4.mainToolBarPart"; //$NON-NLS-1$
 
 	private static final String VIEWS_EXT_POINT = "org.eclipse.ui.views"; //$NON-NLS-1$
 	private static final String ID = "id"; //$NON-NLS-1$
@@ -150,14 +148,14 @@ public class MySubModuleNodeListener extends SubModuleNodeListener {
 	public void afterActivated(final ISubModuleNode source) {
 		final EModelService modelService = context.get(EModelService.class);
 		// update main menu items
-		final Object m = ((MPart) modelService.find(MAIN_MENU_PART_ID, context.get(MApplication.class))).getTransientData()
-				.get(MainMenuPart.MENU_COMPOSITE_KEY);
+		final Object m = ((MPart) modelService.find(E4XMIConstants.MAIN_MENU_PART_ID, context.get(MApplication.class))).getTransientData().get(
+				MainMenuPart.MENU_COMPOSITE_KEY);
 		if (m instanceof MenuCoolBarComposite) {
 			((MenuCoolBarComposite) m).updateMenuItems();
 		}
 
 		// update coolbar items
-		final Object c = ((MPart) modelService.find(MAIN_TOOL_BAR_PART_ID, context.get(MApplication.class))).getTransientData().get(
+		final Object c = ((MPart) modelService.find(E4XMIConstants.MAIN_TOOL_BAR_PART_ID, context.get(MApplication.class))).getTransientData().get(
 				MainToolBarPart.COOLBAR_COMPOSITE_KEY);
 		if (c instanceof CoolBarComposite) {
 			((CoolBarComposite) c).updateItems();
