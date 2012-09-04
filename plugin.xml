@@ -22,11 +22,11 @@
          </property>
          <property
                name="lifeCycleURI"
-               value="bundleclass://org.eclipse.riena.e4.launcher/org.eclipse.riena.navigation.ui.e4.ApplicationLifeCycle">
+               value="bundleclass://org.eclipse.riena.e4.launcher/org.eclipse.riena.e4.launcher.ApplicationLifeCycle">
          </property>
          <property
                name="rendererFactoryUri"
-               value="bundleclass://org.eclipse.riena.e4.launcher/org.eclipse.riena.navigation.ui.e4.rendering.RienaRenderingFactory">
+               value="bundleclass://org.eclipse.riena.e4.launcher/org.eclipse.riena.e4.launcher.rendering.RienaRenderingFactory">
          </property>
       </product>
    </extension>
