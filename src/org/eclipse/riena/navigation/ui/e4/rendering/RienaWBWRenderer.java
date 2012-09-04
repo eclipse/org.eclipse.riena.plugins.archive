@@ -14,6 +14,7 @@ import javax.inject.Named;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
 
+import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Optional;
 import org.eclipse.e4.core.services.events.IEventBroker;
@@ -44,6 +45,7 @@ import org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer;
 import org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
@@ -71,6 +73,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Widget;
 
 import org.eclipse.riena.internal.ui.swt.utils.RcpUtilities;
+import org.eclipse.riena.navigation.ApplicationNodeManager;
 import org.eclipse.riena.navigation.ui.e4.E4XMIConstants;
 import org.eclipse.riena.navigation.ui.e4.part.StatusLinePart;
 import org.eclipse.riena.navigation.ui.swt.component.SwitcherComposite;
@@ -824,6 +827,21 @@ public class RienaWBWRenderer extends SWTPartRenderer {
 		} else {
 			shell.setVisible(false);
 		}
+
+		rienaActivateApplicationNode();
+	}
+
+	/**
+	 * 
+	 */
+	private void rienaActivateApplicationNode() {
+		final Realm realm = SWTObservables.getRealm(Display.getCurrent());
+		Realm.runWithDefault(realm, new Runnable() {
+
+			public void run() {
+				ApplicationNodeManager.getApplicationNode().activate();
+			}
+		});
 	}
 
 	private Object[] promptForSave(final Shell parentShell, final Collection<MPart> saveableParts) {
