@@ -42,6 +42,9 @@ public class PerspectiveStackRenderer extends StackRenderer {
 		@Override
 		public void setSelection(final int index) {
 			super.setSelection(index);
+			if (index >= getItemCount()) {
+				return;
+			}
 			final Control control = getItem(index).getControl();
 			control.setVisible(true);
 			control.setBounds(getClientArea());
