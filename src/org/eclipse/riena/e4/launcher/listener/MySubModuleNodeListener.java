@@ -83,4 +83,9 @@ public class MySubModuleNodeListener extends SubModuleNodeListener {
 			((CoolBarComposite) c).updateItems();
 		}
 	}
+
+	@Override
+	public void disposed(final ISubModuleNode source) {
+		//		partHelper.disposeNode(source);
+	}
 }

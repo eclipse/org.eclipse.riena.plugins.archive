@@ -46,6 +46,9 @@ public class PerspectiveStackRenderer extends StackRenderer {
 				return;
 			}
 			final Control control = getItem(index).getControl();
+			if (null == control) {
+				return;
+			}
 			control.setVisible(true);
 			control.setBounds(getClientArea());
 			showItem(getItem(index));

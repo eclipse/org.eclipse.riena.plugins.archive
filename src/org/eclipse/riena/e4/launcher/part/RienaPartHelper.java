@@ -15,7 +15,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
-import org.eclipse.e4.core.services.log.Logger;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.MApplicationElement;
 import org.eclipse.e4.ui.model.application.ui.MElementContainer;
@@ -50,24 +49,21 @@ public class RienaPartHelper {
 	private IEclipseContext context;
 
 	@Inject
-	private Logger logger;
+	private EModelService modelService;
 
 	private static int secondaryIdCounter = 0;
 
 	public void showPart(final ISubModuleNode source) {
-		final EModelService modelService = context.get(EModelService.class);
-		final MApplication searchRoot = context.get(MApplication.class);
 
 		final String partId = (String) source.getContext(KEY_E4_PART_ID);
 
 		MPart partToActivate = null;
 		if (null == partId) {
-			// nothing found --> create new part
-			partToActivate = createPart(source, modelService, searchRoot, partToActivate);
+			// not registered yet --> create new part
+			partToActivate = createPart(source);
 		} else {
-			// search for part with partId
-			final List<MPart> parts = modelService.findElements(searchRoot, partId, MPart.class, null, EModelService.IN_ANY_PERSPECTIVE);
-			partToActivate = parts.get(0);
+			// search for part
+			partToActivate = findPart(source);
 
 			/** handle shared views **/
 			final Object viewInstance = partToActivate.getTransientData().get(PartWrapper.VIEW_KEY);
@@ -82,12 +78,19 @@ public class RienaPartHelper {
 		partToActivate.getParent().setSelectedElement(partToActivate);
 	}
 
-	private MPart createPart(final ISubModuleNode source, final EModelService modelService, final MApplication searchRoot, MPart partToActivate) {
+	private MPart findPart(final ISubModuleNode node) {
+		final String partId = (String) node.getContext(KEY_E4_PART_ID);
+		final List<MPart> parts = modelService.findElements(context.get(MApplication.class), partId, MPart.class, null, EModelService.IN_ANY_PERSPECTIVE);
+		return parts.get(0);
+	}
+
+	private MPart createPart(final ISubModuleNode source) {
+		MPart partToActivate;
 		final ISubApplicationNode subApplicationNode = source.getParentOfType(ISubApplicationNode.class);
 		final String perspectiveId = SwtViewProvider.getInstance().getSwtViewId(subApplicationNode).getId();
 
 		// find perspective to add part to
-		final List<MPerspective> perspectives = modelService.findElements(searchRoot, perspectiveId, MPerspective.class, null);
+		final List<MPerspective> perspectives = modelService.findElements(context.get(MApplication.class), perspectiveId, MPerspective.class, null);
 		if (perspectives.isEmpty()) {
 			// nothing found
 			throw new IllegalStateException("Parent perspective not found. perspectiveId: " + perspectiveId); //$NON-NLS-1$ 
@@ -127,6 +130,11 @@ public class RienaPartHelper {
 
 	private String increasePartCounter() {
 		return String.valueOf(secondaryIdCounter++);
+	}
+
+	public void disposeNode(final ISubModuleNode source) {
+		// TODO Auto-generated method stub
+
 	}
 
 	public static String[] extractRienaCompoundId(final MApplicationElement part) {
