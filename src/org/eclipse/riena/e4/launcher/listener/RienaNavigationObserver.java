@@ -8,18 +8,13 @@
  * Contributors:
  *    compeople AG - initial API and implementation
  *******************************************************************************/
-package org.eclipse.riena.e4.launcher;
+package org.eclipse.riena.e4.launcher.listener;
 
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 
-import org.eclipse.riena.e4.launcher.listener.MyApplicationNodeListener;
-import org.eclipse.riena.e4.launcher.listener.MyModuleGroupNodeListener;
-import org.eclipse.riena.e4.launcher.listener.MyModuleNodeListener;
-import org.eclipse.riena.e4.launcher.listener.MySubApplicationNodeListener;
-import org.eclipse.riena.e4.launcher.listener.MySubModuleNodeListener;
 import org.eclipse.riena.navigation.IApplicationNode;
 import org.eclipse.riena.navigation.listener.NavigationTreeObserver;
 

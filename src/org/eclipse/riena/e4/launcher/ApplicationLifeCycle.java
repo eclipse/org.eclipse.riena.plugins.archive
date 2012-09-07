@@ -10,6 +10,7 @@ import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.log.Logger;
 import org.eclipse.e4.ui.workbench.lifecycle.PostContextCreate;
 
+import org.eclipse.riena.e4.launcher.listener.RienaNavigationObserver;
 import org.eclipse.riena.e4.launcher.security.LoginHelper;
 import org.eclipse.riena.navigation.IApplicationNode;
 import org.eclipse.riena.navigation.ui.application.IApplicationModelCreator;

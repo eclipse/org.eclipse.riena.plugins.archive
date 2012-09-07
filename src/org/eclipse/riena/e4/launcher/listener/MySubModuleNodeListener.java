@@ -36,9 +36,6 @@ import org.eclipse.riena.navigation.ui.swt.views.SubModuleView;
 @SuppressWarnings("restriction")
 public class MySubModuleNodeListener extends SubModuleNodeListener {
 
-	/**
-	 * 
-	 */
 	private static final String KEY_E4_PART_ID = "E4PartId"; //$NON-NLS-1$
 	public static final String COMPOUND_ID_DELIMITER = ":"; //$NON-NLS-1$
 	public static final String COUNTER_DELIMITER = "#"; //$NON-NLS-1$

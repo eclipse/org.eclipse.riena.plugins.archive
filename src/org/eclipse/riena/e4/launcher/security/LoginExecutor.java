@@ -8,7 +8,7 @@
  * Contributors:
  *    compeople AG - initial API and implementation
  *******************************************************************************/
-package org.eclipse.riena.e4.launcher;
+package org.eclipse.riena.e4.launcher.security;
 
 import java.util.ArrayList;
 import java.util.List;

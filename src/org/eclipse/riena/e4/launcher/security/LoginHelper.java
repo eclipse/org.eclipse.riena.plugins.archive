@@ -28,7 +28,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-import org.eclipse.riena.e4.launcher.LoginExecutor;
 import org.eclipse.riena.navigation.ui.login.ILoginDialogView;
 import org.eclipse.riena.navigation.ui.swt.application.LoginNonActivityTimer.ILoginExecutor;
 import org.eclipse.riena.navigation.ui.swt.splashHandlers.AbstractLoginSplashHandler;
