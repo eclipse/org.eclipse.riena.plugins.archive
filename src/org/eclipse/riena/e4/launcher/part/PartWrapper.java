@@ -16,17 +16,19 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
-import org.eclipse.jface.window.IShellProvider;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Shell;
 
-import org.eclipse.riena.core.util.ReflectionUtils;
 import org.eclipse.riena.navigation.ISubModuleNode;
 import org.eclipse.riena.navigation.ui.swt.presentation.SwtViewProvider;
+import org.eclipse.riena.navigation.ui.swt.views.SubModuleView;
 
+/**
+ * Wraps the {@link SubModuleView}.
+ */
+@SuppressWarnings("restriction")
 public class PartWrapper {
-	public static final String VIEW_KEY = PartWrapper.class.getName() + ".rienaNavigationNodeView"; //$NON-NLS-1$
 
+	public static final String VIEW_KEY = PartWrapper.class.getName() + ".rienaNavigationNodeView"; //$NON-NLS-1$
 	private static final String VIEWS_EXT_POINT = "org.eclipse.ui.views"; //$NON-NLS-1$
 
 	@Inject
@@ -34,32 +36,43 @@ public class PartWrapper {
 
 	@Inject
 	public void create(final Composite parent, final MPart part) {
-		for (final IConfigurationElement e : extensionRegistry.getConfigurationElementsFor(VIEWS_EXT_POINT)) {
-			if (part.getElementId().equals(e.getAttribute("id"))) {
+		/*
+		 * the elementId of the part has the following format: typeId:secondayId#partCounter
+		 */
+
+		final String[] rienaCompoundId = RienaPartHelper.extractRienaCompoundId(part);
+		final String typeId = rienaCompoundId[0];
+		final String secondayId = rienaCompoundId[1];
+
+		final ISubModuleNode node = SwtViewProvider.getInstance().getNavigationNode(typeId, secondayId, ISubModuleNode.class);
+
+		SubModuleView viewInstance = null;
+		if (RienaPartHelper.isSharedView(node)) {
+			viewInstance = ViewInstanceProvider.getInstance().getView(typeId);
+			if (null != viewInstance) {
+				return;
+			}
+		}
+		viewInstance = createView(typeId);
+	}
+
+	private SubModuleView createView(final String typeId) {
+		final IConfigurationElement[] configurationElements = extensionRegistry.getConfigurationElementsFor(VIEWS_EXT_POINT);
+		SubModuleView viewInstance;
+		for (final IConfigurationElement element : configurationElements) {
+			if (typeId.equals(element.getAttribute("id"))) { //$NON-NLS-1$
 				try {
-					final Object viewInstance = e.createExecutableExtension("class");
-					final ISubModuleNode node = SwtViewProvider.getInstance().getNavigationNode(part.getElementId(), ISubModuleNode.class);
-					ReflectionUtils.invoke(viewInstance, "setNavigationNode", node);
-					ReflectionUtils.invokeHidden(viewInstance, "setShellProvider", toShellProvider(parent.getShell()));
-					ReflectionUtils.invoke(viewInstance, "createPartControl", parent);
-					part.getTransientData().put(VIEW_KEY, viewInstance);
+					viewInstance = (SubModuleView) element.createExecutableExtension("class"); //$NON-NLS-1$
+					ViewInstanceProvider.getInstance().registerView(typeId, viewInstance);
+					return viewInstance;
 				} catch (final CoreException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
+
 		}
+		return null;
+
 	}
 
-	/**
-	 * @param shell
-	 * @return
-	 */
-	private IShellProvider toShellProvider(final Shell shell) {
-		return new IShellProvider() {
-			public Shell getShell() {
-				return shell;
-			}
-		};
-	}
 }

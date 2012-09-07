@@ -3,10 +3,13 @@ package org.eclipse.riena.e4.launcher.rendering;
 import org.eclipse.e4.ui.internal.workbench.swt.AbstractPartRenderer;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
+import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
+import org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer;
 import org.eclipse.e4.ui.workbench.renderers.swt.WorkbenchRendererFactory;
 
+@SuppressWarnings("restriction")
 public class RienaRenderingFactory extends WorkbenchRendererFactory {
 
 	@Override
@@ -27,6 +30,13 @@ public class RienaRenderingFactory extends WorkbenchRendererFactory {
 			return renderer;
 		}
 
+		if (uiElement instanceof MPart) {
+			final ContributedPartRenderer renderer = new RienaPartRenderer();
+			initRenderer(renderer);
+			return renderer;
+		}
+
 		return super.getRenderer(uiElement, parent);
 	}
+
 }

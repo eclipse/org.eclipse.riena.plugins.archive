@@ -107,7 +107,7 @@ public class SubApplicationBinder {
 	}
 
 	private void bindController() {
-		if (null == getNavigationNode().getNavigationNodeController()) {
+		if (subApplicationController.getRidgets().isEmpty()) {
 			binding.injectRidgets(subApplicationController);
 			binding.bind(subApplicationController);
 			observeSubApplicationNode();

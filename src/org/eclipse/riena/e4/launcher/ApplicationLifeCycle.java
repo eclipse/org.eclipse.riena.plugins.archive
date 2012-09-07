@@ -2,6 +2,7 @@ package org.eclipse.riena.e4.launcher;
 
 import javax.inject.Inject;
 
+import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
@@ -10,8 +11,11 @@ import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.log.Logger;
 import org.eclipse.e4.ui.workbench.lifecycle.PostContextCreate;
 import org.eclipse.e4.ui.workbench.lifecycle.ProcessAdditions;
+import org.eclipse.jface.databinding.swt.SWTObservables;
+import org.eclipse.swt.widgets.Display;
 
 import org.eclipse.riena.e4.launcher.security.LoginHelper;
+import org.eclipse.riena.navigation.ApplicationNodeManager;
 import org.eclipse.riena.navigation.IApplicationNode;
 import org.eclipse.riena.navigation.ui.application.IApplicationModelCreator;
 import org.eclipse.riena.navigation.ui.controllers.ApplicationController;
@@ -83,13 +87,13 @@ public class ApplicationLifeCycle {
 	@ProcessAdditions
 	public void activateRienaApplicationNode() {
 		// riena application node activation moved to RienaBWBRenderer.rienaActivateApplicationNode()
-		//		final Realm realm = SWTObservables.getRealm(Display.getCurrent());
-		//		Realm.runWithDefault(realm, new Runnable() {
-		//
-		//			public void run() {
-		//				ApplicationNodeManager.getApplicationNode().activate();
-		//			}
-		//		});
+		final Realm realm = SWTObservables.getRealm(Display.getCurrent());
+		Realm.runWithDefault(realm, new Runnable() {
+
+			public void run() {
+				ApplicationNodeManager.getApplicationNode().activate();
+			}
+		});
 	}
 
 	private void observeRienaNavigation(final IApplicationNode applicationNode) {
