@@ -11,6 +11,7 @@ import org.eclipse.e4.core.services.log.Logger;
 import org.eclipse.e4.ui.workbench.lifecycle.PostContextCreate;
 
 import org.eclipse.riena.e4.launcher.listener.RienaNavigationObserver;
+import org.eclipse.riena.e4.launcher.part.RienaPartHelper;
 import org.eclipse.riena.e4.launcher.security.LoginHelper;
 import org.eclipse.riena.navigation.IApplicationNode;
 import org.eclipse.riena.navigation.ui.application.IApplicationModelCreator;
@@ -78,6 +79,7 @@ public class ApplicationLifeCycle {
 	}
 
 	private void observeRienaNavigation(final IApplicationNode applicationNode) {
+		eclipseContext.set(RienaPartHelper.class, ContextInjectionFactory.make(RienaPartHelper.class, eclipseContext));
 		ContextInjectionFactory.make(RienaNavigationObserver.class, eclipseContext).install(applicationNode);
 	}
 
