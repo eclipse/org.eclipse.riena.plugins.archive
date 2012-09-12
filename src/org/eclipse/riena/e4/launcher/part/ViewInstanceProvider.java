@@ -20,10 +20,7 @@ public class ViewInstanceProvider {
 	private final Map<String, Composite> composites;
 	private final Map<String, Integer> viewUsage;
 
-	/**
-	 * 
-	 */
-	public ViewInstanceProvider() {
+	private ViewInstanceProvider() {
 		views = new HashMap<String, SubModuleView>();
 		composites = new HashMap<String, Composite>();
 		viewUsage = new HashMap<String, Integer>();
@@ -79,6 +76,11 @@ public class ViewInstanceProvider {
 
 	public void unregisterView(final String typeId) {
 		views.remove(typeId);
+	}
+
+	public void unregisterTypeId(final String typeId) {
+		unregisterParentComposite(typeId);
+		unregisterView(typeId);
 	}
 
 	public void unregisterParentComposite(final String typeId) {

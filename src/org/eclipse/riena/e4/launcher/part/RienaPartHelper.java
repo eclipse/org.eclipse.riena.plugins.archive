@@ -148,7 +148,6 @@ public class RienaPartHelper {
 				// kill zombie widget
 				widget.dispose();
 				ViewInstanceProvider.getInstance().unregisterParentComposite(typeId);
-				ViewInstanceProvider.getInstance().unregisterView(typeId);
 			}
 		}
 	}
