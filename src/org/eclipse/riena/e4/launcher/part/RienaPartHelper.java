@@ -25,6 +25,7 @@ import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
 import org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.jface.window.IShellProvider;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
 import org.eclipse.riena.e4.launcher.Activator;
@@ -80,6 +81,9 @@ public class RienaPartHelper {
 
 	private MPart findPart(final ISubModuleNode node) {
 		final String partId = (String) node.getContext(KEY_E4_PART_ID);
+		if (null == partId) {
+			return null;
+		}
 		final List<MPart> parts = modelService.findElements(context.get(MApplication.class), partId, MPart.class, null, EModelService.IN_ANY_PERSPECTIVE);
 		return parts.get(0);
 	}
@@ -133,8 +137,28 @@ public class RienaPartHelper {
 	}
 
 	public void disposeNode(final ISubModuleNode source) {
-		// TODO Auto-generated method stub
+		final MPart part = findPart(source);
+		if (part != null) {
+			final String typeId = extractRienaCompoundId(part)[0];
+			final Composite widget = (Composite) part.getWidget();
+			unregisterPart(part);
+			final int remainingCount = ViewInstanceProvider.getInstance().decreaseViewCounter(typeId);
+			// honor reference counter (important for shared views)
+			if (remainingCount == 0) {
+				// kill zombie widget
+				widget.dispose();
+				ViewInstanceProvider.getInstance().unregisterParentComposite(typeId);
+				ViewInstanceProvider.getInstance().unregisterView(typeId);
+			}
+		}
+	}
 
+	/**
+	 * Unregisters the given {@link MPart} from the e4 application model
+	 */
+	private void unregisterPart(final MPart part) {
+		part.setWidget(null);
+		part.getParent().getChildren().remove(part);
 	}
 
 	public static String[] extractRienaCompoundId(final MApplicationElement part) {

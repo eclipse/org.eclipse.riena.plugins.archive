@@ -43,6 +43,7 @@ public final class RienaPartRenderer extends ContributedPartRenderer {
 					if (null == element.getWidget()) {
 						// register the widget at the current element. This happens only one time for each part.
 						element.setWidget(parentComposite);
+						ViewInstanceProvider.getInstance().increaseViewCounter(typeId);
 					}
 				}
 			}
@@ -87,6 +88,7 @@ public final class RienaPartRenderer extends ContributedPartRenderer {
 	 */
 	private void initializeView(final String typeId, final Composite parentComposite, final ISubModuleNode node) {
 		final SubModuleView viewInstance = ViewInstanceProvider.getInstance().getView(typeId);
+		viewInstance.setE4Runtime(true);
 		ViewInstanceProvider.getInstance().registerParentComposite(typeId, parentComposite);
 		updateViewNode(typeId, node);
 		ReflectionUtils.invokeHidden(viewInstance, "setShellProvider", RienaPartHelper.toShellProvider(parentComposite.getShell())); //$NON-NLS-1$

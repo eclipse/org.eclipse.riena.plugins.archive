@@ -86,6 +86,6 @@ public class MySubModuleNodeListener extends SubModuleNodeListener {
 
 	@Override
 	public void disposed(final ISubModuleNode source) {
-		//		partHelper.disposeNode(source);
+		partHelper.disposeNode(source);
 	}
 }
