@@ -10,7 +10,7 @@
             application="org.eclipse.e4.ui.workbench.swt.E4Application">
          <property
                name="appName"
-               value="org.eclipse.riena.navigation.ui.e4">
+               value="org.eclipse.riena.e4.launcher">
          </property>
          <property
                name="applicationXMI"
