@@ -7,6 +7,8 @@
     <children xsi:type="advanced:PerspectiveStack" xmi:id="__ZZ0dJQ8EeG59bq66SmkvQ" elementId="org.eclipse.riena.e4.launcher.perspectiveStack"/>
     <children xsi:type="basic:Part" xmi:id="_Z2Hl0Jt6EeGrg9jvc5pekw" elementId="org.eclipse.riena.e4.launcher.statusLinePart" contributionURI="bundleclass://org.eclipse.riena.e4.launcher/org.eclipse.riena.e4.launcher.part.StatusLinePart"/>
   </children>
+  <bindingTables xmi:id="_8foFMA3xEeKcXKlc2RnU4w" elementId="org.eclipse.riena.e4.launcher.bindingtable" bindingContext="_kcQy0A3xEeKcXKlc2RnU4w"/>
+  <rootContext xmi:id="_kcQy0A3xEeKcXKlc2RnU4w" elementId="org.eclipse.ui.contexts.riena" name="Riena Bindings"/>
   <addons xmi:id="__ZZNZJQ8EeG59bq66SmkvQ" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="__ZZNZZQ8EeG59bq66SmkvQ" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="__ZZNZpQ8EeG59bq66SmkvQ" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
