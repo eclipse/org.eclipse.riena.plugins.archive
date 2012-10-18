@@ -66,6 +66,9 @@ plugin@org.eclipse.riena.ui.swt.rap=GIT,tag=orgin/master,repo=ssh://rienaBuild@b
 plugin@org.eclipse.riena.ui.workarea=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.ui.workarea
 fragment@org.eclipse.riena.rap.mocks=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.rap.git,path=org.eclipse.riena.rap.mocks
 
+# E4 specific bundles
+plugin@org.eclipse.riena.e4.launcher=GIT,tag=orgin/rienaOnE4,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.e4.launcher
+
 # these plugins only needed when building against RAP
 #plugin@org.eclipse.equinox.security=CVS,v20100301,:pserver:anonymous@dev.eclipse.org:/cvsroot/rt,,org.eclipse.equinox/security/bundles/org.eclipse.equinox.security
 plugin@org.eclipse.equinox.security=GET,file:///C:/build3/prebuild/plugins/org.eclipse.equinox.security_1.1.0.v20110502.jar
