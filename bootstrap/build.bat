@@ -25,12 +25,14 @@ if '%2' EQU '' GOTO :CONT
 
 set FETCHTAG_PARM=%2
 set FETCHTAG_GIT_PARM=%2
-set BUILD_QUALIFIER=%2
+::set BUILD_QUALIFIER=%2 <- this does not work since git tags contain a slash which is invalid for a qualifier
 
 :CONT
 
 if '%1' EQU 'build' GOTO :BUILD
 if '%1' EQU 'buildgit' GOTO :BUILDGIT
+if '%1' EQU 'buildgite4' GOTO :BUILDGITE4
+if '%1' EQU 'buildgit3xe4' GOTO :BUILDGIT3XE4
 if '%1' EQU 'buildrap' GOTO :BUILDRAP
 if '%1' EQU 'runtests' GOTO :RUNTESTS
 if '%1' EQU 'beforesign' GOTO :BEFORESIGN
@@ -38,13 +40,15 @@ if '%1' EQU 'aftersign' GOTO :AFTERSIGN
 if '%1' EQU 'update' GOTO :UPDATE
 
 echo Usage:
-echo build build       - Build Riena against RCP
-echo build buildgit    - Build Riena against Git repo
-echo build buildrap    - Build Riena against RAP
-echo build runtests    - Run tests (must build against RCP first)
-echo build beforesign  - Steps before sign
-echo build aftersign   - Steps after sign
-echo build update      - Update ./prebuild dir from server (run when needed) 
+echo build build        - Build Riena against RCP
+echo build buildgit     - Build Riena against Git repo
+echo build buildgite4   - Build Riena on E4 against Git repo, branch rienaOnE4
+echo build buildgit3xe4 - Build Riena against Git repo, branch rienaOnE4
+echo build buildrap     - Build Riena against RAP
+echo build runtests     - Run tests (must build against RCP first)
+echo build beforesign   - Steps before sign
+echo build aftersign    - Steps after sign
+echo build update       - Update ./prebuild dir from server (run when needed) 
 GOTO :EOF
 
 :BUILD
@@ -55,6 +59,16 @@ GOTO :EOF
 :BUILDGIT
 echo Building version CVS=%FETCHTAG_PARM% GIT=%FETCHTAG_GIT_PARM% BUILD=%BUILD_QUALIFIER%
 ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% -DBUILD_QUALIFIER=%BUILD_QUALIFIER% clean buildgit
+GOTO :EOF
+
+:BUILDGITE4
+echo Building version CVS=%FETCHTAG_PARM% GIT=%FETCHTAG_GIT_PARM% BUILD=%BUILD_QUALIFIER%
+ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% -DBUILD_QUALIFIER=%BUILD_QUALIFIER% clean buildgite4
+GOTO :EOF
+
+:BUILDGIT3XE4
+echo Building version CVS=%FETCHTAG_PARM% GIT=%FETCHTAG_GIT_PARM% BUILD=%BUILD_QUALIFIER%
+ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% -DBUILD_QUALIFIER=%BUILD_QUALIFIER% clean buildgit3xe4
 GOTO :EOF
 
 :BUILDRAP
