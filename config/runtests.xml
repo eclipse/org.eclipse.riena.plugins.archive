@@ -1,176 +1,148 @@
 <project name="testsuite" default="run" basedir="..">
 
-    <!-- should not need changing, unless the version changed -->
-	<property name="test-home" value="${basedir}/tmp/tests"/>
-	<property name="eclipse-home" value="${test-home}/eclipse"/>
-	<property name="target-home" value="${basedir}/target"/>
-	<property name="build-repo-home" value="${basedir}/tmp/build/buildRepo"/>
-	<property name="test-result-dest" value="${basedir}/tmp/build/N.TestBuild/testlogs"/>
+	<!-- should not need changing, unless the version changed -->
+	<property name="test-home" value="${basedir}/tmp/tests" />
+	<property name="eclipse-home" value="${test-home}/eclipse" />
+	<property name="target-home" value="${basedir}/target" />
+	<property name="build-repo-home" value="${basedir}/tmp/build/buildRepo" />
+	<property name="test-result-dest" value="${basedir}/tmp/build/N.TestBuild/testlogs" />
 
 	<!-- name of the plugin containing the tests -->
-	<property name="plugin-name" value="org.eclipse.riena.tests"/>
-	<property name="test-name" value="org.eclipse.riena.AllTests"/>
+	<property name="plugin-name" value="org.eclipse.riena.tests" />
+	<property name="test-name" value="org.eclipse.riena.AllTests" />
 	<!-- property name="test-name" value="org.eclipse.riena.AllFastTests"/!-->
 	<!-- property name="test-name" value="org.eclipse.riena.core.marker.AllTests"/-->
-	
+
 	<!-- class paths, manually constructed :-(, need adjustment for each SDK update -->
 	<path id="pde.test.listener.class.path">
-		<path location="${eclipse-home}/plugins/pde.test.utils_3.5.0.jar"/>
-		<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit_3.7.100.v20120523-1543.jar"/>
-		<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit.core_3.7.100.v20120523-1257.jar"/>
+		<path location="${eclipse-home}/plugins/pde.test.utils_3.5.0.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit_3.7.100.v20120523-1543.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit.core_3.7.100.v20120523-1257.jar" />
 		<!--
 		<path location="${eclipse-home}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/junit.jar"/>
 		-->
-		<path location="${eclipse-home}/plugins/org.junit_4.10.0.v20120426-0900/junit.jar"/>
-		<path location="${eclipse-home}/plugins/org.apache.ant_1.8.3.v20120321-1730/lib/ant.jar"/>
-		<path location="${eclipse-home}/plugins/org.apache.ant_1.8.3.v20120321-1730/lib/ant-junit.jar"/>
-		<path location="${eclipse-home}/plugins/org.eclipse.core.runtime_3.8.0.v20120521-2346.jar"/>
-		<path location="${eclipse-home}/plugins/org.eclipse.equinox.common_3.6.100.v20120522-1841.jar"/>
-		<path location="${eclipse-home}/plugins/org.eclipse.equinox.preferences_3.5.0.v20120522-1841.jar"/>
-		<path location="${eclipse-home}/plugins/org.eclipse.jface_3.8.0.v20120521-2332.jar"/>
-		<path location="${eclipse-home}/plugins/org.eclipse.osgi_3.8.0.v20120529-1548.jar"/>
-		<path location="${eclipse-home}/plugins/org.eclipse.swt_3.8.0.v3833.jar"/>
-		<path location="${eclipse-home}/plugins/org.eclipse.swt.win32.win32.x86_3.8.0.v3833.jar"/>
-		<path location="${eclipse-home}/plugins/org.eclipse.ui.workbench_3.8.0.v20120521-2332.jar"/>
+		<path location="${eclipse-home}/plugins/org.junit_4.10.0.v20120426-0900/junit.jar" />
+		<path location="${eclipse-home}/plugins/org.apache.ant_1.8.3.v20120321-1730/lib/ant.jar" />
+		<path location="${eclipse-home}/plugins/org.apache.ant_1.8.3.v20120321-1730/lib/ant-junit.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.core.runtime_3.8.0.v20120521-2346.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.equinox.common_3.6.100.v20120522-1841.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.equinox.preferences_3.5.0.v20120522-1841.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.jface_3.8.0.v20120521-2332.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.osgi_3.8.0.v20120529-1548.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.swt_3.8.0.v3833.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.swt.win32.win32.x86_3.8.0.v3833.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.ui.workbench_3.8.0.v20120521-2332.jar" />
 	</path>
-	
+
 	<!-- This target holds all initialization code that needs to be done for
 		  all tests that are to be run. Initialization for individual tests
 	      should be done within the body of the suite target. -->
 	<target name="init">
-		<delete 
-			dir="${eclipse-home}"
-		    failonerror="false"/>
+		<delete dir="${eclipse-home}" failonerror="false" />
 		<!-- unzip eclipse.sdk -->
 		<copy todir="${eclipse-home}">
-			<fileset dir="${basedir}/tools/eclipse.sdk/eclipse"/>
+			<fileset dir="${basedir}/tools/eclipse.sdk/eclipse" />
 		</copy>
 		<!-- copy test helper plug-in -->
 		<copy todir="${eclipse-home}/plugins">
 			<fileset dir="tools/testutils">
-				<include name="*.jar"/>
+				<include name="*.jar" />
 			</fileset>
 		</copy>
 		<!-- Install Riena's xxx feature from the build -->
-		<java 
-			taskname="install"
-			jar="${eclipse-home}/plugins/org.eclipse.equinox.launcher_${launcherVer}.jar"
-			dir="${eclipse-home}"
-			fork="true"
-			failonerror="true">
-			<arg value="-application"/>
-			<arg value="org.eclipse.equinox.p2.director"/>
-			<arg value="-metadataRepository"/>
-			<arg value="file:${build-repo-home},jar:file:${target-home}/equinox-SDK-${sdkVer}.zip\!/"/>
-			<arg value="-artifactRepository"/>
-			<arg value="file:${build-repo-home},jar:file:${target-home}/equinox-SDK-${sdkVer}.zip\!/"/>
-			<arg value="-installIU"/>
-			<arg value="org.eclipse.riena.build.feature.core.sdk.feature.group"/>
-			<arg value="-destination"/>
-			<arg value="${eclipse-home}"/>
-			<arg value="-profile"/>
-			<arg value="SDKProfile"/>
-			<arg value="-profileProperties"/>
-			<arg value="org.eclipse.update.install.features=true"/>
-			<arg value="-p2.os"/>
-			<arg value="win32"/>
-			<arg value="-p2.ws"/>
-			<arg value="win32"/>
-			<arg value="-p2.arch"/>
-			<arg value="x86"/>
-			<arg value="-vmargs"/>
-			<arg value="-Declipse.p2.data.area=${eclipse-home}/p2"/>
+		<java taskname="install" jar="${eclipse-home}/plugins/org.eclipse.equinox.launcher_${launcherVer}.jar" dir="${eclipse-home}" fork="true" failonerror="true">
+			<arg value="-application" />
+			<arg value="org.eclipse.equinox.p2.director" />
+			<arg value="-metadataRepository" />
+			<arg value="file:${build-repo-home},jar:file:${target-home}/equinox-SDK-${sdkVer}.zip\!/" />
+			<arg value="-artifactRepository" />
+			<arg value="file:${build-repo-home},jar:file:${target-home}/equinox-SDK-${sdkVer}.zip\!/" />
+			<arg value="-installIU" />
+			<arg value="org.eclipse.riena.build.feature.core.sdk.feature.group" />
+			<arg value="-destination" />
+			<arg value="${eclipse-home}" />
+			<arg value="-profile" />
+			<arg value="SDKProfile" />
+			<arg value="-profileProperties" />
+			<arg value="org.eclipse.update.install.features=true" />
+			<arg value="-p2.os" />
+			<arg value="win32" />
+			<arg value="-p2.ws" />
+			<arg value="win32" />
+			<arg value="-p2.arch" />
+			<arg value="x86" />
+			<arg value="-vmargs" />
+			<arg value="-Declipse.p2.data.area=${eclipse-home}/p2" />
 		</java>
 	</target>
 
 	<target name="run" depends="init">
 		<delete>
 			<fileset dir="${eclipse-home}">
-				<include name="pde_test_port.properties"/>
-				<include name="*.xml"/>
+				<include name="pde_test_port.properties" />
+				<include name="*.xml" />
 			</fileset>
 		</delete>
-		<java 
-		    classpath="${eclipse-home}/plugins/pde.test.utils_3.5.0.jar"
-			classname="pde.test.utils.PDETestPortLocator" 
-		    dir="${eclipse-home}"
-			fork="yes"
-			failonerror="true"
-			taskname="portLocator"/>
+		<java classpath="${eclipse-home}/plugins/pde.test.utils_3.5.0.jar" classname="pde.test.utils.PDETestPortLocator" dir="${eclipse-home}" fork="yes" failonerror="true" taskname="portLocator" />
 		<waitfor maxwait="10" maxwaitunit="second" checkevery="200" checkeveryunit="millisecond">
-			<available file="pde_test_port.properties"/>
+			<available file="pde_test_port.properties" />
 		</waitfor>
-		<property file="${eclipse-home}/pde_test_port.properties"/>
-		<echo message="Using port ${pde.test.port} for listening to PDE Test run"/>
+		<property file="${eclipse-home}/pde_test_port.properties" />
+		<echo message="Using port ${pde.test.port} for listening to PDE Test run" />
 
 		<parallel>
 			<daemons>
-		    	<antcall target="run_pde_test_listener"/>
+				<antcall target="run_pde_test_listener" />
 			</daemons>
 			<sequential>
-		    	<sleep seconds="5"/> <!-- Give the listener a few seconds to start up -->
-		    	<antcall target="run_pde_tests"/>
+				<sleep seconds="5" />
+				<!-- Give the listener a few seconds to start up -->
+				<antcall target="run_pde_tests" />
 			</sequential>
 		</parallel>
 	</target>
-	
+
 	<target name="run_pde_test_listener">
-		<java
-			classname="pde.test.utils.PDETestResultsCollector" 
-			classpathref="pde.test.listener.class.path"
-			dir="${eclipse-home}"
-			fork="yes"
-			failonerror="false"
-			resultproperty="testresult"
-			taskname="listener">
-	           <arg line="${plugin-name} ${pde.test.port}"/>
-	    </java>
+		<java classname="pde.test.utils.PDETestResultsCollector" classpathref="pde.test.listener.class.path" dir="${eclipse-home}" fork="yes" failonerror="false" resultproperty="testresult" taskname="listener">
+			<arg line="${plugin-name} ${pde.test.port}" />
+		</java>
 		<condition property="testpassed" value="yes">
-			<equals arg1="${testresult}" arg2="0"/>
+			<equals arg1="${testresult}" arg2="0" />
 		</condition>
-		<antcall target="store_results"/>
-		<fail message="One or more tests failed." unless="testpassed"/>
+		<antcall target="store_results" />
+		<fail message="One or more tests failed." unless="testpassed" />
 	</target>
 
 	<target name="run_pde_tests">
-	 	<echo>Run ${test-name} in ${plugin-name}</echo>
-		<java
-			taskname="runtests"
-			jar="${eclipse-home}/plugins/org.eclipse.equinox.launcher_${launcherVer}.jar"
-			dir="${eclipse-home}"
-			output="${eclipse-home}/console.log"
-			fork="true"
-			failonerror="true">
-				<arg value="-application"/>
-				<arg value="org.eclipse.pde.junit.runtime.uitestapplication"/>
-				<arg value="-data"/>
-				<arg value="${eclipse-home}/workspace"/>
-				<arg value="-port"/>
-			    <arg value="${pde.test.port}"/>
-				<arg value="-testPluginName"/>
-				<arg value="${plugin-name}"/>
-				<arg value="-className"/>
-				<arg value="${test-name}"/>
-				<arg value="-console"/>
-				<arg value="-consolelog"/>
-			</java>
+		<echo>Run ${test-name} in ${plugin-name}</echo>
+		<java taskname="runtests" jar="${eclipse-home}/plugins/org.eclipse.equinox.launcher_${launcherVer}.jar" dir="${eclipse-home}" output="${eclipse-home}/console.log" fork="true" failonerror="true">
+			<arg value="-application" />
+			<arg value="org.eclipse.pde.junit.runtime.uitestapplication" />
+			<arg value="-data" />
+			<arg value="${eclipse-home}/workspace" />
+			<arg value="-port" />
+			<arg value="${pde.test.port}" />
+			<arg value="-testPluginName" />
+			<arg value="${plugin-name}" />
+			<arg value="-testLoaderClass" />
+			<arg value="org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader" />
+			<arg value="-loaderpluginname" />
+			<arg value="org.eclipse.jdt.junit4.runtime" />
+			<arg value="-className" />
+			<arg value="${test-name}" />
+			<arg value="-console" />
+			<arg value="-consolelog" />
+		</java>
 	</target>
-	
+
 	<target name="store_results">
-		<mkdir dir="${test-result-dest}"/>
-		<copy 
-			todir="${test-result-dest}">
+		<mkdir dir="${test-result-dest}" />
+		<copy todir="${test-result-dest}">
 			<fileset dir="${eclipse-home}">
-				<include name="**/TEST-*.xml"/>
+				<include name="**/TEST-*.xml" />
 			</fileset>
 		</copy>
-		<copy 
-			todir="${test-result-dest}" 
-			file="${eclipse-home}/console.log"
-		    failonerror="false"/>
-		<copy 
-			tofile="${test-result-dest}/metadata.log" 
-			file="${eclipse-home}/workspace/.metadata/.log"
-			failonerror="false"/>
+		<copy todir="${test-result-dest}" file="${eclipse-home}/console.log" failonerror="false" />
+		<copy tofile="${test-result-dest}/metadata.log" file="${eclipse-home}/workspace/.metadata/.log" failonerror="false" />
 	</target>
 </project>
