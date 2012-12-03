@@ -26,12 +26,12 @@
 		<copy todir="config.git">
 			<fileset dir="${gitCache}/org.eclipse.riena.build3/config.git"/>
 		</copy>
-		<!--copy todir="config.git.3xe4">
+		<copy todir="config.git.3xe4">
 			<fileset dir="${gitCache}/org.eclipse.riena.build3/config.git.3xe4"/>
 		</copy>
 		<copy todir="config.git.e4">
 			<fileset dir="${gitCache}/org.eclipse.riena.build3/config.git.e4"/>
-		</copy-->
+		</copy>
 		<copy todir="config.rap">
 			<fileset dir="${gitCache}/org.eclipse.riena.build3/config.rap"/>
 		</copy>
