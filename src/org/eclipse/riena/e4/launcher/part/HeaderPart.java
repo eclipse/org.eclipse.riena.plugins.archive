@@ -10,6 +10,7 @@ import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.internal.WorkbenchPlugin;
 import org.eclipse.ui.internal.handlers.LegacyHandlerService;
 import org.eclipse.ui.internal.menus.MenuPersistence;
 import org.eclipse.ui.internal.services.EvaluationService;
@@ -47,6 +48,7 @@ public class HeaderPart {
 	 * this must run once to create application model elements for all contributions to <tt>org.eclipse.ui.menus</tt>
 	 */
 	private void copyLegacyExtensionsToModel(final IEclipseContext context, final MApplication application) {
+		WorkbenchPlugin.getDefault().initializeContext(eclipseContext);
 		new MenuPersistence(application, context).reRead();
 		context.set(IEvaluationService.class, new EvaluationService(context));
 		new LegacyHandlerService(context).readRegistry();
