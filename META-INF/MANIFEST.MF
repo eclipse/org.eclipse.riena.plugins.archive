@@ -5,7 +5,6 @@ Bundle-SymbolicName: org.eclipse.riena.e4.launcher;singleton:=true
 Bundle-Version: 5.0.0.qualifier
 Bundle-Vendor: Eclipse.org - Riena
 Require-Bundle: javax.inject;bundle-version="1.0.0",
- org.eclipse.core.resources;bundle-version="3.8.0",
  org.eclipse.core.runtime;bundle-version="3.8.0",
  org.eclipse.swt;bundle-version="3.8.0",
  org.eclipse.core.databinding;bundle-version="1.4.1",
