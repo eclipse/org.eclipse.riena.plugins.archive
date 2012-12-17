@@ -6,7 +6,7 @@ set CVS_HOME_BIN=c:\cygwin\bin
 set CVS_SSH=ssh -l rienaBuild
 set PATH=%JAVA_HOME%\bin;%ANT_HOME%\bin;%CVS_HOME_BIN%;%GITHOME%
 set FETCHTAG_PARM=HEAD
-set FETCHTAG_GIT_PARM=origin/master
+set FETCHTAG_GIT_PARM=master
 set BUILD_QUALIFIER=HEAD
 
 c:
@@ -25,7 +25,7 @@ if '%2' EQU '' GOTO :CONT
 
 set FETCHTAG_PARM=%2
 set FETCHTAG_GIT_PARM=%2
-::set BUILD_QUALIFIER=%2 <- this does not work since git tags contain a slash which is invalid for a qualifier
+::set BUILD_QUALIFIER=%2
 
 :CONT
 
