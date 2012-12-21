@@ -88,6 +88,7 @@ plugin@org.eclipse.equinox.log=GET,file:///C:/build3/prebuild/plugins/org.eclips
 # we want to ship the originals from the Eclipse Platform, and _not_ build our own
 #plugin@org.apache.commons.beanutils=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.beanutils_1.7.0.v200902170505.jar
 plugin@org.apache.commons.beanutils=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.beanutils_1.8.0.v201205091237.jar
+plugin@org.apache.commons.collections=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.collections_3.2.0.v201005080500.jar
 plugin@org.apache.commons.logging=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.logging_1.0.4.v201101211617.jar
 #plugin@org.apache.jasper=GET,file:///C:/build3/prebuild/plugins/org.apache.jasper_5.5.17.v201101211617.jar
 plugin@org.apache.log4j=GET,file:///C:/build3/prebuild/plugins/org.apache.log4j_1.2.13.v200903072027.jar
