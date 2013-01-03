@@ -41,7 +41,7 @@
 		<delete dir="${eclipse-home}" failonerror="false" />
 		<!-- unzip eclipse.sdk -->
 		<copy todir="${eclipse-home}">
-			<fileset dir="${basedir}/tools/eclipse.sdk/eclipse" />
+			<fileset dir="${basedir}/tools/eclipse4.sdk/eclipse" />
 		</copy>
 		<!-- copy test helper plug-in -->
 		<copy todir="${eclipse-home}/plugins">
