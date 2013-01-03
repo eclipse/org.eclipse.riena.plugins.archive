@@ -100,7 +100,7 @@
 			<arg value="-DfetchCacheLocation=${fetchCacheLocation}"/>
 		</java>
 	</target>
-	
+
 	<target name="buildgite4" depends="prepareBuild">
 		<delete dir="tmp/build"/>
 		<java 
@@ -260,14 +260,16 @@
 
 	<target name="update">
 		<delete dir="prebuild"/>
+		<!--
 		<cvs
              cvsRoot=":ext:rienaBuild@build.eclipse.org:/cvsroot/rt"
              cvsRsh="ssh"
 			 package="org.eclipse.riena/org.eclipse.riena.build3/prebuild"
 		     dest="tmp"
              failonerror="true" tag="${FETCHTAG_PARM}"/>
+		-->
 		<copy todir="prebuild">
-			<fileset dir="tmp/org.eclipse.riena/org.eclipse.riena.build3/prebuild"/>
+			<fileset dir="${gitCache}/org.eclipse.riena.build3/prebuild"/>
 		</copy>
 	</target>
 </project>

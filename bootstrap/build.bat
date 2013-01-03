@@ -6,7 +6,7 @@ set CVS_HOME_BIN=c:\cygwin\bin
 set CVS_SSH=ssh -l rienaBuild
 set PATH=%JAVA_HOME%\bin;%ANT_HOME%\bin;%CVS_HOME_BIN%;%GITHOME%
 set FETCHTAG_PARM=HEAD
-set FETCHTAG_GIT_PARM=master
+set FETCHTAG_GIT_PARM=origin/master
 set BUILD_QUALIFIER=HEAD
 
 c:
@@ -40,15 +40,15 @@ if '%1' EQU 'aftersign' GOTO :AFTERSIGN
 if '%1' EQU 'update' GOTO :UPDATE
 
 echo Usage:
-echo build build        - Build Riena against RCP
-echo build buildgit     - Build Riena against Git repo
+echo build build       - Build Riena against RCP
+echo build buildgit    - Build Riena against Git repo
 echo build buildgite4   - Build Riena on E4 against Git repo, branch rienaOnE4
 echo build buildgit3xe4 - Build Riena against Git repo, branch rienaOnE4
-echo build buildrap     - Build Riena against RAP
-echo build runtests     - Run tests (must build against RCP first)
-echo build beforesign   - Steps before sign
-echo build aftersign    - Steps after sign
-echo build update       - Update ./prebuild dir from server (run when needed) 
+echo build buildrap    - Build Riena against RAP
+echo build runtests    - Run tests (must build against RCP first)
+echo build beforesign  - Steps before sign
+echo build aftersign   - Steps after sign
+echo build update      - Update ./prebuild dir from server (run when needed) 
 GOTO :EOF
 
 :BUILD
