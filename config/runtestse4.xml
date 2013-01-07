@@ -1,6 +1,7 @@
 <project name="testsuite" default="run" basedir="..">
 
 	<!-- should not need changing, unless the version changed -->
+	<property name="launcherVer" value="1.3.0.v20121114-150939"/>
 	<property name="test-home" value="${basedir}/tmp/tests" />
 	<property name="eclipse-home" value="${test-home}/eclipse" />
 	<property name="target-home" value="${basedir}/target" />
