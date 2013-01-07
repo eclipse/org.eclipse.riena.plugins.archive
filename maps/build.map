@@ -67,7 +67,7 @@ plugin@org.eclipse.riena.ui.swt=GIT,tag=orgin/master,repo=ssh://rienaBuild@build
 plugin@org.eclipse.riena.ui.swt.rcp=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.ui.swt.rcp
 plugin@org.eclipse.riena.ui.swt.rap=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.rap.git,path=org.eclipse.riena.ui.swt.rap
 plugin@org.eclipse.riena.ui.swt.3x=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.ui.swt.3x
-plugin@org.eclipse.riena.ui.swt.e4=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.rap.git,path=org.eclipse.riena.ui.swt.e4
+plugin@org.eclipse.riena.ui.swt.e4=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.ui.swt.e4
 plugin@org.eclipse.riena.ui.workarea=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.ui.workarea
 fragment@org.eclipse.riena.rap.mocks=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.rap.git,path=org.eclipse.riena.rap.mocks
 
