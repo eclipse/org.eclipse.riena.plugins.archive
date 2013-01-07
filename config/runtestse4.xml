@@ -64,7 +64,7 @@
 			<arg value="-artifactRepository" />
 			<arg value="file:${build-repo-home},jar:file:${target-home}/equinox-SDK-${sdkVer}.zip\!/" />
 			<arg value="-installIU" />
-			<arg value="org.eclipse.riena.build.feature.core.sdk.feature.group" />
+			<arg value="org.eclipse.riena.build.feature.core.sdk.e4.feature.group" />
 			<arg value="-destination" />
 			<arg value="${eclipse-home}" />
 			<arg value="-profile" />

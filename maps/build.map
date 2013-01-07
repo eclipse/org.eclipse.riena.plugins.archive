@@ -1,8 +1,11 @@
 # feature that defines all the dependant plugins
 feature@org.eclipse.riena.build.feature=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.build.feature
+feature@org.eclipse.riena.build.feature.e4=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.build.feature.e4
 feature@org.eclipse.riena.build.feature.sdk=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.build.feature.sdk
+feature@org.eclipse.riena.build.feature.sdk.e4=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.build.feature.sdk.e4
 feature@org.eclipse.riena.build.feature.core=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.build.feature.core
 feature@org.eclipse.riena.build.feature.core.sdk=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.build.feature.core.sdk
+feature@org.eclipse.riena.build.feature.core.sdk.e4=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.build.feature.core.sdk.e4
 feature@org.eclipse.riena.build.feature.rap.sdk=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.rap.git,path=org.eclipse.riena.build.feature.rap.sdk
 feature@org.eclipse.riena.build.feature.samples=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.build.feature.samples
 feature@org.eclipse.riena.build.feature.samples.sdk=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.build.feature.samples.sdk
