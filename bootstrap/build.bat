@@ -24,7 +24,7 @@ echo.
 if '%2' EQU '' GOTO :CONT
 
 set FETCHTAG_PARM=%2
-set FETCHTAG_GIT_PARM=origin/%2
+set FETCHTAG_GIT_PARM=%2
 set BUILD_QUALIFIER=%2
 
 :CONT
