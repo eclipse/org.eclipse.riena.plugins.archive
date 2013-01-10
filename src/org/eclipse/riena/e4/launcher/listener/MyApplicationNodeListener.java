@@ -10,7 +10,11 @@ import org.eclipse.riena.navigation.ui.swt.application.LoginNonActivityTimer;
 import org.eclipse.riena.navigation.ui.swt.application.LoginNonActivityTimer.ILoginExecutor;
 import org.eclipse.riena.ui.filter.IUIFilter;
 
+/**
+ * This listener starts the LoginNonActivityTimer after the application was activated.
+ */
 public class MyApplicationNodeListener extends ApplicationNodeListener {
+
 	@Inject
 	private IApplicationNode navigationNode;
 
@@ -43,6 +47,6 @@ public class MyApplicationNodeListener extends ApplicationNodeListener {
 			return;
 		}
 		throw new UnsupportedOperationException("TODO: show view");
-
 	}
+
 }
