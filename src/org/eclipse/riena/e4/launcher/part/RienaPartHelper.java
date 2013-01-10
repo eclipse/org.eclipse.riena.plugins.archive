@@ -89,29 +89,11 @@ public class RienaPartHelper {
 	}
 
 	private MPart createPart(final ISubModuleNode source) {
-		MPart partToActivate;
 		final ISubApplicationNode subApplicationNode = source.getParentOfType(ISubApplicationNode.class);
-		final String perspectiveId = SwtViewProvider.getInstance().getSwtViewId(subApplicationNode).getId();
-
-		// find perspective to add part to
-		final List<MPerspective> perspectives = modelService.findElements(context.get(MApplication.class), perspectiveId, MPerspective.class, null);
-		if (perspectives.isEmpty()) {
-			// nothing found
-			throw new IllegalStateException("Parent perspective not found. perspectiveId: " + perspectiveId); //$NON-NLS-1$ 
-		}
-
-		// find stack to add part to
-		final List<MPartStack> stacks = modelService.findElements(perspectives.get(0), E4XMIConstants.CONTENT_PART_STACK_ID, MPartStack.class, null);
-		if (stacks.isEmpty()) {
-			// nothing found
-			throw new IllegalStateException("Part stack not found on parent perspective. perspectiveId: " + perspectiveId); //$NON-NLS-1$
-		}
-
-		// we only use one stack per perspective
-		final MElementContainer parent = stacks.get(0);
+		final MElementContainer parent = findStackPart(subApplicationNode);
 
 		// everything ok until here. Now create part instance
-		partToActivate = MBasicFactory.INSTANCE.createPart();
+		final MPart partToActivate = MBasicFactory.INSTANCE.createPart();
 		final String partId = createPartId(source);
 		partToActivate.setElementId(partId);
 		source.setContext(KEY_E4_PART_ID, partId);
@@ -126,9 +108,41 @@ public class RienaPartHelper {
 		return partToActivate;
 	}
 
+	/**
+	 * Returns the stack part of the Riena working area for the given sub-application.
+	 * 
+	 * @param subApplicationNode
+	 *            node of the sub-application
+	 * @return stack part
+	 */
+	private MPartStack findStackPart(final ISubApplicationNode subApplicationNode) {
+
+		final String perspectiveId = SwtViewProvider.getInstance().getSwtViewId(subApplicationNode).getId();
+
+		// find perspective to add part to
+		final List<MPerspective> perspectives = modelService.findElements(context.get(MApplication.class), perspectiveId, MPerspective.class, null);
+		if (perspectives.isEmpty()) {
+			// nothing found
+			throw new IllegalStateException("Parent perspective not found. perspectiveId: " + perspectiveId); //$NON-NLS-1$ 
+		}
+
+		// find stack to add part to
+		final MPerspective subApplicationPerspective = perspectives.get(0);
+		final List<MPartStack> stacks = modelService.findElements(subApplicationPerspective, E4XMIConstants.CONTENT_PART_STACK_ID, MPartStack.class, null);
+		if (stacks.isEmpty()) {
+			// nothing found
+			throw new IllegalStateException("Part stack not found on parent perspective. perspectiveId: " + perspectiveId); //$NON-NLS-1$
+		}
+
+		// we only use one stack per perspective
+		final MPartStack parent = stacks.get(0);
+		return parent;
+
+	}
+
 	private String createPartId(final ISubModuleNode node) {
 		final String basicId = SwtViewProvider.getInstance().getSwtViewId(node).getCompoundId();
-		final String fqId = basicId + COUNTER_DELIMITER + increasePartCounter();
+		final String fqId = basicId + COUNTER_DELIMITER + increasePartCounter(); // TODO rename fqId ?
 		return fqId;
 	}
 

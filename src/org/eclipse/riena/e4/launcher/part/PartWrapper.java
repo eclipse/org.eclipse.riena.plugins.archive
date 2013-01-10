@@ -46,23 +46,21 @@ public class PartWrapper {
 
 		final ISubModuleNode node = SwtViewProvider.getInstance().getNavigationNode(typeId, secondayId, ISubModuleNode.class);
 
-		SubModuleView viewInstance = null;
 		if (RienaPartHelper.isSharedView(node)) {
-			viewInstance = ViewInstanceProvider.getInstance().getView(typeId);
+			final SubModuleView viewInstance = ViewInstanceProvider.getInstance().getView(typeId);
 			if (null != viewInstance) {
 				return;
 			}
 		}
-		viewInstance = createView(typeId);
+		createView(typeId);
 	}
 
 	private SubModuleView createView(final String typeId) {
 		final IConfigurationElement[] configurationElements = extensionRegistry.getConfigurationElementsFor(VIEWS_EXT_POINT);
-		SubModuleView viewInstance;
 		for (final IConfigurationElement element : configurationElements) {
 			if (typeId.equals(element.getAttribute("id"))) { //$NON-NLS-1$
 				try {
-					viewInstance = (SubModuleView) element.createExecutableExtension("class"); //$NON-NLS-1$
+					final SubModuleView viewInstance = (SubModuleView) element.createExecutableExtension("class"); //$NON-NLS-1$
 					ViewInstanceProvider.getInstance().registerView(typeId, viewInstance);
 					return viewInstance;
 				} catch (final CoreException e1) {

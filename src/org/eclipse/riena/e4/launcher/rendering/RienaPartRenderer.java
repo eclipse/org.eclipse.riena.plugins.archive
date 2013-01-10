@@ -24,16 +24,16 @@ public final class RienaPartRenderer extends ContributedPartRenderer {
 
 	@Override
 	public Object createWidget(final MUIElement element, final Object parent) {
+
 		final MApplicationElement part = element;
 		final String[] rienaCompoundId = RienaPartHelper.extractRienaCompoundId(part);
-		final String typeId = rienaCompoundId[0];
 		Composite parentComposite = null;
-		ISubModuleNode node = null;
 
 		// is node part?
 		if (isSubmoduleNodePart(rienaCompoundId)) {
+			final String typeId = rienaCompoundId[0];
 			final String secondayId = rienaCompoundId[1];
-			node = SwtViewProvider.getInstance().getNavigationNode(typeId, secondayId, ISubModuleNode.class);
+			final ISubModuleNode node = SwtViewProvider.getInstance().getNavigationNode(typeId, secondayId, ISubModuleNode.class);
 
 			// if the node belongs to a shared view try to lookup the view
 			if (RienaPartHelper.isSharedView(node)) {
@@ -68,6 +68,7 @@ public final class RienaPartRenderer extends ContributedPartRenderer {
 		}
 
 		return parentComposite;
+
 	}
 
 	private boolean isSubmoduleNodePart(final String[] rienaCompoundId) {

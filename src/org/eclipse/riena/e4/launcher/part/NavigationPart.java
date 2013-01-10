@@ -10,6 +10,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import org.eclipse.riena.navigation.ISubApplicationNode;
 import org.eclipse.riena.navigation.ui.swt.presentation.SwtViewProvider;
+import org.eclipse.riena.navigation.ui.swt.views.INavigationCompositeDelegation;
 import org.eclipse.riena.navigation.ui.swt.views.NavigationViewPart;
 import org.eclipse.riena.navigation.ui.swt.views.ScrollButtonsNavigationCompositeDeligation;
 import org.eclipse.riena.navigation.ui.swt.views.ScrollButtonsSupport;
@@ -35,11 +36,11 @@ public class NavigationPart {
 			 * Hack for scrolling support in navigation. TODO refactor
 			 */
 			@Override
-			protected org.eclipse.riena.navigation.ui.swt.views.INavigationCompositeDelegation createButtonsNavigationCompositeDelegation(final Composite parent) {
+			protected INavigationCompositeDelegation createButtonsNavigationCompositeDelegation(final Composite parent) {
 				return new ScrollButtonsNavigationCompositeDeligation(parent.getParent(), parent, this) {
 
 					@Override
-					protected org.eclipse.riena.navigation.ui.swt.views.ScrollButtonsSupport createScrollingSupport() {
+					protected ScrollButtonsSupport createScrollingSupport() {
 						return new ScrollButtonsSupport(getSuperParent(), getNavigationProvider()) {
 							@Override
 							protected org.eclipse.swt.widgets.Shell getActiveShell() {
