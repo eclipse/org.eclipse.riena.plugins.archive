@@ -44,12 +44,14 @@ public class ApplicationLifeCycle {
 		// later we will need this extension for the (in)activity login timer
 		eclipseContext.set(ILoginExecutor.class, ContextInjectionFactory.make(LoginHelper.class, eclipseContext).checkLogin());
 
-		final SwtApplication legacyHelper = new SwtApplication();
-		final IApplicationModelCreator applicationModelCreator = getApplicationModelCreatorFromExtension();
-		final IApplicationNode applicationNode = applicationModelCreator != null ? createModel(applicationModelCreator) : createModel(legacyHelper);
+		IApplicationModelCreator applicationModelCreator = getApplicationModelCreatorFromExtension();
+		if (applicationModelCreator == null) {
+			applicationModelCreator = new SwtApplication();
+		}
+		final IApplicationNode applicationNode = createModel(applicationModelCreator);
 
 		eclipseContext.set(IApplicationNode.class, applicationNode);
-		legacyHelper.initApplicationNode(applicationNode);
+		applicationModelCreator.initApplicationNode(applicationNode);
 
 		// installDefaultBinding()
 		// preShutdown()
