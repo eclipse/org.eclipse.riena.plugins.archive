@@ -11,9 +11,9 @@ import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.ui.MElementContainer;
+import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.advanced.MAdvancedFactory;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
-import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MBasicFactory;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
@@ -52,7 +52,6 @@ public class MySubApplicationNodeListener extends SubApplicationNodeListener {
 			if (source.getNavigationNodeController() == null) {
 				createNodeController(source);
 			}
-
 			prepare(source);
 		}
 	}
@@ -68,41 +67,39 @@ public class MySubApplicationNodeListener extends SubApplicationNodeListener {
 
 	private void showPerspective(final ISubApplicationNode source) {
 		final String perspectiveId = SwtViewProvider.getInstance().getSwtViewId(source).getId();
-		final EModelService modelService = context.get(EModelService.class);
-		final MApplication searchRoot = context.get(MApplication.class);
-		final List<MPerspective> perspectives = modelService
-				.findElements(searchRoot, perspectiveId, MPerspective.class, null, EModelService.IN_ANY_PERSPECTIVE);
 
-		MPerspective perspective = null;
-		if (perspectives.isEmpty()) {
+		MPerspective perspective = findPerspective(perspectiveId);
+		if (perspective == null) {
 			final IExtensionRegistry extensionRegistry = context.get(IExtensionRegistry.class);
-			final MElementContainer perspectiveStack = (MPerspectiveStack) modelService.find(E4XMIConstants.PERSPECTIVE_STACK_ID, searchRoot);
+			final EModelService modelService = context.get(EModelService.class);
+			final MApplication searchRoot = context.get(MApplication.class);
+			final MElementContainer perspectiveStack = (MElementContainer) modelService.find(E4XMIConstants.PERSPECTIVE_STACK_ID, searchRoot);
 			for (final IConfigurationElement e : extensionRegistry.getConfigurationElementsFor(PERSPECTIVES_EXT_POINT)) {
 				if (perspectiveId.equals(e.getAttribute("id"))) {
-					final MElementContainer p = MAdvancedFactory.INSTANCE.createPerspective();
-					p.setElementId(e.getAttribute("id"));
-					perspectiveStack.getChildren().add(p);
-					p.setParent(perspectiveStack);
+					// create perspective of sub-application
+					final MElementContainer newPerspective = MAdvancedFactory.INSTANCE.createPerspective();
+					newPerspective.setElementId(e.getAttribute("id"));
+					perspectiveStack.getChildren().add(newPerspective);
+					newPerspective.setParent(perspectiveStack);
 
+					// create part of navigation and added to the new perspective
 					final MPart navigationPart = MBasicFactory.INSTANCE.createPart();
 					navigationPart.setElementId(NavigationViewPart.ID);
 					// construct the String as in Application.e4xmi
 					final String pluginId = Activator.getDefault().getBundleContext().getBundle().getSymbolicName();
 					navigationPart.setContributionURI("bundleclass://" + pluginId + "/" + NavigationPart.class.getName());
+					newPerspective.getChildren().add(navigationPart);
+					navigationPart.setParent(newPerspective);
 
-					p.getChildren().add(navigationPart);
-					navigationPart.setParent(p);
-
+					// create part stack of working area and added to the new perspective
 					final MPartStack partStack = MBasicFactory.INSTANCE.createPartStack();
 					partStack.setElementId(E4XMIConstants.CONTENT_PART_STACK_ID);
-					p.getChildren().add(partStack);
-					partStack.setParent(p);
+					newPerspective.getChildren().add(partStack);
+					partStack.setParent(newPerspective);
 
-					perspective = (MPerspective) p;
+					perspective = (MPerspective) newPerspective;
 				}
 			}
-		} else {
-			perspective = perspectives.get(0);
 		}
 
 		if (perspective == null) {
@@ -112,26 +109,48 @@ public class MySubApplicationNodeListener extends SubApplicationNodeListener {
 		perspective.getParent().setSelectedElement(perspective);
 		//		final EPartService partService = context.get(EPartService.class);
 		//		partService.switchPerspective(perspective);
-
-		//		try {
-		//			PlatformUI.getWorkbench().showPerspective(perspectiveId, PlatformUI.getWorkbench().getActiveWorkbenchWindow());
-		//		} catch (final WorkbenchException e) {
-		//			throw new UIViewFailure(e.getMessage(), e);
-		//		}
 	}
 
+	/**
+	 * Returns the perspective with the given ID
+	 * 
+	 * @param perspectiveId
+	 *            ID of the perspective
+	 * @return perspective or {@code null} if perspective doesn't exist
+	 */
+	private MPerspective findPerspective(final String perspectiveId) {
+		final EModelService modelService = context.get(EModelService.class);
+		final MApplication searchRoot = context.get(MApplication.class);
+		final List<MPerspective> perspectives = modelService
+				.findElements(searchRoot, perspectiveId, MPerspective.class, null, EModelService.IN_ANY_PERSPECTIVE);
+		if (perspectives.isEmpty()) {
+			return null;
+		} else {
+			return perspectives.get(0);
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * <p>
+	 * Remove the perspective of the given sub-application ({@code source}) from the perspective stack.
+	 */
 	@Override
 	public void disposed(final ISubApplicationNode source) {
+
 		final SwtViewProvider viewProvider = SwtViewProvider.getInstance();
 		final String perspectiveId = viewProvider.getSwtViewId(source).getId();
 
-		throw new UnsupportedOperationException("TODO close perspective");
-		//		viewProvider.unregisterSwtViewId(source);
+		final MPerspective perspective = findPerspective(perspectiveId);
+		if (perspective != null) {
+			final MElementContainer<MUIElement> perspectiveStack = perspective.getParent();
+			if (perspectiveStack != null) {
+				perspectiveStack.getChildren().remove(perspective);
+			}
+		}
 
-		//		final IWorkbench workbench = PlatformUI.getWorkbench();
-		//		final IPerspectiveRegistry registry = workbench.getPerspectiveRegistry();
-		//		final IPerspectiveDescriptor perspDesc = registry.findPerspectiveWithId(perspectiveId);
-		//		workbench.getActiveWorkbenchWindow().getActivePage().closePerspective(perspDesc, false, false);
+		viewProvider.unregisterSwtViewId(source);
+
 	}
 
 	/**
@@ -163,4 +182,5 @@ public class MySubApplicationNodeListener extends SubApplicationNodeListener {
 			prepare(child);
 		}
 	}
+
 }
