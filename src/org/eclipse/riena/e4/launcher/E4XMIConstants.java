@@ -14,6 +14,11 @@ package org.eclipse.riena.e4.launcher;
  * Constants used in <tt>Application.e4xmi</tt>
  */
 public class E4XMIConstants {
+
+	private E4XMIConstants() {
+		// class only contains constants 
+	}
+
 	public static final String CONTENT_PART_STACK_ID = "org.eclipse.riena.e4.launcher.contentPartStack"; //$NON-NLS-1$
 	public static final String PERSPECTIVE_STACK_ID = "org.eclipse.riena.e4.launcher.perspectiveStack"; //$NON-NLS-1$
 	public static final String HEADER_PART_ID = "org.eclipse.riena.e4.launcher.headerPart"; //$NON-NLS-1$
