@@ -83,12 +83,12 @@
 	
 	<target name="prepareTarget" unless="has.target">
 		<echo>repo2runable: </echo>
-		<echo>  src= file:/${builder}/../target/equinox-SDK-3.8.zip</echo>
+		<echo>  src= file:/${builder}/../target/equinox-SDK-${sdkVer}.zip</echo>
 		<echo>  dest= ${builder}/../target/eclipse</echo>
 		<p2.repo2runnable 
 			destination="${builder}/../target/eclipse">
 			<source>
-				<repository location="file:/${builder}/../target/equinox-SDK-3.8.zip" />
+				<repository location="file:/${builder}/../target/equinox-SDK-${sdkVer}.zip" />
 			</source>
 		</p2.repo2runnable>
 		
@@ -98,12 +98,12 @@
 		  </copy>
 		
         <echo>repo2runable: </echo>
-		<echo>  src= file:/${builder}/../target/org.eclipse.rcp.source-3.8.zip</echo>
+		<echo>  src= file:/${builder}/../target/org.eclipse.rcp.source-${sdkVer}.zip</echo>
 		<echo>  dest= ${builder}/../target/eclipse</echo>
 		<p2.repo2runnable 
 			destination="${builder}/../target/eclipse">
 			<source>
-				<repository location="file:/${builder}/../target/org.eclipse.rcp.source-3.8.zip" />
+				<repository location="file:/${builder}/../target/org.eclipse.rcp.source-${sdkVer}.zip" />
 			</source>
 		</p2.repo2runnable>
 	</target>

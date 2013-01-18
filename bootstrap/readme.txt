@@ -12,7 +12,7 @@ Set-up and run a build on windows
 
    \build3\tools\apache-ant-1.7.1   -- ant lives in .\bin
    \build3\tools\cygwin             -- install cvs package, cvs lives in .\bin
-   \build3\tools\eclipse.sdk\eclipse-SDK-3.6-win32.zip
+   \build3\tools\eclipse.3x.sdk\eclipse-SDK-3.6-win32.zip
    \build3\tools\jdk1.5.0_18        -- javac lives in .\bin
    \build3\tools\testutils\pde.test.utils_3.5.0.jar 
      -- from the dev.eclipse.org CVS at the following location
