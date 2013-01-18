@@ -15,20 +15,20 @@
 
 	<!-- class paths, manually constructed :-(, need adjustment for each SDK update -->
 	<path id="pde.test.listener.class.path">
-		<path location="${eclipse-home}/plugins/pde.test.utils_3.5.0.jar" />
-		<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit_3.7.100.v20120523-1543.jar" />
-		<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit.core_3.7.100.v20120523-1257.jar" />
-		<path location="${eclipse-home}/plugins/org.junit_4.10.0.v20120426-0900/junit.jar" />
-		<path location="${eclipse-home}/plugins/org.apache.ant_1.8.3.v20120321-1730/lib/ant.jar" />
-		<path location="${eclipse-home}/plugins/org.apache.ant_1.8.3.v20120321-1730/lib/ant-junit.jar" />
-		<path location="${eclipse-home}/plugins/org.eclipse.core.runtime_3.8.0.v20120521-2346.jar" />
+		<path location="${eclipse-home}/plugins/org.apache.ant_1.8.4.v201209061652/lib/ant.jar" />
+		<path location="${eclipse-home}/plugins/org.apache.ant_1.8.4.v201209061652/lib/ant-junit.jar" />
+		<path location="${eclipse-home}/plugins/org.junit_4.10.0.v4_10_0_v20120426-0900/junit.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.core.runtime_3.9.0.v20121004-163638.jar" />
 		<path location="${eclipse-home}/plugins/org.eclipse.equinox.common_3.6.100.v20120522-1841.jar" />
-		<path location="${eclipse-home}/plugins/org.eclipse.equinox.preferences_3.5.0.v20120522-1841.jar" />
-		<path location="${eclipse-home}/plugins/org.eclipse.jface_3.8.101.v20120817-083647.jar" />
-		<path location="${eclipse-home}/plugins/org.eclipse.osgi_3.8.1.v20120830-144521.jar" />
-		<path location="${eclipse-home}/plugins/org.eclipse.swt_3.100.1.v4234e.jar" />
-		<path location="${eclipse-home}/plugins/org.eclipse.swt.win32.win32.x86_3.100.1.v4234e.jar" />
-		<path location="${eclipse-home}/plugins/org.eclipse.ui.workbench_3.103.1.v20120906-120042.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.equinox.preferences_3.5.0.v20120918-182152.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit_3.7.100.v20120705-112236.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.jdt.junit.core_3.7.100.v20121026-201500.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.jface_3.8.200.v20121212-113328.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.osgi_3.9.0.v20121210-201226.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.swt_3.101.0.v4317a.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.swt.win32.win32.x86_3.101.0.v4317a.jar" />
+		<path location="${eclipse-home}/plugins/org.eclipse.ui.workbench_3.105.0.v20121210-193513.jar" />
+		<path location="${eclipse-home}/plugins/pde.test.utils_3.5.0.jar" />
 	</path>
 
 	<!-- This target holds all initialization code that needs to be done for
