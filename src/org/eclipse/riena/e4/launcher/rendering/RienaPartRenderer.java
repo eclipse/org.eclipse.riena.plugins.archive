@@ -1,6 +1,5 @@
 package org.eclipse.riena.e4.launcher.rendering;
 
-import org.eclipse.e4.ui.model.application.MApplicationElement;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl;
 import org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer;
@@ -25,12 +24,11 @@ public final class RienaPartRenderer extends ContributedPartRenderer {
 	@Override
 	public Object createWidget(final MUIElement element, final Object parent) {
 
-		final MApplicationElement part = element;
-		final String[] rienaCompoundId = RienaPartHelper.extractRienaCompoundId(part);
-		Composite parentComposite = null;
+		final String[] rienaCompoundId = RienaPartHelper.extractRienaCompoundId(element);
 
 		// is node part?
-		if (isSubmoduleNodePart(rienaCompoundId)) {
+		if (isSubModuleNodePart(rienaCompoundId)) {
+			Composite parentComposite = null;
 			final String typeId = rienaCompoundId[0];
 			final String secondayId = rienaCompoundId[1];
 			final ISubModuleNode node = SwtViewProvider.getInstance().getNavigationNode(typeId, secondayId, ISubModuleNode.class);
@@ -62,16 +60,15 @@ public final class RienaPartRenderer extends ContributedPartRenderer {
 			if (RienaPartHelper.isSharedView(node)) {
 				node.addListener(new SharedViewNodeBinder(typeId));
 			}
-		} else {
-			// not related to a SubmoduleNode. Nothing special here. Just create composite
-			parentComposite = (Composite) super.createWidget(element, parent);
+			return parentComposite;
 		}
 
-		return parentComposite;
+		// not related to a SubModuleNode. Nothing special here. Just create composite
+		return super.createWidget(element, parent);
 
 	}
 
-	private boolean isSubmoduleNodePart(final String[] rienaCompoundId) {
+	private boolean isSubModuleNodePart(final String[] rienaCompoundId) {
 		return rienaCompoundId.length > 1;
 	}
 
@@ -88,9 +85,10 @@ public final class RienaPartRenderer extends ContributedPartRenderer {
 	 * 
 	 */
 	private void initializeView(final String typeId, final Composite parentComposite, final ISubModuleNode node) {
-		final SubModuleView viewInstance = ViewInstanceProvider.getInstance().getView(typeId);
+		final ViewInstanceProvider viewInstanceProvider = ViewInstanceProvider.getInstance();
+		final SubModuleView viewInstance = viewInstanceProvider.getView(typeId);
 		viewInstance.setE4Runtime(true);
-		ViewInstanceProvider.getInstance().registerParentComposite(typeId, parentComposite);
+		viewInstanceProvider.registerParentComposite(typeId, parentComposite);
 		updateViewNode(typeId, node);
 		ReflectionUtils.invokeHidden(viewInstance, "setShellProvider", RienaPartHelper.toShellProvider(parentComposite.getShell())); //$NON-NLS-1$
 		viewInstance.createPartControl(parentComposite);

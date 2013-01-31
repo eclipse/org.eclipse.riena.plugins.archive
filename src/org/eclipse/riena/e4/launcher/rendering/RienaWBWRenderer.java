@@ -778,19 +778,20 @@ public class RienaWBWRenderer extends SWTPartRenderer {
 			return parent == null ? null : parent.getWidget();
 		}
 
-		if (E4XMIConstants.HEADER_PART_ID.equals(element.getElementId())) {
+		final String elementId = element.getElementId();
+		if (E4XMIConstants.HEADER_PART_ID.equals(elementId)) {
 			return header;
 		}
-		if (E4XMIConstants.MAIN_MENU_PART_ID.equals(element.getElementId())) {
+		if (E4XMIConstants.MAIN_MENU_PART_ID.equals(elementId)) {
 			return mainMenu;
 		}
-		if (E4XMIConstants.MAIN_TOOLBAR_PART_ID.equals(element.getElementId())) {
+		if (E4XMIConstants.MAIN_TOOLBAR_PART_ID.equals(elementId)) {
 			return mainToolBar;
 		}
-		if (E4XMIConstants.STATUSLINE_PART_ID.equals(element.getElementId())) {
+		if (E4XMIConstants.STATUSLINE_PART_ID.equals(elementId)) {
 			return statusLine;
 		}
-		if (E4XMIConstants.PERSPECTIVE_STACK_ID.equals(element.getElementId())) {
+		if (E4XMIConstants.PERSPECTIVE_STACK_ID.equals(elementId)) {
 			return perspectiveStack;
 		}
 

@@ -32,7 +32,12 @@ import org.eclipse.riena.ui.swt.utils.WidgetIdentificationSupport;
  * Handles the Riena application window presentation.
  */
 public class ApplicationView {
-	public static final String SHELL_RIDGET_PROPERTY = "applicationWindow"; //$NON-NLS-1$
+
+	/**
+	 * Binding IDs
+	 */
+	private static final String SHELL_BINDING_ID = "applicationWindow"; //$NON-NLS-1$
+	private static final String INFO_FLYOUT_BINDING_ID = "infoFlyout"; //$NON-NLS-1$
 	/**
 	 * System property defining the minimum width of the application window.
 	 */
@@ -69,7 +74,7 @@ public class ApplicationView {
 		shell.setMinimumSize(getApplicationSizeMinimum());
 
 		// prepare shell for binding
-		addUIControl(shell, SHELL_RIDGET_PROPERTY);
+		addUIControl(shell, SHELL_BINDING_ID);
 
 		if (getShellRenderer() != null) {
 			getShellRenderer().setShell(shell);
@@ -162,7 +167,7 @@ public class ApplicationView {
 	 */
 	public InfoFlyout createInfoFlyout(final Composite parent) {
 		final InfoFlyout infoFlyout = UIControlsFactory.createInfoFlyout(parent);
-		addUIControl(infoFlyout, "infoFlyout");
+		addUIControl(infoFlyout, INFO_FLYOUT_BINDING_ID);
 		return infoFlyout;
 	}
 

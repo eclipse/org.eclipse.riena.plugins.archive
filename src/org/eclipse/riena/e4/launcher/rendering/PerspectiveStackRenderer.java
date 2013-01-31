@@ -4,6 +4,7 @@ import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.workbench.renderers.swt.StackRenderer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
+import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.graphics.Rectangle;
@@ -21,16 +22,15 @@ public class PerspectiveStackRenderer extends StackRenderer {
 
 	@Override
 	public Object createWidget(final MUIElement element, final Object parent) {
-		final RienaTabFolder widget = new RienaTabFolder((Composite) parent, SWT.BORDER);// super.createWidget(element, parent);
-		bindWidget(element, widget);
-		ReflectionUtils.invokeHidden(this, "addTopRight", widget); //$NON-NLS-1$
-		final CTabFolder folder = widget;
+		final RienaTabFolder folder = new RienaTabFolder((Composite) parent, SWT.BORDER);
+		bindWidget(element, folder);
+		ReflectionUtils.invokeHidden(this, "addTopRight", folder); //$NON-NLS-1$
 		folder.setTabHeight(0);
 		folder.setMaximizeVisible(false);
 		folder.setMinimizeVisible(false);
 		folder.setBorderVisible(false);
 		folder.addPaintListener(new BorderPaintListener());
-		return widget;
+		return folder;
 	}
 
 	private class RienaTabFolder extends CTabFolder {
@@ -45,13 +45,14 @@ public class PerspectiveStackRenderer extends StackRenderer {
 			if (index >= getItemCount()) {
 				return;
 			}
-			final Control control = getItem(index).getControl();
+			final CTabItem selectedItem = getItem(index);
+			final Control control = selectedItem.getControl();
 			if (null == control) {
 				return;
 			}
 			control.setVisible(true);
 			control.setBounds(getClientArea());
-			showItem(getItem(index));
+			showItem(selectedItem);
 			redraw();
 		}
 

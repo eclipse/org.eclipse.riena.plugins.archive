@@ -16,8 +16,8 @@ import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.model.application.MApplication;
-import org.eclipse.e4.ui.model.application.MApplicationElement;
 import org.eclipse.e4.ui.model.application.ui.MElementContainer;
+import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.basic.MBasicFactory;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
@@ -174,7 +174,7 @@ public class RienaPartHelper {
 		part.getParent().getChildren().remove(part);
 	}
 
-	public static String[] extractRienaCompoundId(final MApplicationElement part) {
+	public static String[] extractRienaCompoundId(final MUIElement part) {
 		return part.getElementId().split(COUNTER_DELIMITER)[0].split(COMPOUND_ID_DELIMITER);
 	}
 
