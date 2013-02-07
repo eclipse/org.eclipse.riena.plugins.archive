@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.riena.build.feature.core.sdk.e4"
       label="Riena Core Target Components"
-      version="4.0.0.qualifier"
+      version="5.0.0.qualifier"
       provider-name="Eclipse.org - Riena">
 
    <description>
