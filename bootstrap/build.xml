@@ -54,7 +54,7 @@
 		<unzip
 			dest="tools/eclipse.${ECLIPSE_STREAM}.sdk">
 			<fileset dir="tools/eclipse.${ECLIPSE_STREAM}.sdk">
-				<include name="eclipse-SDK-${ECLIPSE_STREAM}-win32.zip"/>
+				<include name="eclipse-SDK-${sdkVer}-win32.zip"/>
 			</fileset>
 		</unzip>
 		<copy todir="tools/eclipse.${ECLIPSE_STREAM}.sdk/eclipse">
