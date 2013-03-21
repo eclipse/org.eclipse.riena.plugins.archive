@@ -31,11 +31,11 @@ public class RienaNavigationObserver {
 	 */
 	public void install(final IApplicationNode applicationNode) {
 		final NavigationTreeObserver navigationTreeObserver = new NavigationTreeObserver();
-		navigationTreeObserver.addListener(createInstance(MyApplicationNodeListener.class, eclipseContext));
-		navigationTreeObserver.addListener(createInstance(MySubApplicationNodeListener.class, eclipseContext));
-		navigationTreeObserver.addListener(createInstance(MyModuleGroupNodeListener.class, eclipseContext));
-		navigationTreeObserver.addListener(createInstance(MyModuleNodeListener.class, eclipseContext));
-		navigationTreeObserver.addListener(createInstance(MySubModuleNodeListener.class, eclipseContext));
+		navigationTreeObserver.addListener(createInstance(NonActivityApplicationNodeListener.class, eclipseContext));
+		navigationTreeObserver.addListener(createInstance(PerspectiveSubApplicationNodeListener.class, eclipseContext));
+		navigationTreeObserver.addListener(createInstance(PrepareModuleGroupNodeListener.class, eclipseContext));
+		navigationTreeObserver.addListener(createInstance(PrepareModuleNodeListener.class, eclipseContext));
+		navigationTreeObserver.addListener(createInstance(ShowPartSubModuleNodeListener.class, eclipseContext));
 		navigationTreeObserver.addListenerTo(applicationNode);
 	}
 

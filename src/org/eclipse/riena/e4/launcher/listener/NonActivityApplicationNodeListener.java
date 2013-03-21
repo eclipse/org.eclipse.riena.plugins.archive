@@ -13,7 +13,7 @@ import org.eclipse.riena.ui.filter.IUIFilter;
 /**
  * This listener starts the LoginNonActivityTimer after the application was activated.
  */
-public class MyApplicationNodeListener extends ApplicationNodeListener {
+public class NonActivityApplicationNodeListener extends ApplicationNodeListener {
 
 	@Inject
 	private IApplicationNode navigationNode;

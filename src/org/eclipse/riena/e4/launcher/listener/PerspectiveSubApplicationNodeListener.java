@@ -1,6 +1,5 @@
 package org.eclipse.riena.e4.launcher.listener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -23,19 +22,20 @@ import org.eclipse.riena.e4.launcher.Activator;
 import org.eclipse.riena.e4.launcher.E4XMIConstants;
 import org.eclipse.riena.e4.launcher.binder.SubApplicationBinder;
 import org.eclipse.riena.e4.launcher.part.NavigationPart;
-import org.eclipse.riena.navigation.INavigationNode;
 import org.eclipse.riena.navigation.ISubApplicationNode;
-import org.eclipse.riena.navigation.ISubModuleNode;
 import org.eclipse.riena.navigation.listener.SubApplicationNodeListener;
 import org.eclipse.riena.navigation.ui.controllers.SubApplicationController;
 import org.eclipse.riena.navigation.ui.swt.presentation.SwtViewProvider;
 import org.eclipse.riena.navigation.ui.swt.views.NavigationViewPart;
-import org.eclipse.riena.ui.workarea.IWorkareaDefinition;
-import org.eclipse.riena.ui.workarea.WorkareaManager;
 
+/**
+ * This listener of a sub application shows the according perspective.
+ */
 @SuppressWarnings("restriction")
-public class MySubApplicationNodeListener extends SubApplicationNodeListener {
+public class PerspectiveSubApplicationNodeListener extends SubApplicationNodeListener {
+
 	private static final String PERSPECTIVES_EXT_POINT = "org.eclipse.ui.perspectives"; //$NON-NLS-1$
+	private final PrepareNodeDelegate<ISubApplicationNode> prepareNodeDelegate = new PrepareNodeDelegate<ISubApplicationNode>();
 
 	@Inject
 	private IEclipseContext context;
@@ -52,7 +52,7 @@ public class MySubApplicationNodeListener extends SubApplicationNodeListener {
 			if (source.getNavigationNodeController() == null) {
 				createNodeController(source);
 			}
-			prepare(source);
+			prepareNodeDelegate.prepare(source);
 		}
 	}
 
@@ -151,36 +151,6 @@ public class MySubApplicationNodeListener extends SubApplicationNodeListener {
 
 		viewProvider.unregisterSwtViewId(source);
 
-	}
-
-	/**
-	 * Prepares every sub-module whose definition requires preparation.
-	 * 
-	 * @param node
-	 *            navigation node
-	 */
-	static void prepare(final INavigationNode<?> node) {
-		if ((node == null) || (node.getParent() == null)) {
-			return;
-		}
-
-		if (node instanceof ISubModuleNode) {
-			final ISubModuleNode subModuleNode = (ISubModuleNode) node;
-			final IWorkareaDefinition definition = WorkareaManager.getInstance().getDefinition(subModuleNode);
-			if ((definition != null) && definition.isRequiredPreparation() && subModuleNode.isCreated()) {
-				subModuleNode.prepare();
-			}
-		}
-
-		/*
-		 * The number of children can change while iterating. Only observe the node children !before! the iteration begins. Any child added while iterating will
-		 * be handled automatically if preparation is required. Just ensure that there will be no concurrent modification of the children list while iterating
-		 * over it. Conclusion is a copy..
-		 */
-		final List<INavigationNode<?>> children = new ArrayList<INavigationNode<?>>(node.getChildren());
-		for (final INavigationNode<?> child : children) {
-			prepare(child);
-		}
 	}
 
 }

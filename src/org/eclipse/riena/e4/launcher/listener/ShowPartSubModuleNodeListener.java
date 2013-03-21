@@ -21,12 +21,13 @@ import org.eclipse.riena.navigation.ui.swt.component.MenuCoolBarComposite;
 import org.eclipse.riena.navigation.ui.swt.views.SubApplicationView;
 
 /**
- * This listener of a sub module ensures the preparation of nodes (if necessary).
+ * This listener of a sub module ensures the preparation of nodes (if necessary) and shows the part of the sub module.
  */
 @SuppressWarnings("restriction")
-public class MySubModuleNodeListener extends SubModuleNodeListener {
+public class ShowPartSubModuleNodeListener extends SubModuleNodeListener {
 
 	private final NavigationSourceProvider navigationSourceProvider = new NavigationSourceProvider();
+	private final PrepareNodeDelegate<ISubModuleNode> prepareNodeDelegate = new PrepareNodeDelegate<ISubModuleNode>();
 
 	@Inject
 	private IEclipseContext context;
@@ -41,7 +42,7 @@ public class MySubModuleNodeListener extends SubModuleNodeListener {
 	 */
 	@Override
 	public void activated(final ISubModuleNode source) {
-		MySubApplicationNodeListener.prepare(source);
+		prepareNodeDelegate.prepare(source);
 		partHelper.showPart(source);
 		updateNavigationSourceProvider(source);
 	}
@@ -60,7 +61,7 @@ public class MySubModuleNodeListener extends SubModuleNodeListener {
 	 */
 	@Override
 	public void parentChanged(final ISubModuleNode source) {
-		MySubApplicationNodeListener.prepare(source);
+		prepareNodeDelegate.prepare(source);
 	}
 
 	/**
@@ -70,15 +71,16 @@ public class MySubModuleNodeListener extends SubModuleNodeListener {
 	public void afterActivated(final ISubModuleNode source) {
 		final EModelService modelService = context.get(EModelService.class);
 		// update main menu items
-		final Object m = ((MPart) modelService.find(E4XMIConstants.MAIN_MENU_PART_ID, context.get(MApplication.class))).getTransientData().get(
-				MainMenuPart.MENU_COMPOSITE_KEY);
+		final MApplication mApplication = context.get(MApplication.class);
+		final MPart menuPart = (MPart) modelService.find(E4XMIConstants.MAIN_MENU_PART_ID, mApplication);
+		final Object m = menuPart.getTransientData().get(MainMenuPart.MENU_COMPOSITE_KEY);
 		if (m instanceof MenuCoolBarComposite) {
 			((MenuCoolBarComposite) m).updateMenuItems();
 		}
 
 		// update coolbar items
-		final Object c = ((MPart) modelService.find(E4XMIConstants.MAIN_TOOL_BAR_PART_ID, context.get(MApplication.class))).getTransientData().get(
-				MainToolBarPart.COOLBAR_COMPOSITE_KEY);
+		final MPart coolbarPart = (MPart) modelService.find(E4XMIConstants.MAIN_TOOL_BAR_PART_ID, mApplication);
+		final Object c = coolbarPart.getTransientData().get(MainToolBarPart.COOLBAR_COMPOSITE_KEY);
 		if (c instanceof CoolBarComposite) {
 			((CoolBarComposite) c).updateItems();
 		}
@@ -88,4 +90,5 @@ public class MySubModuleNodeListener extends SubModuleNodeListener {
 	public void disposed(final ISubModuleNode source) {
 		partHelper.disposeNode(source);
 	}
+
 }

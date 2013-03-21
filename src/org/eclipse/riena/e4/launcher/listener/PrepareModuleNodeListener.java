@@ -6,7 +6,9 @@ import org.eclipse.riena.navigation.listener.ModuleNodeListener;
 /**
  * This listener of a module ensures the preparation of nodes (if necessary).
  */
-public class MyModuleNodeListener extends ModuleNodeListener {
+public class PrepareModuleNodeListener extends ModuleNodeListener {
+
+	private final PrepareNodeDelegate<IModuleNode> delegate = new PrepareNodeDelegate<IModuleNode>();
 
 	/**
 	 * {@inheritDoc}
@@ -15,7 +17,7 @@ public class MyModuleNodeListener extends ModuleNodeListener {
 	 */
 	@Override
 	public void activated(final IModuleNode source) {
-		MySubApplicationNodeListener.prepare(source);
+		delegate.prepare(source);
 	}
 
 	/**
@@ -25,7 +27,7 @@ public class MyModuleNodeListener extends ModuleNodeListener {
 	 */
 	@Override
 	public void parentChanged(final IModuleNode source) {
-		MySubApplicationNodeListener.prepare(source);
+		delegate.prepare(source);
 	}
 
 }
