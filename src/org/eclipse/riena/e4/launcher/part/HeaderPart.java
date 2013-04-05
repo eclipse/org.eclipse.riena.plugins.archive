@@ -17,6 +17,7 @@ import org.eclipse.ui.internal.services.EvaluationService;
 import org.eclipse.ui.services.IEvaluationService;
 
 import org.eclipse.riena.navigation.ApplicationNodeManager;
+import org.eclipse.riena.navigation.model.ApplicationNode;
 import org.eclipse.riena.navigation.ui.swt.component.TitleComposite;
 
 /**
@@ -38,7 +39,7 @@ public class HeaderPart {
 		final Composite c = new Composite(parent, SWT.NONE);
 		GridLayoutFactory.fillDefaults().spacing(0, 0).applyTo(c);
 
-		final TitleComposite titleComposite = new TitleComposite(c, ApplicationNodeManager.getApplicationNode());
+		final TitleComposite titleComposite = new TitleComposite(c, (ApplicationNode) ApplicationNodeManager.getApplicationNode());
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(titleComposite);
 
 		copyLegacyExtensionsToModel(eclipseContext.getParent(), application);
