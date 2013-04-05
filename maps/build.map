@@ -44,6 +44,8 @@ plugin@org.eclipse.riena.monitor.common=GIT,tag=orgin/master,repo=ssh://rienaBui
 plugin@org.eclipse.riena.navigation=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.navigation
 plugin@org.eclipse.riena.navigation.ui=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.navigation.ui
 plugin@org.eclipse.riena.navigation.ui.swt=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.navigation.ui.swt
+plugin@org.eclipse.riena.navigation.ui.swt.rcp=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.navigation.ui.swt.rcp
+plugin@org.eclipse.riena.navigation.ui.swt.rap=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.rap.git,path=org.eclipse.riena.navigation.ui.swt.rap
 plugin@org.eclipse.riena.objecttransaction=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.objecttransaction
 plugin@org.eclipse.riena.sample.app.client=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.sample.app.client
 plugin@org.eclipse.riena.sample.app.client.mail=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.sample.app.client.mail
@@ -104,11 +106,11 @@ plugin@org.apache.commons.logging=GET,file:///C:/build3/prebuild/plugins/org.apa
 plugin@org.apache.log4j=GET,file:///C:/build3/prebuild/plugins/org.apache.log4j_1.2.13.v200903072027.jar
 plugin@org.apache.oro=GET,file:///C:/build3/prebuild/plugins/org.apache.oro_2.0.8.v200903061218.jar
 plugin@org.easymock,2.4.0=GET,file:///C:/build3/prebuild/plugins/org.easymock_2.4.0.v20090202-0900.jar
-plugin@org.eclipse.core.variables=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.variables_3.2.600.v20120521-2012.jar
-plugin@org.eclipse.core.variables.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.variables.source_3.2.600.v20120521-2012.jar
-plugin@org.eclipse.core.net=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net_1.2.200.v20120522-1148.jar
-plugin@org.eclipse.core.net.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net.source_1.2.200.v20120522-1148.jar
-plugin@org.eclipse.core.net.win32.x86=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net.win32.x86_1.2.200.v20120522-1148.jar
+plugin@org.eclipse.core.variables=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.variables_3.2.500.v20110511.jar
+plugin@org.eclipse.core.variables.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.variables.source_3.2.500.v20110511.jar
+plugin@org.eclipse.core.net=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net_1.2.100.I20110511-0800.jar
+plugin@org.eclipse.core.net.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net.source_1.2.100.I20110511-0800.jar
+plugin@org.eclipse.core.net.win32.x86=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net.win32.x86_1.0.100.I20110331-0827.jar
 plugin@org.eclipse.nebula.widgets.compositetable=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.compositetable_1.0.0.jar
 plugin@org.eclipse.nebula.widgets.compositetable.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.compositetable.source_1.0.0.jar
 plugin@org.eclipse.nebula.widgets.grid=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.grid_1.0.0.HEAD.jar
