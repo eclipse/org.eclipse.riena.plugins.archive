@@ -71,7 +71,7 @@ public class ApplicationLifeCycle {
 	}
 
 	private IApplicationModelCreator getApplicationModelCreatorFromExtension() {
-		final String pluginId = Activator.getDefault().getBundleContext().getBundle().getSymbolicName();
+		final String pluginId = org.eclipse.riena.internal.navigation.ui.Activator.PLUGIN_ID;
 		for (final IConfigurationElement configElement : extensionRegistry.getConfigurationElementsFor(pluginId + MODEL_CREATORS_EXT_POINT_SUFFIX)) {
 			try {
 				return (IApplicationModelCreator) configElement.createExecutableExtension("class"); //$NON-NLS-1$
