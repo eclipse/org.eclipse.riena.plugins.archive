@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.eclipse.riena.internal.ui.swt.facades;
 
+import org.eclipse.e4.core.contexts.EclipseContextFactory;
+import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.ui.services.IServiceConstants;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
 
@@ -26,6 +30,25 @@ public class WorkbenchFacadeImpl extends WorkbenchFacade {
 	@Override
 	public void showView(final IWorkbenchPage page, final IViewReference viewRef) {
 		// this implementation is not relevant for E4
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.riena.internal.ui.swt.facades.WorkbenchFacade#getActiveShell()
+	 */
+	@Override
+	public Shell getActiveShell() {
+		final IEclipseContext serviceContext = EclipseContextFactory.getServiceContext(Activator.getDefault().getContext());
+
+		IEclipseContext root = serviceContext;
+		IEclipseContext parent;
+		// TODO is there a better way to find the root context?
+		while ((parent = serviceContext.getParent()) != null) {
+			root = parent;
+		}
+
+		return (Shell) root.get(IServiceConstants.ACTIVE_SHELL);
 	}
 
 }
