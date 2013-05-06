@@ -12,7 +12,11 @@ package org.eclipse.riena.internal.ui.swt.facades;
 
 import org.eclipse.e4.core.contexts.EclipseContextFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
+import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.services.IServiceConstants;
+import org.eclipse.e4.ui.workbench.IWorkbench;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
@@ -39,16 +43,56 @@ public class WorkbenchFacadeImpl extends WorkbenchFacade {
 	 */
 	@Override
 	public Shell getActiveShell() {
-		final IEclipseContext serviceContext = EclipseContextFactory.getServiceContext(Activator.getDefault().getContext());
+		final IEclipseContext root = getWorkbenchContext();
+		return root == null ? null : (Shell) root.get(IServiceConstants.ACTIVE_SHELL);
+	}
 
-		IEclipseContext root = serviceContext;
-		IEclipseContext parent;
-		// TODO is there a better way to find the root context?
-		while ((parent = serviceContext.getParent()) != null) {
-			root = parent;
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.riena.internal.ui.swt.facades.WorkbenchFacade#closeWorkbench()
+	 */
+	@Override
+	public boolean closeWorkbench() {
+		final IEclipseContext root = getWorkbenchContext();
+		return root == null ? false : root.get(IWorkbench.class).close();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.riena.internal.ui.swt.facades.WorkbenchFacade#getActiveWindowShell()
+	 */
+	@Override
+	public Shell getActiveWindowShell() {
+		final IEclipseContext root = getWorkbenchContext();
+
+		if (root == null) {
+			return null;
 		}
 
-		return (Shell) root.get(IServiceConstants.ACTIVE_SHELL);
+		final MPart part = (MPart) root.get(IServiceConstants.ACTIVE_PART);
+		return part == null ? null : ((Control) part.getWidget()).getShell();
+	}
+
+	private IEclipseContext getWorkbenchContext() {
+		final org.eclipse.e4.ui.internal.workbench.Activator plugin = org.eclipse.e4.ui.internal.workbench.Activator.getDefault();
+		if (plugin == null) {
+			return null;
+		}
+		final IEclipseContext serviceContext = EclipseContextFactory.getServiceContext(plugin.getContext());
+		return serviceContext.getActiveLeaf();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.riena.internal.ui.swt.facades.WorkbenchFacade#getWorkbenchDisplay()
+	 */
+	@Override
+	public Display getWorkbenchDisplay() {
+		final Shell activeWindowShell = getActiveWindowShell();
+		return activeWindowShell == null ? null : activeWindowShell.getDisplay();
 	}
 
 }
