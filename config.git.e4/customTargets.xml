@@ -101,7 +101,7 @@
 		<echo>  src= file:/${builder}/../target/org.eclipse.platform-${sdkVer}.zip</echo>
 		<echo>  dest= ${builder}/../target/eclipse</echo>
 		<p2.repo2runnable 
-			destination="${builder}/../target/eclipse">
+			destination="${builder}/../target/eclipse" failOnError="false">
 			<source>
 				<repository location="file:/${builder}/../target/org.eclipse.platform-${sdkVer}.zip" />
 			</source>
