@@ -8,9 +8,11 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.log.Logger;
+import org.eclipse.e4.core.services.statusreporter.StatusReporter;
 import org.eclipse.e4.ui.workbench.lifecycle.PostContextCreate;
 
 import org.eclipse.riena.core.wire.Wire;
+import org.eclipse.riena.e4.launcher.exception.E4UncaughtExceptionHandler;
 import org.eclipse.riena.e4.launcher.listener.RienaNavigationObserver;
 import org.eclipse.riena.e4.launcher.part.RienaPartHelper;
 import org.eclipse.riena.e4.launcher.security.LoginHelper;
@@ -39,6 +41,9 @@ public class ApplicationLifeCycle {
 
 	@PostContextCreate
 	public void initRienaApplicationNode() {
+		final E4UncaughtExceptionHandler exceptioHandler = new E4UncaughtExceptionHandler().install();
+		Wire.instance(exceptioHandler).andStart(Activator.getDefault().getBundleContext());
+		eclipseContext.set(StatusReporter.class, exceptioHandler);
 
 		// if there is some login configured, ask for login and remember the extension in the app context
 		// later we will need this extension for the (in)activity login timer

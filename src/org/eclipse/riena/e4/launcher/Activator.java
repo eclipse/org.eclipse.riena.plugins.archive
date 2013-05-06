@@ -13,10 +13,9 @@ package org.eclipse.riena.e4.launcher;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-import org.eclipse.riena.core.wire.Wire;
-import org.eclipse.riena.e4.launcher.exception.E4UncaughtExceptionHandler;
-
 public class Activator implements BundleActivator {
+	public static String PLUGIN_ID = "org.eclipse.riena.e4.launcher"; //$NON-NLS-1$
+
 	private BundleContext bundleContext;
 	private static Activator singleton;
 
@@ -39,7 +38,6 @@ public class Activator implements BundleActivator {
 	public void start(final BundleContext context) throws Exception {
 		bundleContext = context;
 		singleton = this;
-		Wire.instance(new E4UncaughtExceptionHandler().install()).andStart(getBundleContext());
 	}
 
 	/*
