@@ -16,7 +16,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.commands.ExpressionContext;
-import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.internal.workbench.ContributionsAnalyzer;
 import org.eclipse.e4.ui.model.application.MApplication;
@@ -30,7 +29,7 @@ import org.eclipse.e4.ui.model.application.ui.menu.MToolBarContribution;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBarSeparator;
 import org.eclipse.e4.ui.model.application.ui.menu.MTrimContribution;
-import org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem;
+import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.swt.widgets.Composite;
@@ -48,7 +47,10 @@ public class MainToolBarPart {
 	private IEclipseContext eclipseContext;
 
 	@Inject
-	MApplication application;
+	private EModelService modelService;
+
+	@Inject
+	private MApplication application;
 
 	@Inject
 	public void create(final Composite parent, final MTrimmedWindow window, final MPart part) {
@@ -70,6 +72,8 @@ public class MainToolBarPart {
 					}
 				}
 
+				final MenuPartHelper helper = new MenuPartHelper(eclipseContext, modelService);
+
 				// now consider only contributions to the parents found above
 				// other contributions (e.g. view menu contributions) will be not considered
 				for (final MToolBarContribution c : application.getToolBarContributions()) {
@@ -82,9 +86,7 @@ public class MainToolBarPart {
 							}
 							if (e instanceof MHandledItem) {
 								// => HandledContributionItem
-								final HandledContributionItem item = new HandledContributionItem();
-								ContextInjectionFactory.inject(item, eclipseContext);
-								item.setModel((MHandledItem) e);
+								final IContributionItem item = helper.createHandledContributionItem((MHandledItem) e);
 								items.add(item);
 							} else if (e instanceof MToolBarSeparator) {
 								// => Separator
@@ -100,4 +102,5 @@ public class MainToolBarPart {
 		});
 		part.getTransientData().put(COOLBAR_COMPOSITE_KEY, coolBarComposite);
 	}
+
 }

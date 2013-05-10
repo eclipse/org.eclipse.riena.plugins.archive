@@ -20,7 +20,6 @@ import java.util.Map.Entry;
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.commands.ExpressionContext;
-import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.internal.workbench.ContributionsAnalyzer;
 import org.eclipse.e4.ui.model.application.MApplication;
@@ -31,7 +30,7 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuContribution;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuSeparator;
-import org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem;
+import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.jface.action.AbstractGroupMarker;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IContributionManager;
@@ -51,6 +50,9 @@ public class MainMenuPart {
 
 	@Inject
 	private IEclipseContext eclipseContext;
+
+	@Inject
+	private EModelService modelService;
 
 	@Inject
 	private MApplication application;
@@ -96,6 +98,7 @@ public class MainMenuPart {
 	 */
 	private void fill(final List<MMenuElement> elements, final Map<String, Collection<IContributionItem>> parentIdToElement, final String parentId) {
 		//		final List<MMenuElement> elements = source.getChildren();
+		final MenuPartHelper helper = new MenuPartHelper(eclipseContext, modelService);
 		for (final MMenuElement e : elements) {
 			final String label = e.getLabel();
 			final String id = e.getElementId();
@@ -104,10 +107,7 @@ public class MainMenuPart {
 				getOrCreateMapElement(parentIdToElement, parentId).add(new MenuManager(label, id));
 			} else if (e instanceof MHandledItem) {
 				// => CommandContributionItem/ActionContributionItem
-				final HandledContributionItem item = new HandledContributionItem();
-				ContextInjectionFactory.inject(item, eclipseContext);
-				item.setModel((MHandledItem) e);
-
+				final IContributionItem item = helper.createHandledContributionItem((MHandledItem) e);
 				getOrCreateMapElement(parentIdToElement, parentId).add(item);
 			} else if (e instanceof MMenuSeparator) {
 				// => AbstractGroupMarker
