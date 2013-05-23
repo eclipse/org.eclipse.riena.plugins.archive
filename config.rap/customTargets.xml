@@ -74,7 +74,7 @@
 	</target>
 
 	<echo>Copying files that we add to eclipse target platform from directory 'dropins'</echo>
-	<copy todir="${builder}/../target/eclipse/plugins">
+	<copy todir="${builder}/../target/rap/plugins">
 	    <fileset dir="${builder}/../target/dropins"/>
 	  </copy>
 
