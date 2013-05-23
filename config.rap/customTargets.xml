@@ -77,7 +77,7 @@
 		<delete dir="${builder}/../target/rap/eclipse"/>
 
 		<echo>prepare target, copy dropins, unzip rap runtime </echo>
-		<copy todir="${builder}/../target/rap/plugins">
+		<copy todir="${builder}/../target/rap/eclipse/plugins">
 		    <fileset dir="${builder}/../target/dropins"/>
 		  </copy>
 		
