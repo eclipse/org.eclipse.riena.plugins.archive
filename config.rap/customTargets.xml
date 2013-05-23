@@ -73,6 +73,11 @@
 		<antcall target="prepareTarget"/>
 	</target>
 
+	<echo>Copying files that we add to eclipse target platform from directory 'dropins'</echo>
+	<copy todir="${builder}/../target/eclipse/plugins">
+	    <fileset dir="${builder}/../target/dropins"/>
+	  </copy>
+
 	<target name="prepareTarget" unless="has.target">
 		<delete dir="${builder}/../target/rap/eclipse"/>
 		<unzip
