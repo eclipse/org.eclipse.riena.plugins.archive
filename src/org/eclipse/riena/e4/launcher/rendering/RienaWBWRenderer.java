@@ -21,6 +21,7 @@ import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.core.services.log.Logger;
 import org.eclipse.e4.ui.internal.workbench.Activator;
 import org.eclipse.e4.ui.internal.workbench.E4Workbench;
+import org.eclipse.e4.ui.internal.workbench.PartServiceSaveHandler;
 import org.eclipse.e4.ui.internal.workbench.Policy;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.ui.MContext;
@@ -464,7 +465,8 @@ public class RienaWBWRenderer extends SWTPartRenderer {
 				return wbwShell;
 			}
 		});
-		localContext.set(ISaveHandler.class, new ISaveHandler() {
+		localContext.set(ISaveHandler.class, new PartServiceSaveHandler() {
+			@Override
 			public Save promptToSave(final MPart dirtyPart) {
 				final Shell shell = (Shell) context.get(IServiceConstants.ACTIVE_SHELL);
 				final Object[] elements = promptForSave(shell, Collections.singleton(dirtyPart));
@@ -474,6 +476,7 @@ public class RienaWBWRenderer extends SWTPartRenderer {
 				return elements.length == 0 ? Save.NO : Save.YES;
 			}
 
+			@Override
 			public Save[] promptToSave(final Collection<MPart> dirtyParts) {
 				final List<MPart> parts = new ArrayList<MPart>(dirtyParts);
 				final Shell shell = (Shell) context.get(IServiceConstants.ACTIVE_SHELL);
