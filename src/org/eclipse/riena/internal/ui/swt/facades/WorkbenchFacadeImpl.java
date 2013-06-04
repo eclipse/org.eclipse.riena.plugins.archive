@@ -18,6 +18,7 @@ import org.eclipse.e4.ui.workbench.IWorkbench;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.ISourceProvider;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
 
@@ -93,6 +94,12 @@ public class WorkbenchFacadeImpl extends WorkbenchFacade {
 	public Display getWorkbenchDisplay() {
 		final Shell activeWindowShell = getActiveWindowShell();
 		return activeWindowShell == null ? null : activeWindowShell.getDisplay();
+	}
+
+	@Override
+	public ISourceProvider[] getSourceProviders() {
+		// TODO
+		return new ISourceProvider[0];
 	}
 
 }
