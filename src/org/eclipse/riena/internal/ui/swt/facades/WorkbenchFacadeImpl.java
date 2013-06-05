@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.riena.internal.ui.swt.facades;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.eclipse.e4.core.contexts.EclipseContextFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
@@ -22,10 +25,33 @@ import org.eclipse.ui.ISourceProvider;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
 
+import org.eclipse.riena.core.wire.InjectExtension;
+import org.eclipse.riena.core.wire.Wire;
+
 /**
- * Eclipse 3.x specific implementation.
+ * Eclipse e4 specific implementation.
  */
 public class WorkbenchFacadeImpl extends WorkbenchFacade {
+
+	private static final String EXT_ID_SERVICES = "org.eclipse.ui.services"; //$NON-NLS-1$	
+	private static List<ISourceProvider> providers;
+
+	public WorkbenchFacadeImpl() {
+		if (providers == null) {
+			Wire.instance(this).andStart();
+		}
+	}
+
+	@InjectExtension(id = EXT_ID_SERVICES, onceOnly = true)
+	public static void updateServiceProviders(final ISourceProviderExtension[] extensions) {
+		providers = new LinkedList<ISourceProvider>();
+		for (final ISourceProviderExtension extension : extensions) {
+			final ISourceProvider provider = extension.getSourceProvider();
+			if (provider != null) {
+				providers.add(provider);
+			}
+		}
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -98,8 +124,10 @@ public class WorkbenchFacadeImpl extends WorkbenchFacade {
 
 	@Override
 	public ISourceProvider[] getSourceProviders() {
-		// TODO
-		return new ISourceProvider[0];
+		if (providers == null) {
+			return new ISourceProvider[0];
+		}
+		return providers.toArray(new ISourceProvider[providers.size()]);
 	}
 
 }
