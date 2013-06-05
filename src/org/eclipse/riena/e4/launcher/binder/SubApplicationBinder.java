@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.riena.e4.launcher.binder;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.osgi.service.event.Event;
@@ -19,7 +21,11 @@ import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.services.IServiceConstants;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.ISourceProviderListener;
+import org.eclipse.ui.ISources;
 
+import org.eclipse.riena.e4.launcher.RienaE4MenuUtils;
+import org.eclipse.riena.e4.launcher.part.uielements.CoolBarComposite;
 import org.eclipse.riena.e4.launcher.rendering.RienaWBWRenderer;
 import org.eclipse.riena.internal.ui.ridgets.swt.uiprocess.UIProcessRidget;
 import org.eclipse.riena.navigation.IModuleGroupNode;
@@ -30,7 +36,9 @@ import org.eclipse.riena.navigation.listener.SubApplicationNodeListener;
 import org.eclipse.riena.navigation.ui.controllers.SubApplicationController;
 import org.eclipse.riena.navigation.ui.swt.binding.DelegatingRidgetMapper;
 import org.eclipse.riena.navigation.ui.swt.binding.InjectSwtViewBindingDelegate;
+import org.eclipse.riena.navigation.ui.swt.component.MenuCoolBarComposite;
 import org.eclipse.riena.navigation.ui.swt.presentation.SwtViewProvider;
+import org.eclipse.riena.navigation.ui.swt.views.RienaMenuHelper;
 import org.eclipse.riena.navigation.ui.swt.views.SubApplicationView;
 import org.eclipse.riena.ui.ridgets.controller.IController;
 import org.eclipse.riena.ui.ridgets.swt.uibinding.AbstractViewBindingDelegate;
@@ -51,16 +59,18 @@ public class SubApplicationBinder {
 	@Inject
 	private IEventBroker eventBroker;
 
-	private final AbstractViewBindingDelegate binding;
 	private final ISubApplicationNode subApplicationNode;
+	private final AbstractViewBindingDelegate binding;
+	private final RienaMenuHelper menuBindHelper;
+	private final ISourceProviderListener menuSourceProviderListener;
 	private SubApplicationListener subApplicationListener;
-
 	private SubApplicationController subApplicationController;
 
 	public SubApplicationBinder(final ISubApplicationNode subApplicationNode) {
 		this.subApplicationNode = subApplicationNode;
 		binding = createBinding();
-
+		menuBindHelper = new RienaMenuHelper();
+		menuSourceProviderListener = new MenuSourceProviderListener();
 	}
 
 	protected AbstractViewBindingDelegate createBinding() {
@@ -111,6 +121,7 @@ public class SubApplicationBinder {
 			binding.injectRidgets(subApplicationController);
 			binding.bind(subApplicationController);
 			observeSubApplicationNode();
+			menuBindHelper.addSourceProviderListener(menuSourceProviderListener);
 			subApplicationController.afterBind();
 		}
 	}
@@ -145,6 +156,7 @@ public class SubApplicationBinder {
 	public void unbind() {
 		if (getNavigationNode() != null) {
 			getNavigationNode().removeListener(subApplicationListener);
+			menuBindHelper.removeSourceProviderListener(menuSourceProviderListener);
 			if (getNavigationNode().getNavigationNodeController() instanceof IController) {
 				final IController controller = (IController) getNavigationNode().getNavigationNodeController();
 				binding.unbind(controller);
@@ -155,4 +167,46 @@ public class SubApplicationBinder {
 	private ISubApplicationNode getNavigationNode() {
 		return subApplicationNode;
 	}
+
+	private void updateMenuBar() {
+
+		// update main menu items
+		final MenuCoolBarComposite menuCoolBarComposite = RienaE4MenuUtils.getMenuCoolBarComposite(context);
+		if (menuCoolBarComposite != null) {
+			menuCoolBarComposite.updateMenuItems();
+		}
+		final CoolBarComposite coolBarComposite = RienaE4MenuUtils.getCoolBarComposite(context);
+		final IController controller = (IController) getNavigationNode().getNavigationNodeController();
+		menuBindHelper.bindMenuAndToolItems(controller, menuCoolBarComposite, coolBarComposite);
+	}
+
+	/**
+	 * After changing a source the menu bar of this sub-application is updated.
+	 */
+	private class MenuSourceProviderListener implements ISourceProviderListener {
+
+		/**
+		 * Updates the menu bar (only if the priority is correct and this sub-application is selected).
+		 * 
+		 * @param sourcePriority
+		 *            A bit mask of all the source priorities that have changed.
+		 */
+		private void update(final int sourcePriority) {
+			if ((sourcePriority & ISources.ACTIVE_MENU) == ISources.ACTIVE_MENU) {
+				if (getNavigationNode().isSelected()) {
+					updateMenuBar();
+				}
+			}
+		}
+
+		public void sourceChanged(final int sourcePriority, final Map sourceValuesByName) {
+			update(sourcePriority);
+		}
+
+		public void sourceChanged(final int sourcePriority, final String sourceName, final Object sourceValue) {
+			update(sourcePriority);
+		}
+
+	}
+
 }
