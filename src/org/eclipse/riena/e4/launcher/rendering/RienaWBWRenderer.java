@@ -528,7 +528,6 @@ public class RienaWBWRenderer extends SWTPartRenderer {
 		modelElement.setY(shellBounds.y);
 		modelElement.setWidth(shellBounds.width);
 		modelElement.setHeight(shellBounds.height);
-		eventBroker.send(SHELL_CREATED, shell);
 		return shell;
 	}
 
@@ -843,6 +842,18 @@ public class RienaWBWRenderer extends SWTPartRenderer {
 		} else {
 			shell.setVisible(false);
 		}
+
+		rienaPostProcess(shell);
+	}
+
+	/**
+	 * notify the Riena SubApplicationBinder
+	 * 
+	 * @param shell
+	 *            the newly created {@link Shell}
+	 */
+	private void rienaPostProcess(final Shell shell) {
+		eventBroker.send(SHELL_CREATED, shell);
 	}
 
 	private Object[] promptForSave(final Shell parentShell, final Collection<MPart> saveableParts) {
