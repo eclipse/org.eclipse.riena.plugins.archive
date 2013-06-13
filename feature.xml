@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.riena.build.feature.sdk.e4"
-      label="Riena Target Components (E4)"
+      label="Riena Target Components for E4"
       version="5.0.0.qualifier"
       provider-name="Eclipse.org - Riena">
 
