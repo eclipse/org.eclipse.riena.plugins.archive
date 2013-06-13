@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.riena.build.feature.core.sdk.e4"
-      label="Riena Core Target Components (E4)"
+      label="Riena Core Target Components for E4 and RAP"
       version="5.0.0.qualifier"
       provider-name="Eclipse.org - Riena">
 
