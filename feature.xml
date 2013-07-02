@@ -72,4 +72,32 @@ Java and all Java-based trademarks are trademarks of Sun Microsystems, Inc. in t
          id="org.eclipse.riena.build.feature.sdk.e4"
          version="0.0.0"/>
 
+   <plugin
+         id="org.eclipse.nebula.widgets.compositetable"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.nebula.widgets.compositetable.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.nebula.widgets.grid"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.nebula.widgets.grid.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>
