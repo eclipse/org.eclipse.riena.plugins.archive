@@ -92,7 +92,6 @@ plugin@org.apache.commons.collections.source=GET,http://www.eclipse.org/download
 plugin@org.apache.commons.logging,1.0.4=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.commons.logging_1.0.4.v201101211617.jar
 plugin@org.apache.commons.logging.source,1.0.4=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.commons.logging.source_1.0.4.v201101211617.jar
 plugin@org.apache.log4j=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.log4j_1.2.13.v200903072027.jar
-plugin@org.apache.log4j.source=GET,plugin@org.apache.log4j=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.log4j.source_1.2.13.v200903072027.jar
 plugin@org.apache.oro=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.oro_2.0.8.v201005080400.jar
 plugin@org.apache.oro.source=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.oro.source_2.0.8.v201005080400.jar
 plugin@org.easymock,2.4.0=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.easymock_2.4.0.v20090202-0900.jar
