@@ -94,7 +94,8 @@ plugin@org.eclipse.equinox.log=GET,file:///C:/build3/prebuild/plugins/org.eclips
 #plugin@org.eclipse.nebula.widgets.compositetable=GET,http://download.eclipse.org/rt/riena/downloads/nebuladrops/Galileo_01/org.eclipse.nebula.widgets.compositetable_1.0.0.jar
 #plugin@org.eclipse.nebula.widgets.grid=GET,http://download.eclipse.org/technology/nebula/grid/update-N/plugins/org.eclipse.nebula.widgets.grid_1.0.0.HEAD.jar
 #plugin@org.junit,3.8.2=GET,http://download.eclipse.org/tools/orbit/downloads/drops/S20100831105311/bundles/org.junit_3.8.2.v3_8_2_v20100427-1100.zip,unpack=true
-#plugin@org.pushingpixels.trident=CVS,v20110609,:pserver:anonymous@dev.eclipse.org:/cvsroot/eclipse,,e4/org.eclipse.e4.ui/bundles/org.pushingpixels.trident
+plugin@org.pushingpixels.trident=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.pushingpixels.trident_1.2.0.v201305152020.jar
+plugin@org.pushingpixels.trident.source=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.pushingpixels.trident_1.2.0.v201305152020.jar
 
 # these plugins come from c:\build3\prebuild
 # we want to ship the originals from the Eclipse Platform, and _not_ build our own
@@ -118,7 +119,6 @@ plugin@org.eclipse.nebula.widgets.compositetable.source=GET,file:///C:/build3/pr
 plugin@org.eclipse.nebula.widgets.grid=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.grid_1.0.0.201306151117.jar
 plugin@org.eclipse.nebula.widgets.grid.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.grid.source_1.0.0.201306151117.jar
 plugin@org.junit,3.8.2=GET,file:///C:/build3/prebuild/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100.zip,unpack=true
-#plugin@org.pushingpixels.trident=GET,file:///C:/build3/prebuild/plugins/org.pushingpixels.trident_1.2.0.v20110609.jar
-plugin@org.pushingpixels.trident=GET,file:///C:/build3/prebuild/plugins/org.pushingpixels.trident_1.2.0.201106090835.jar
+#plugin@org.pushingpixels.trident=GET,file:///C:/build3/prebuild/plugins/org.pushingpixels.trident_1.2.0.201106090835.jar
 plugin@org.junit,4.10.0=GET,file:///C:/build3/prebuild/plugins/org.junit_4.10.0.v20120426-0900.jar,unpack=true
 plugin@org.hamcrest.core,1.1.0=GET,file:///C:/build3/prebuild/plugins/org.hamcrest.core_1.1.0.201211221430.jar,unpack=true
