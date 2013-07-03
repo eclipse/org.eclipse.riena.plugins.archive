@@ -84,41 +84,47 @@ plugin@org.eclipse.equinox.security=GET,file:///C:/build3/prebuild/plugins/org.e
 #plugin@org.eclipse.equinox.log=CVS,v20100118,:pserver:anonymous@dev.eclipse.org:/cvsroot/rt,,org.eclipse.equinox/compendium/bundles/org.eclipse.equinox.log
 plugin@org.eclipse.equinox.log=GET,file:///C:/build3/prebuild/plugins/org.eclipse.equinox.log_1.2.200.v20110502.jar
 
-# external libs - from orbit, cvs or target
-#plugin@org.apache.commons.beanutils,1.7.0=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.apache.commons.beanutils_1.7.0.v200902170505.jar
-#plugin@org.apache.commons.logging,1.0.4=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20100519200754/bundles/org.apache.commons.logging_1.0.4.v201005080501.jar
-#plugin@org.apache.log4j=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.apache.log4j_1.2.13.v200903072027.jar
-#plugin@org.apache.oro=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20100114021427/bundles/org.apache.oro_2.0.8.v200903061218.jar
-#plugin@org.easymock,2.4.0=GET,http://download.eclipse.org/tools/orbit/downloads/drops/R20090529135407/bundles/org.easymock_2.4.0.v20090202-0900.jar
-#plugin@org.eclipse.nebula.widgets.compositetable=CVS,Galileo_01,:pserver:rienaBuild@build.eclipse.org:/cvsroot/technology,,org.eclipse.swt.nebula/org.eclipse.nebula.widgets.compositetable
-#plugin@org.eclipse.nebula.widgets.compositetable=GET,http://download.eclipse.org/rt/riena/downloads/nebuladrops/Galileo_01/org.eclipse.nebula.widgets.compositetable_1.0.0.jar
-#plugin@org.eclipse.nebula.widgets.grid=GET,http://download.eclipse.org/technology/nebula/grid/update-N/plugins/org.eclipse.nebula.widgets.grid_1.0.0.HEAD.jar
-#plugin@org.junit,3.8.2=GET,http://download.eclipse.org/tools/orbit/downloads/drops/S20100831105311/bundles/org.junit_3.8.2.v3_8_2_v20100427-1100.zip,unpack=true
+# external libs - from orbit, target
+plugin@org.apache.commons.beanutils,1.8.0=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.commons.beanutils_1.8.0.v201205091237.jar
+plugin@org.apache.commons.beanutils.source,1.8.0=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.commons.beanutils.source_1.8.0.v201205091237.jar
+plugin@org.apache.commons.collections=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.commons.collections_3.2.0.v2013030210310.jar
+plugin@org.apache.commons.collections.source=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.commons.collections.source_3.2.0.v2013030210310.jar
+plugin@org.apache.commons.logging,1.0.4=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.commons.logging_1.0.4.v201101211617.jar
+plugin@org.apache.commons.logging.source,1.0.4=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.commons.logging.source_1.0.4.v201101211617.jar
+plugin@org.apache.log4j=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.log4j_1.2.13.v200903072027.jar
+plugin@org.apache.log4j.source=GET,plugin@org.apache.log4j=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.log4j.source_1.2.13.v200903072027.jar
+plugin@org.apache.oro=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.oro_2.0.8.v201005080400.jar
+plugin@org.apache.oro.source=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.oro.source_2.0.8.v201005080400.jar
+plugin@org.easymock,2.4.0=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.easymock_2.4.0.v20090202-0900.jar
+plugin@org.junit,4.11.0=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.junit_4.11.0.v201303080030.jar,unpack=true
 plugin@org.pushingpixels.trident=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.pushingpixels.trident_1.2.0.v201305152020.jar
 plugin@org.pushingpixels.trident.source=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.pushingpixels.trident_1.2.0.v201305152020.jar
+plugin@org.hamcrest.core,1.1.0=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.hamcrest.core_1.3.0.v201303031735.jar
+plugin@org.hamcrest.core.source,1.1.0=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.hamcrest.core.source_1.3.0.v201303031735.jar
+
 
 # these plugins come from c:\build3\prebuild
 # we want to ship the originals from the Eclipse Platform, and _not_ build our own
 #plugin@org.apache.commons.beanutils=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.beanutils_1.7.0.v200902170505.jar
-plugin@org.apache.commons.beanutils=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.beanutils_1.8.0.v201205091237.jar
-plugin@org.apache.commons.beanutils.source=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.beanutils.source_1.8.0.v201205091237.jar
-plugin@org.apache.commons.collections=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.collections_3.2.0.v201005080500.jar
-plugin@org.apache.commons.collections.source=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.collections.source_3.2.0.v201005080500.jar
-plugin@org.apache.commons.logging=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.logging_1.0.4.v201101211617.jar
+#plugin@org.apache.commons.beanutils=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.beanutils_1.8.0.v201205091237.jar
+#plugin@org.apache.commons.beanutils.source=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.beanutils.source_1.8.0.v201205091237.jar
+#plugin@org.apache.commons.collections=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.collections_3.2.0.v201005080500.jar
+#plugin@org.apache.commons.collections.source=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.collections.source_3.2.0.v201005080500.jar
+#plugin@org.apache.commons.logging=GET,file:///C:/build3/prebuild/plugins/org.apache.commons.logging_1.0.4.v201101211617.jar
 #plugin@org.apache.jasper=GET,file:///C:/build3/prebuild/plugins/org.apache.jasper_5.5.17.v201101211617.jar
-plugin@org.apache.log4j=GET,file:///C:/build3/prebuild/plugins/org.apache.log4j_1.2.13.v200903072027.jar
-plugin@org.apache.oro=GET,file:///C:/build3/prebuild/plugins/org.apache.oro_2.0.8.v200903061218.jar
-plugin@org.easymock,2.4.0=GET,file:///C:/build3/prebuild/plugins/org.easymock_2.4.0.v20090202-0900.jar
-plugin@org.eclipse.core.variables=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.variables_3.2.500.v20110511.jar
-plugin@org.eclipse.core.variables.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.variables.source_3.2.500.v20110511.jar
-plugin@org.eclipse.core.net=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net_1.2.100.I20110511-0800.jar
-plugin@org.eclipse.core.net.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net.source_1.2.100.I20110511-0800.jar
-plugin@org.eclipse.core.net.win32.x86=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net.win32.x86_1.0.100.I20110331-0827.jar
+#plugin@org.apache.log4j=GET,file:///C:/build3/prebuild/plugins/org.apache.log4j_1.2.13.v200903072027.jar
+#plugin@org.apache.oro=GET,file:///C:/build3/prebuild/plugins/org.apache.oro_2.0.8.v200903061218.jar
+#plugin@org.easymock,2.4.0=GET,file:///C:/build3/prebuild/plugins/org.easymock_2.4.0.v20090202-0900.jar
+#plugin@org.eclipse.core.variables=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.variables_3.2.500.v20110511.jar
+#plugin@org.eclipse.core.variables.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.variables.source_3.2.500.v20110511.jar
+#plugin@org.eclipse.core.net=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net_1.2.100.I20110511-0800.jar
+#plugin@org.eclipse.core.net.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net.source_1.2.100.I20110511-0800.jar
+#plugin@org.eclipse.core.net.win32.x86=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net.win32.x86_1.0.100.I20110331-0827.jar
 plugin@org.eclipse.nebula.widgets.compositetable=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.compositetable_1.0.0.201306151117.jar
 plugin@org.eclipse.nebula.widgets.compositetable.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.compositetable.source_1.0.0.201306151117.jar
 plugin@org.eclipse.nebula.widgets.grid=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.grid_1.0.0.201306151117.jar
 plugin@org.eclipse.nebula.widgets.grid.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.grid.source_1.0.0.201306151117.jar
-plugin@org.junit,3.8.2=GET,file:///C:/build3/prebuild/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100.zip,unpack=true
+#plugin@org.junit,3.8.2=GET,file:///C:/build3/prebuild/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100.zip,unpack=true
 #plugin@org.pushingpixels.trident=GET,file:///C:/build3/prebuild/plugins/org.pushingpixels.trident_1.2.0.201106090835.jar
-plugin@org.junit,4.10.0=GET,file:///C:/build3/prebuild/plugins/org.junit_4.10.0.v20120426-0900.jar,unpack=true
-plugin@org.hamcrest.core,1.1.0=GET,file:///C:/build3/prebuild/plugins/org.hamcrest.core_1.1.0.201211221430.jar,unpack=true
+#plugin@org.junit,4.10.0=GET,file:///C:/build3/prebuild/plugins/org.junit_4.10.0.v20120426-0900.jar,unpack=true
+#plugin@org.hamcrest.core,1.1.0=GET,file:///C:/build3/prebuild/plugins/org.hamcrest.core_1.1.0.201211221430.jar,unpack=true
