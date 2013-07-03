@@ -113,8 +113,8 @@ plugin@org.eclipse.core.variables.source=GET,file:///C:/build3/prebuild/plugins/
 plugin@org.eclipse.core.net=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net_1.2.100.I20110511-0800.jar
 plugin@org.eclipse.core.net.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net.source_1.2.100.I20110511-0800.jar
 plugin@org.eclipse.core.net.win32.x86=GET,file:///C:/build3/prebuild/plugins/org.eclipse.core.net.win32.x86_1.0.100.I20110331-0827.jar
-plugin@org.eclipse.nebula.widgets.compositetable=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.compositetable_1.0.0.jar
-plugin@org.eclipse.nebula.widgets.compositetable.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.compositetable.source_1.0.0.jar
+plugin@org.eclipse.nebula.widgets.compositetable=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.compositetable_1.0.0.201306151117.jar
+plugin@org.eclipse.nebula.widgets.compositetable.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.compositetable.source_1.0.0.201306151117.jar
 plugin@org.eclipse.nebula.widgets.grid=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.grid_1.0.0.201306151117.jar
 plugin@org.eclipse.nebula.widgets.grid.source=GET,file:///C:/build3/prebuild/plugins/org.eclipse.nebula.widgets.grid.source_1.0.0.201306151117.jar
 plugin@org.junit,3.8.2=GET,file:///C:/build3/prebuild/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100.zip,unpack=true
