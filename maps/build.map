@@ -92,7 +92,7 @@ plugin@org.apache.commons.collections,3.2.0=p2IU,id=org.apache.commons.collectio
 plugin@org.apache.commons.collections.source,3.2.0=p2IU,id=org.apache.commons.collections.source,version=3.2.0,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
 plugin@org.apache.commons.logging,1.0.4=p2IU,id=org.apache.commons.logging,version=1.0.4,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
 plugin@org.apache.commons.logging.source,1.0.4=p2IU,id=org.apache.commons.logging.source,version=1.0.4,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
-plugin@org.apache.log4j=p2IU,id=org.apache.log4j,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
+plugin@org.apache.log4j,1.2.13=p2IU,id=org.apache.log4j,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
 plugin@org.apache.oro,2.0.8=p2IU,id=org.apache.oro,version=2.0.8,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
 plugin@org.apache.oro.source,2.0.8=p2IU,id=org.apache.oro.source,version=2.0.8,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
 plugin@org.easymock,2.4.0=p2IU,id=org.easymock,version=2.4.0,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
