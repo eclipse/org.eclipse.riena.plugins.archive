@@ -86,21 +86,21 @@ plugin@org.eclipse.equinox.log=GET,file:///C:/build3/prebuild/plugins/org.eclips
 
 # external libs - from orbit, target using p2
 
-plugin@org.apache.commons.beanutils,1.8.0=p2IU,id=org.apache.commons.beanutils,version=1.8.0,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
-plugin@org.apache.commons.beanutils.source,1.8.0=p2IU,id=org.apache.commons.beanutils.source,version=1.8.0,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
-plugin@org.apache.commons.collections,3.2.0=p2IU,id=org.apache.commons.collections,version=3.2.0,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
-plugin@org.apache.commons.collections.source,3.2.0=p2IU,id=org.apache.commons.collections.source,version=3.2.0,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
-plugin@org.apache.commons.logging,1.0.4=p2IU,id=org.apache.commons.logging,version=1.0.4,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
-plugin@org.apache.commons.logging.source,1.0.4=p2IU,id=org.apache.commons.logging.source,version=1.0.4,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
+plugin@org.apache.commons.beanutils,1.8.0=p2IU,id=org.apache.commons.beanutils,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
+plugin@org.apache.commons.beanutils.source,1.8.0=p2IU,id=org.apache.commons.beanutils.source,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
+plugin@org.apache.commons.collections,3.2.0=p2IU,id=org.apache.commons.collections,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
+plugin@org.apache.commons.collections.source,3.2.0=p2IU,id=org.apache.commons.collections.source,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
+plugin@org.apache.commons.logging,1.0.4=p2IU,id=org.apache.commons.logging,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
+plugin@org.apache.commons.logging.source,1.0.4=p2IU,id=org.apache.commons.logging.source,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
 plugin@org.apache.log4j,1.2.13=p2IU,id=org.apache.log4j,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
-plugin@org.apache.oro,2.0.8=p2IU,id=org.apache.oro,version=2.0.8,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
-plugin@org.apache.oro.source,2.0.8=p2IU,id=org.apache.oro.source,version=2.0.8,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
-plugin@org.easymock,2.4.0=p2IU,id=org.easymock,version=2.4.0,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
-plugin@org.junit,4.11.0=p2IU,id=org.junit,version=4.11.0,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
-plugin@org.pushingpixels.trident,1.2.0=p2IU,id=org.pushingpixels.trident,version=1.2.0,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
-plugin@org.pushingpixels.trident.source,1.2.0=p2IU,id=org.pushingpixels.trident.source,version=1.2.0,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
-plugin@org.hamcrest.core,1.3.0=p2IU,id=org.hamcrest.core,version=1.3.0,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
-plugin@org.hamcrest.core.source,1.3.0=p2IU,id=org.hamcrest.core,version=1.3.0,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
+plugin@org.apache.oro,2.0.8=p2IU,id=org.apache.oro,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
+plugin@org.apache.oro.source,2.0.8=p2IU,id=org.apache.oro.source,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
+plugin@org.easymock,2.4.0=p2IU,id=org.easymock,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
+plugin@org.junit,4.11.0=p2IU,id=org.junit,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
+plugin@org.pushingpixels.trident,1.2.0=p2IU,id=org.pushingpixels.trident,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
+plugin@org.pushingpixels.trident.source,1.2.0=p2IU,id=org.pushingpixels.trident.source,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
+plugin@org.hamcrest.core,1.3.0=p2IU,id=org.hamcrest.core,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
+plugin@org.hamcrest.core.source,1.3.0=p2IU,id=org.hamcrest.core,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/
 
 # external libs - from orbit, target using direct download links
 #plugin@org.apache.commons.beanutils,1.8.0=GET,http://www.eclipse.org/downloads/download.php?r=1&file=/tools/orbit/downloads/drops/R20130517111416/repository/plugins/org.apache.commons.beanutils_1.8.0.v201205091237.jar
