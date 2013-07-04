@@ -130,7 +130,8 @@
 			<fileset dir="${builder}/../plugins">
 			</fileset>
 		</copy>
-
+		
+		<delete dir="${builder}/../plugins"/>
 	</target>
 
 	<!-- ===================================================================== -->

@@ -125,6 +125,17 @@
 	<!-- Steps to do after fetching the build elements -->
 	<!-- ===================================================================== -->
 	<target name="postFetch">
+		<!-- workaround since fetchIUs places the 3rd party libs in wrong directory -->
+		<echo>postFetch ${builder}</echo>
+		<delete file="${builder}/../artifacts.jar"/>
+		<delete file="${builder}/../content.jar"/>
+
+		<copy todir="${builder}/../tmp/build/plugins">
+			<fileset dir="${builder}/../plugins">
+			</fileset>
+		</copy>
+		
+		<delete dir="${builder}/../plugins"/>
 	</target>
 
 	<!-- ===================================================================== -->
