@@ -21,7 +21,7 @@
 		<!--
 		<path location="${eclipse-home}/plugins/org.junit_3.8.2.v3_8_2_v20100427-1100/junit.jar"/>
 		-->
-		<path location="${eclipse-home}/plugins/org.junit_4.10.0.v20120426-0900/junit.jar" />
+		<path location="${eclipse-home}/plugins/org.junit_4.11.0.v201303080030/junit.jar" />
 		<path location="${eclipse-home}/plugins/org.apache.ant_1.8.3.v20120321-1730/lib/ant.jar" />
 		<path location="${eclipse-home}/plugins/org.apache.ant_1.8.3.v20120321-1730/lib/ant-junit.jar" />
 		<path location="${eclipse-home}/plugins/org.eclipse.core.runtime_3.8.0.v20120521-2346.jar" />
