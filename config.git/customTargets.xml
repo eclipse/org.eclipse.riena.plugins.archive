@@ -127,7 +127,7 @@
 		<delete file="${builder}/../content.jar"/>
 
 		<copy todir="${builder}/../tmp/build/plugins">
-			<fileset dir="./plugins">
+			<fileset dir="${builder}/../plugins">
 			</fileset>
 		</copy>
 
