@@ -122,13 +122,14 @@
 	<!-- ===================================================================== -->
 	<target name="postFetch">
 		<!-- workaround since fetchIUs places the 3rd party libs in wrong directory -->
+		<echo>postFetch ${basedir}</echo>
 		<delete>
-			<fileset dir=".">
+			<fileset dir="${basedir}">
 				<include name="artifacs.jar,content.jar" />
 			</fileset>
 		</delete>
 
-		<copy toodir="./tmp/build/plugins">
+		<copy toodir="${basedir}/tmp/build/plugins">
 			<fileset dir="./plugins">
 			</fileset>
 		</copy>
