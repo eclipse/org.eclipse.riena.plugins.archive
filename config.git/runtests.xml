@@ -14,8 +14,10 @@
 	<!-- property name="test-name" value="org.eclipse.riena.core.marker.AllTests"/-->
 	
 	<!-- compute equinox launcher jar name for use with the java calls -->
-	<fileset id="equinox.launcher.fileset" dir="${eclipse-home}/plugins" includes="**/org.eclipse.equinox.launcher_*.jar" />
-	<pathconvert property="equinox.launcher.jar" refid="equinox.launcher.fileset" />
+	<fileset id="equinox.launcher.fileset" dir="${basedir}/tools/eclipse.${ECLIPSE_STREAM}.sdk/eclipse/plugins" includes="**/org.eclipse.equinox.launcher_*.jar" />
+	<pathconvert property="equinox.launcher.jar.origin" refid="equinox.launcher.fileset" />
+	<basename property="equinox.launcher.jar.base" file="${equinox.launcher.jar.origin}"/>
+	<property name="equinox.launcher.jar" value="${eclipse-home}/plugins/${equinox.launcher.jar.base}" />
 
 	<path id="pde.test.listener.class.path">
 		<fileset dir="${eclipse-home}/plugins">
