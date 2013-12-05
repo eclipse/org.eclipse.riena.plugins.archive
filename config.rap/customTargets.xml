@@ -83,7 +83,7 @@
 		
 		<unzip
 			dest="${builder}/../target/rap/eclipse"
-			src="${builder}/../target/rap-2.1.0-N-20130520-1326.zip" />
+			src="${builder}/../target/rap-2.2.0-RC1-20131127-1035.zip" />
 	</target>
 
 	<!-- ===================================================================== -->
