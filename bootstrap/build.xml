@@ -8,6 +8,10 @@
 	<property name="pluginDir" value="${basedir}/tools/eclipse.${ECLIPSE_STREAM}.sdk/eclipse/plugins"/>
 	<property name="fetchCacheLocation" value="c:/scmCache"/>
 	<property name="gitCache" value="${fetchCacheLocation}/ssh___rienaBuild_build_eclipse_org_gitroot_riena_org_eclipse_riena_git"/>
+	
+	<!-- compute equinox launcher jar name for use with the java calls -->
+	<fileset id="equinox.launcher.fileset" dir="${pluginDir}" includes="**/org.eclipse.equinox.launcher_*.jar" />
+	<pathconvert property="equinox.launcher.jar" refid="equinox.launcher.fileset" />
 
 	<target name="clean">
 		<delete dir="config"/>
@@ -38,7 +42,7 @@
 			<fileset dir="${gitCache}/org.eclipse.riena.build3/config.rap"/>
 		</copy>
 	</target>
-	
+
 	<target name="prepareBuild">
 		<available
 			property="has.SDK"
@@ -49,7 +53,7 @@
 		    file="prebuild/plugins"/>
 		<antcall target="preparePrebuild"/>
 	</target>
-	
+
 	<target name="prepareSDK" unless="has.SDK">
 		<unzip
 			dest="tools/eclipse.${ECLIPSE_STREAM}.sdk">
@@ -58,36 +62,36 @@
 			</fileset>
 		</unzip>
 		<copy todir="tools/eclipse.${ECLIPSE_STREAM}.sdk/eclipse">
-		    <fileset dir="tools/gitfetchfactory"/>
+			<fileset dir="tools/gitfetchfactory"/>
 		</copy>
 
 	</target>
-	
+
 	<target name="preparePrebuild" unless="has.prebuild">
 		<antcall target="update"/>
 	</target>
-	
+
 	<target name="build" depends="prepareBuild">
 		<delete dir="tmp/build"/>
 		<java 
 			taskname="build"
-			jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+			jar="${equinox.launcher.jar}"
 			fork="true"
 			failonerror="true">
 			<arg value="-application"/>
 			<arg value="org.eclipse.ant.core.antRunner"/>
-		    <arg value="-buildfile"/>
-		    <arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
-		    <arg value="-Dbuilder=${basedir}/config"/>
-            <arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
+			<arg value="-buildfile"/>
+			<arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
+			<arg value="-Dbuilder=${basedir}/config"/>
+			<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 		</java>
 	</target>
-	
+
 	<target name="buildgit" depends="prepareBuild">
 		<delete dir="tmp/build"/>
 		<java 
 			taskname="build"
-			jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+			jar="${equinox.launcher.jar}"
 			fork="true"
 			failonerror="true">
 			<arg value="-application"/>
@@ -108,7 +112,7 @@
 		<delete dir="tmp/build"/>
 		<java 
 			taskname="build"
-			jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+			jar="${equinox.launcher.jar}"
 			fork="true"
 			failonerror="true">
 			<arg value="-application"/>
@@ -124,12 +128,12 @@
 			<arg value="-DsdkVer=${sdkVer}"/>
 		</java>
 	</target>
-	
+
 	<target name="buildgit3xe4" depends="prepareBuild">
 		<delete dir="tmp/build"/>
 		<java 
 			taskname="build"
-			jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+			jar="${equinox.launcher.jar}"
 			fork="true"
 			failonerror="true">
 			<arg value="-application"/>
@@ -147,30 +151,30 @@
 	</target>
 
 	<target name="buildrap" depends="prepareBuild">
-			<delete dir="tmp/build"/>
-			<java 
+		<delete dir="tmp/build"/>
+		<java 
 				taskname="build"
-				jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+				jar="${equinox.launcher.jar}"
 				fork="true"
 				failonerror="true">
-				<arg value="-application"/>
-				<arg value="org.eclipse.ant.core.antRunner"/>
-				<arg value="-buildfile"/>
-				<arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
-				<arg value="-Dbuilder=${basedir}/config.rap"/>
-				<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
-				<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
-				<arg value="-DBUILD_QUALIFIER=${BUILD_QUALIFIER}"/>
-				<arg value="-DgitCache=${gitCache}"/>
-				<arg value="-DfetchCacheLocation=${fetchCacheLocation}"/>
-			</java>
-		</target>	
-	
+			<arg value="-application"/>
+			<arg value="org.eclipse.ant.core.antRunner"/>
+			<arg value="-buildfile"/>
+			<arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
+			<arg value="-Dbuilder=${basedir}/config.rap"/>
+			<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
+			<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
+			<arg value="-DBUILD_QUALIFIER=${BUILD_QUALIFIER}"/>
+			<arg value="-DgitCache=${gitCache}"/>
+			<arg value="-DfetchCacheLocation=${fetchCacheLocation}"/>
+		</java>
+	</target>
+
 	<target name="runtests">
 		<delete dir="tmp/tests"/>
 		<ant antfile="config.git/runtests.xml" target="run"/>
 	</target>
-	
+
 	<target name="runtestse4">
 		<delete dir="tmp/tests"/>
 		<ant antfile="config.git.e4/runtestse4.xml" target="run"/>
@@ -182,44 +186,44 @@
 		<mkdir dir="${basedir}/tmp/build/N.TestBuild/repack"/>
 		<java 
 				taskname="metadata"
-				jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+				jar="${equinox.launcher.jar}"
 				fork="true"
 				failonerror="true">
-				<arg value="-application"/>
-				<arg value="org.eclipse.update.core.siteOptimizer"/>
-	      		<arg line="-jarProcessor -processAll -repack -outputDir ${basedir}/tmp/build/N.TestBuild/repack" />
-    	  		<arg line="${basedir}/tmp/build/N.TestBuild/Riena-p2repo-*.zip" />
+			<arg value="-application"/>
+			<arg value="org.eclipse.update.core.siteOptimizer"/>
+			<arg line="-jarProcessor -processAll -repack -outputDir ${basedir}/tmp/build/N.TestBuild/repack" />
+			<arg line="${basedir}/tmp/build/N.TestBuild/Riena-p2repo-*.zip" />
 		</java>
 		<copy todir="${basedir}/tmp/build/N.TestBuild">
-		    <fileset dir="${basedir}/tmp/build/N.TestBuild/repack"/>
+			<fileset dir="${basedir}/tmp/build/N.TestBuild/repack"/>
 		</copy>
-		<delete dir="${basedir}/tmp/build/N.TestBuild/repack"/>	
+		<delete dir="${basedir}/tmp/build/N.TestBuild/repack"/>
 	</target>
-	
+
 	<target name="aftersign">
 		<echo>Creating pack200 files</echo>
 		<mkdir dir="${basedir}/signed/pack200"/>
 		<java 
 				taskname="pack"
-				jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+				jar="${equinox.launcher.jar}"
 				fork="true"
 				failonerror="true">
-				<arg value="-application"/>
-				<arg value="org.eclipse.update.core.siteOptimizer"/>
-	      		<arg line="-jarProcessor -processAll -pack -outputDir ${basedir}/signed/pack200" />
-    	  		<arg line="${basedir}/signed/Riena-p2repo-*.zip" />
+			<arg value="-application"/>
+			<arg value="org.eclipse.update.core.siteOptimizer"/>
+			<arg line="-jarProcessor -processAll -pack -outputDir ${basedir}/signed/pack200" />
+			<arg line="${basedir}/signed/Riena-p2repo-*.zip" />
 		</java>
-		
+
 		<echo>Unzip repo for generating metadata</echo>
 		<unzip dest="${basedir}/signed/unzip">
 			<fileset dir="${basedir}/signed/pack200/">
-			        <include name="*.zip"/>
-			    </fileset>
+				<include name="*.zip"/>
+			</fileset>
 		</unzip>
-		
+
 		<echo>Delete metadata</echo>
 		<delete>
-		    <fileset dir="${basedir}/signed/unzip" includes="*.jar,*.xml"/>
+			<fileset dir="${basedir}/signed/unzip" includes="*.jar,*.xml"/>
 		</delete>
 
 		<echo>Generate new metadata</echo>
@@ -249,24 +253,24 @@
 		</java -->
 		<java 
  				taskname="metadata"
-				jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
+				jar="${equinox.launcher.jar}"
 				fork="true"
 				failonerror="true">
-				<arg value="-application"/>
-				<arg value="org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher"/>
-				<arg value="-metadataRepository"/>
-				<arg value="file:${basedir}/signed/unzip"/>
-				<arg value="-artifactRepository"/>
-				<arg value="file:${basedir}/signed/unzip"/>
-				<arg value="-source"/>
-				<arg value="${basedir}/signed/unzip"/>
- 				<arg value="-publishArtifacts"/>
-				<arg value="-compress"/>
+			<arg value="-application"/>
+			<arg value="org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher"/>
+			<arg value="-metadataRepository"/>
+			<arg value="file:${basedir}/signed/unzip"/>
+			<arg value="-artifactRepository"/>
+			<arg value="file:${basedir}/signed/unzip"/>
+			<arg value="-source"/>
+			<arg value="${basedir}/signed/unzip"/>
+			<arg value="-publishArtifacts"/>
+			<arg value="-compress"/>
 		</java>
 
 		<echo>Delete pack200 dir</echo>
 		<delete dir="${basedir}/signed/pack200"/>
-	</target>	
+	</target>
 
 	<target name="update">
 		<delete dir="prebuild"/>
