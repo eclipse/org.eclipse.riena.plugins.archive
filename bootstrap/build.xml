@@ -12,6 +12,9 @@
 	<!-- compute equinox launcher jar name for use with the java calls -->
 	<fileset id="equinox.launcher.fileset" dir="${pluginDir}" includes="**/org.eclipse.equinox.launcher_*.jar" />
 	<pathconvert property="equinox.launcher.jar" refid="equinox.launcher.fileset" />
+	
+	<fileset id="pde.build.script.fileset" dir="${pluginDir}" includes="org.eclipse.pde.build_*/scripts/build.xml" />
+	<pathconvert property="pde.build.script" refid="pde.build.script.fileset" />
 
 	<target name="clean">
 		<delete dir="config"/>
@@ -81,7 +84,7 @@
 			<arg value="-application"/>
 			<arg value="org.eclipse.ant.core.antRunner"/>
 			<arg value="-buildfile"/>
-			<arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
+			<arg value="${pde.build.script}"/>
 			<arg value="-Dbuilder=${basedir}/config"/>
 			<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 		</java>
@@ -97,7 +100,7 @@
 			<arg value="-application"/>
 			<arg value="org.eclipse.ant.core.antRunner"/>
 			<arg value="-buildfile"/>
-			<arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
+			<arg value="${pde.build.script}"/>
 			<arg value="-Dbuilder=${basedir}/config.git"/>
 			<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 			<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
@@ -118,7 +121,7 @@
 			<arg value="-application"/>
 			<arg value="org.eclipse.ant.core.antRunner"/>
 			<arg value="-buildfile"/>
-			<arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
+			<arg value="${pde.build.script}"/>
 			<arg value="-Dbuilder=${basedir}/config.git.e4"/>
 			<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 			<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
@@ -139,7 +142,7 @@
 			<arg value="-application"/>
 			<arg value="org.eclipse.ant.core.antRunner"/>
 			<arg value="-buildfile"/>
-			<arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
+			<arg value="${pde.build.script}"/>
 			<arg value="-Dbuilder=${basedir}/config.git.3xe4"/>
 			<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 			<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
@@ -160,7 +163,7 @@
 			<arg value="-application"/>
 			<arg value="org.eclipse.ant.core.antRunner"/>
 			<arg value="-buildfile"/>
-			<arg value="${pluginDir}/org.eclipse.pde.build_${pdeBuildVer}/scripts/build.xml"/>
+			<arg value="${pde.build.script}"/>
 			<arg value="-Dbuilder=${basedir}/config.rap"/>
 			<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 			<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
