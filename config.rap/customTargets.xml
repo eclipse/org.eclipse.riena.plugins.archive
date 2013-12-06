@@ -191,10 +191,10 @@
 		<tstamp/>
 		<!-- create the build results -->
 		<zip
-			destfile="${buildDirectory}/N.TestBuild/Riena-on-RAP-target-${DSTAMP}${TSTAMP}.zip"
+			destfile="${buildDirectory}/N.TestBuild/Riena-on-RAP-target-${BUILD_QUALIFIER}.zip"
 			basedir="${buildDirectory}/buildEclipse/"/>
 		<copy
-			tofile="${buildDirectory}/N.TestBuild/Riena-on-RAP-p2repo-${DSTAMP}${TSTAMP}.zip"
+			tofile="${buildDirectory}/N.TestBuild/Riena-on-RAP-p2repo-${BUILD_QUALIFIER}.zip"
 			file="${buildDirectory}/N.TestBuild/org.eclipse.riena.build.feature.rap.sdk-TestBuild-group.group.group.zip"/>
 	</target>
 

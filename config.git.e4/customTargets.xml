@@ -241,11 +241,11 @@
 		
 		<delete dir="${buildDirectory}/buildEclipse/eclipse-helios"/>-->
 		<zip 
-			destfile="${buildDirectory}/N.TestBuild/Riena-target-${DSTAMP}${TSTAMP}-win32.zip"
+			destfile="${buildDirectory}/N.TestBuild/Riena-target-${BUILD_QUALIFIER}-win32.zip"
 			basedir="${buildDirectory}/buildEclipse/"/>
 		<!-- name the riena p2repo zip -->
 		<copy
-			tofile="${buildDirectory}/N.TestBuild/Riena-p2repo-${DSTAMP}${TSTAMP}-win32.zip" 
+			tofile="${buildDirectory}/N.TestBuild/Riena-p2repo-${BUILD_QUALIFIER}-win32.zip" 
 			file="${buildDirectory}/N.TestBuild/org.eclipse.riena.build.feature.e4-TestBuild-group.group.group.zip"/>
 	</target>
 

@@ -8,11 +8,11 @@
 	<property name="pluginDir" value="${basedir}/tools/eclipse.${ECLIPSE_STREAM}.sdk/eclipse/plugins"/>
 	<property name="fetchCacheLocation" value="c:/scmCache"/>
 	<property name="gitCache" value="${fetchCacheLocation}/ssh___rienaBuild_build_eclipse_org_gitroot_riena_org_eclipse_riena_git"/>
-	
+
 	<!-- compute equinox launcher jar name for use with the java calls -->
 	<fileset id="equinox.launcher.fileset" dir="${pluginDir}" includes="**/org.eclipse.equinox.launcher_*.jar" />
 	<pathconvert property="equinox.launcher.jar" refid="equinox.launcher.fileset" />
-	
+
 	<fileset id="pde.build.script.fileset" dir="${pluginDir}" includes="org.eclipse.pde.build_*/scripts/build.xml" />
 	<pathconvert property="pde.build.script" refid="pde.build.script.fileset" />
 
@@ -55,6 +55,13 @@
 		    property="has.prebuild"
 		    file="prebuild/plugins"/>
 		<antcall target="preparePrebuild"/>
+		
+		<!-- if building HEAD, include a timestamp in the qualifier -->
+		<tstamp />
+		<condition property="qualifier" value="HEAD_${DSTAMP}${TSTAMP}">
+			<equals arg1="HEAD" arg2="${BUILD_QUALIFIER}" />
+		</condition>
+		<property name="qualifier" value="${BUILD_QUALIFIER}" />
 	</target>
 
 	<target name="prepareSDK" unless="has.SDK">
@@ -104,7 +111,7 @@
 			<arg value="-Dbuilder=${basedir}/config.git"/>
 			<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 			<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
-			<arg value="-DBUILD_QUALIFIER=${BUILD_QUALIFIER}"/>
+			<arg value="-DBUILD_QUALIFIER=${qualifier}"/>
 			<arg value="-DgitCache=${gitCache}"/>
 			<arg value="-DfetchCacheLocation=${fetchCacheLocation}"/>
 			<arg value="-DsdkVer=${sdkVer}"/>
@@ -125,7 +132,7 @@
 			<arg value="-Dbuilder=${basedir}/config.git.e4"/>
 			<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 			<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
-			<arg value="-DBUILD_QUALIFIER=${BUILD_QUALIFIER}"/>
+			<arg value="-DBUILD_QUALIFIER=${qualifier}"/>
 			<arg value="-DgitCache=${gitCache}"/>
 			<arg value="-DfetchCacheLocation=${fetchCacheLocation}"/>
 			<arg value="-DsdkVer=${sdkVer}"/>
@@ -146,7 +153,7 @@
 			<arg value="-Dbuilder=${basedir}/config.git.3xe4"/>
 			<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 			<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
-			<arg value="-DBUILD_QUALIFIER=${BUILD_QUALIFIER}"/>
+			<arg value="-DBUILD_QUALIFIER=${qualifier}"/>
 			<arg value="-DgitCache=${gitCache}"/>
 			<arg value="-DfetchCacheLocation=${fetchCacheLocation}"/>
 			<arg value="-DsdkVer=${sdkVer}"/>
@@ -167,7 +174,7 @@
 			<arg value="-Dbuilder=${basedir}/config.rap"/>
 			<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 			<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
-			<arg value="-DBUILD_QUALIFIER=${BUILD_QUALIFIER}"/>
+			<arg value="-DBUILD_QUALIFIER=${qualifier}"/>
 			<arg value="-DgitCache=${gitCache}"/>
 			<arg value="-DfetchCacheLocation=${fetchCacheLocation}"/>
 		</java>
