@@ -296,4 +296,48 @@
 			<fileset dir="${gitCache}/org.eclipse.riena.build3/prebuild"/>
 		</copy>
 	</target>
+	
+	<target name="buildReleaseRepo" depends="prepareBuild" description="Creates a p2 repository containing Riena on E4 and Riena on RAP">
+		<property name="pkg.dir" value="${basedir}/tmp/pkg"/>
+		<property name="tag" value="${BUILD_QUALIFIER}" />
+		<property name="pkg.input.dir" value="${pkg.dir}" />
+		<property name="pkg.output.dir" value="${pkg.dir}\output" />
+
+		<mkdir dir="${pkg.output.dir}" />
+		
+		<property name="riena.on.e4.file" value="Riena-p2repo-${tag}-win32.zip" />
+		<property name="riena.on.rap.file" value="Riena-on-RAP-p2repo-${tag}.zip" />
+		
+		<unzip dest="${pkg.output.dir}">
+			<fileset dir="${pkg.input.dir}">
+				<include name="${riena.on.e4.file}" />
+				<include name="${riena.on.rap.file}" />
+			</fileset>
+		</unzip>
+		
+		<delete file="${pkg.output.dir}/metadata.xml" />
+		<delete file="${pkg.output.dir}/artifacts.xml" />
+		<delete>
+			<fileset dir="${pkg.output.dir}">
+				<include name="metadata.xml" />
+				<include name="artifacts.xml" />
+				<include name="features/org.eclipse.riena.build.feature.e4_*.jar" />
+			</fileset>
+		</delete>
+
+		<java taskname="metadata" jar="${equinox.launcher.jar}" fork="true" failonerror="true">
+			<arg value="-application" />
+			<arg value="org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher" />
+			<arg value="-metadataRepository" />
+			<arg value="file:${pkg.output.dir}" />
+			<arg value="-artifactRepository" />
+			<arg value="file:${pkg.output.dir}" />
+			<arg value="-source" />
+			<arg value="${pkg.output.dir}" />
+			<arg value="-publishArtifacts" />
+			<arg value="-compress" />
+		</java>
+		
+		<zip destfile="${pkg.output.dir}/riena-e4-rap-${tag}.zip" basedir="${pkg.output.dir}" />
+	</target>
 </project>

@@ -47,6 +47,7 @@ if '%1' EQU 'runtestse4' GOTO :RUNTESTSE4
 if '%1' EQU 'beforesign' GOTO :BEFORESIGN
 if '%1' EQU 'aftersign' GOTO :AFTERSIGN
 if '%1' EQU 'update' GOTO :UPDATE
+if '%1' EQU 'buildReleaseRepo' GOTO :RELEASE
 
 echo Usage:
 echo build build        - Build Riena against RCP
@@ -59,6 +60,10 @@ echo build runtestse4   - Run tests with E4 (must build against RCP-E4 first)
 echo build beforesign   - Steps before sign
 echo build aftersign    - Steps after sign
 echo build update       - Update ./prebuild dir from server (run when needed) 
+GOTO :EOF
+
+:RELEASE
+ant -f build.xml -DECLIPSE_STREAM=e4 -DBUILD_QUALIFIER=%BUILD_QUALIFIER% clean buildReleaseRepo
 GOTO :EOF
 
 :BUILD
@@ -83,7 +88,7 @@ GOTO :EOF
 
 :BUILDRAP
 echo Building version CVS=%FETCHTAG_PARM% GIT=%FETCHTAG_GIT_PARM% BUILD=%BUILD_QUALIFIER% against RAP
-ant -f build.xml -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% -DBUILD_QUALIFIER=%BUILD_QUALIFIER% clean buildrap
+ant -f build.xml -DECLIPSE_STREAM=e4 -DFETCHTAG_PARM=%FETCHTAG_PARM% -DFETCHTAG_GIT_PARM=%FETCHTAG_GIT_PARM% -DBUILD_QUALIFIER=%BUILD_QUALIFIER% clean buildrap
 GOTO :EOF
 
 :RUNTESTS
