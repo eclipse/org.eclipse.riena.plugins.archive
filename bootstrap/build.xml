@@ -322,6 +322,8 @@
 				<include name="metadata.xml" />
 				<include name="artifacts.xml" />
 				<include name="features/org.eclipse.riena.build.feature.e4_*.jar" />
+				<!-- remove duplicating jar -->
+				<include name="plugins/org.hamcrest.core_1.3.0.v201303031735-unsigned.jar" />
 			</fileset>
 		</delete>
 
