@@ -80,7 +80,6 @@
 	</target>
 
 	<target name="prepareTarget" unless="has.target">
-		<!--
 		<echo>repo2runable: </echo>
 		<echo>  src= file:/${builder}/../target/equinox-SDK-${sdkVer}.zip</echo>
 		<echo>  dest= ${builder}/../target/eclipse</echo>
@@ -89,7 +88,6 @@
 				<repository location="file:/${builder}/../target/equinox-SDK-${sdkVer}.zip" />
 			</source>
 		</p2.repo2runnable>
-		-->
 
 		<echo>Copying files that we add to eclipse target platform from directory 'dropins'</echo>
 		<copy todir="${builder}/../target/eclipse/plugins">
@@ -97,11 +95,11 @@
 		</copy>
 
 		<echo>repo2runable: </echo>
-		<echo>  src= file:/${builder}/../target/org.eclipse.platform-${sdkVer}.zip</echo>
+		<echo>  src= file:/${builder}/../target/org.eclipse.rcp.source-${sdkVer}.zip</echo>
 		<echo>  dest= ${builder}/../target/eclipse</echo>
 		<p2.repo2runnable destination="${builder}/../target/eclipse">
 			<source>
-				<repository location="file:/${builder}/../target/org.eclipse.platform-${sdkVer}.zip" />
+				<repository location="file:/${builder}/../target/org.eclipse.rcp.source-${sdkVer}.zip" />
 			</source>
 		</p2.repo2runnable>
 	</target>
