@@ -80,6 +80,7 @@
 	</target>
 
 	<target name="prepareTarget" unless="has.target">
+		<!--
 		<echo>repo2runable: </echo>
 		<echo>  src= file:/${builder}/../target/equinox-SDK-${sdkVer}.zip</echo>
 		<echo>  dest= ${builder}/../target/eclipse</echo>
@@ -88,6 +89,7 @@
 				<repository location="file:/${builder}/../target/equinox-SDK-${sdkVer}.zip" />
 			</source>
 		</p2.repo2runnable>
+		-->
 
 		<echo>Copying files that we add to eclipse target platform from directory 'dropins'</echo>
 		<copy todir="${builder}/../target/eclipse/plugins">
@@ -197,7 +199,7 @@
 		<delete dir="${buildDirectory}/buildEclipse" />
 		<p2.repo2runnable destination="${buildDirectory}/buildEclipse/eclipse">
 			<source>
-				<repository location="file:/${buildDirectory}/${buildLabel}/org.eclipse.riena.build.feature-TestBuild-group.group.group.zip" />
+				<repository location="file:/${buildDirectory}/${buildLabel}/${rienaBuildFeature}-TestBuild-group.group.group.zip" />
 			</source>
 		</p2.repo2runnable>
 
@@ -234,7 +236,7 @@
 		<delete dir="${buildDirectory}/buildEclipse/eclipse-helios"/>-->
 		<zip destfile="${buildDirectory}/N.TestBuild/Riena-target-${BUILD_QUALIFIER}-win32.zip" basedir="${buildDirectory}/buildEclipse/" />
 		<!-- name the riena p2repo zip -->
-		<copy tofile="${buildDirectory}/N.TestBuild/Riena-p2repo-${BUILD_QUALIFIER}-win32.zip" file="${buildDirectory}/N.TestBuild/org.eclipse.riena.build.feature-TestBuild-group.group.group.zip" />
+		<copy tofile="${buildDirectory}/N.TestBuild/Riena-p2repo-${BUILD_QUALIFIER}-win32.zip" file="${buildDirectory}/N.TestBuild/${rienaBuildFeature}-TestBuild-group.group.group.zip"/>
 	</target>
 
 	<!-- ===================================================================== -->
@@ -242,7 +244,7 @@
 	<!-- ===================================================================== -->
 	<target name="postBuild">
 		<antcall target="gatherLogs" />
-		<delete file="${buildDirectory}/N.TestBuild/org.eclipse.riena.build.feature-TestBuild-group.group.group.zip" />
+		<delete file="${buildDirectory}/N.TestBuild/${rienaBuildFeature}-TestBuild-group.group.group.zip"/>
 	</target>
 
 	<!-- ===================================================================== -->
