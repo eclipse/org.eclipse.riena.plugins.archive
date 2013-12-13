@@ -85,7 +85,7 @@
 		<echo>  dest= ${builder}/../target/eclipse</echo>
 		<p2.repo2runnable destination="${builder}/../target/eclipse">
 			<source>
-				<repository location="file:/${builder}/../target/equinox-SDK-${sdkVer}.zip" />
+				<repository location="file:/${builder}/../target/equinox-SDK-${equinoxSdkVer}.zip" />
 			</source>
 		</p2.repo2runnable>
 
