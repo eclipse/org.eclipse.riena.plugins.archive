@@ -1,10 +1,5 @@
 <project name="Build for Riena">
 	<property file="build.${ECLIPSE_STREAM}.properties"/>
-	<!-- adjust these if you use another eclipse version -->
-	<!--property name="launcherVer" value="1.3.0.v20120522-1813"/>
-	<property name="pdeBuildVer" value="3.8.0.v20120523-1555"/>
-	<property name="sdkVer" value="3.8"/>
-	<property name="pluginDir" value="${basedir}/tools/eclipse.sdk/eclipse/plugins"/-->
 	<property name="pluginDir" value="${basedir}/tools/eclipse.${ECLIPSE_STREAM}.sdk/eclipse/plugins"/>
 	<property name="fetchCacheLocation" value="c:/scmCache"/>
 	<property name="gitCache" value="${fetchCacheLocation}/ssh___rienaBuild_build_eclipse_org_gitroot_riena_org_eclipse_riena_git"/>
@@ -19,24 +14,14 @@
 	<target name="clean">
 		<delete dir="config"/>
 		<delete dir="config.git"/>
-		<delete dir="config.git.3xe4"/>
 		<delete dir="config.git.e4"/>
 		<delete dir="config.rap"/>
 		<delete dir="tmp/org.eclipse.riena"/>
-		<!--cvs
-             cvsRoot=":ext:rienaBuild@build.eclipse.org:/cvsroot/rt"
-             cvsRsh="ssh"
-			 package="org.eclipse.riena/org.eclipse.riena.build3/config org.eclipse.riena/org.eclipse.riena.build3/config.rap org.eclipse.riena/org.eclipse.riena.build3/config.git"
-		     dest="tmp"
-             failonerror="true" tag="${FETCHTAG_PARM}"/-->
 		<copy todir="config">
 			<fileset dir="${gitCache}/org.eclipse.riena.build3/config"/>
 		</copy>
 		<copy todir="config.git">
 			<fileset dir="${gitCache}/org.eclipse.riena.build3/config.git"/>
-		</copy>
-		<copy todir="config.git.3xe4">
-			<fileset dir="${gitCache}/org.eclipse.riena.build3/config.git.3xe4"/>
 		</copy>
 		<copy todir="config.git.e4">
 			<fileset dir="${gitCache}/org.eclipse.riena.build3/config.git.e4"/>
@@ -81,22 +66,6 @@
 		<antcall target="update"/>
 	</target>
 
-	<target name="build" depends="prepareBuild">
-		<delete dir="tmp/build"/>
-		<java 
-			taskname="build"
-			jar="${equinox.launcher.jar}"
-			fork="true"
-			failonerror="true">
-			<arg value="-application"/>
-			<arg value="org.eclipse.ant.core.antRunner"/>
-			<arg value="-buildfile"/>
-			<arg value="${pde.build.script}"/>
-			<arg value="-Dbuilder=${basedir}/config"/>
-			<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
-		</java>
-	</target>
-
 	<target name="buildgit" depends="prepareBuild">
 		<delete dir="tmp/build"/>
 		<java 
@@ -109,12 +78,13 @@
 			<arg value="-buildfile"/>
 			<arg value="${pde.build.script}"/>
 			<arg value="-Dbuilder=${basedir}/config.git"/>
-			<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 			<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
 			<arg value="-DBUILD_QUALIFIER=${qualifier}"/>
 			<arg value="-DgitCache=${gitCache}"/>
 			<arg value="-DfetchCacheLocation=${fetchCacheLocation}"/>
 			<arg value="-DsdkVer=${sdkVer}"/>
+			<arg value="-DequinoxSdkVer=${equinoxSdkVer}"/>
+			<arg value="-DrienaBuildFeature=${rienaBuildFeature}"/>
 		</java>
 	</target>
 
@@ -130,33 +100,13 @@
 			<arg value="-buildfile"/>
 			<arg value="${pde.build.script}"/>
 			<arg value="-Dbuilder=${basedir}/config.git.e4"/>
-			<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 			<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
 			<arg value="-DBUILD_QUALIFIER=${qualifier}"/>
 			<arg value="-DgitCache=${gitCache}"/>
 			<arg value="-DfetchCacheLocation=${fetchCacheLocation}"/>
 			<arg value="-DsdkVer=${sdkVer}"/>
-		</java>
-	</target>
-
-	<target name="buildgit3xe4" depends="prepareBuild">
-		<delete dir="tmp/build"/>
-		<java 
-			taskname="build"
-			jar="${equinox.launcher.jar}"
-			fork="true"
-			failonerror="true">
-			<arg value="-application"/>
-			<arg value="org.eclipse.ant.core.antRunner"/>
-			<arg value="-buildfile"/>
-			<arg value="${pde.build.script}"/>
-			<arg value="-Dbuilder=${basedir}/config.git.3xe4"/>
-			<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
-			<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
-			<arg value="-DBUILD_QUALIFIER=${qualifier}"/>
-			<arg value="-DgitCache=${gitCache}"/>
-			<arg value="-DfetchCacheLocation=${fetchCacheLocation}"/>
-			<arg value="-DsdkVer=${sdkVer}"/>
+			<arg value="-DequinoxSdkVer=${equinoxSdkVer}"/>
+			<arg value="-DrienaBuildFeature=${rienaBuildFeature}"/>
 		</java>
 	</target>
 
@@ -172,7 +122,6 @@
 			<arg value="-buildfile"/>
 			<arg value="${pde.build.script}"/>
 			<arg value="-Dbuilder=${basedir}/config.rap"/>
-			<arg value="-DFETCHTAG_PARM=${FETCHTAG_PARM}"/>
 			<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
 			<arg value="-DBUILD_QUALIFIER=${qualifier}"/>
 			<arg value="-DgitCache=${gitCache}"/>
@@ -237,30 +186,6 @@
 		</delete>
 
 		<echo>Generate new metadata</echo>
-		<!--java 
- 				taskname="metadata"
-				jar="${pluginDir}/org.eclipse.equinox.launcher_${launcherVer}.jar"
-				fork="true"
-				failonerror="true">
-				<arg value="-application"/>
-				<arg value="org.eclipse.equinox.p2.metadata.generator.EclipseGenerator"/>
-				<arg value="-updateSite"/>
-				<arg value="${basedir}/signed/unzip"/>
-				<arg value="-metadataRepository"/>
-				<arg value="file:${basedir}/signed/unzip"/>
-				<arg value="-metadataRepositoryName"/>
-				<arg value="Riena Update Site"/>
-				<arg value="-artifactsRepository"/>
-				<arg value="file:${basedir}/signed/unzip"/>
-				<arg value="-artifactsRepositoryName"/>
-				<arg value="Helios Artifacts"/>
-				<arg value="-publishArtifacts"/>
-				<arg value="-publishArtifactRepository"/>
-				<arg value="-compress"/>
-				<arg value="-append"/>
-				<arg value="-noDefaultiUs"/>
-				<arg value="-reusePack200Files"/>
-		</java -->
 		<java 
  				taskname="metadata"
 				jar="${equinox.launcher.jar}"
@@ -284,14 +209,6 @@
 
 	<target name="update">
 		<delete dir="prebuild"/>
-		<!--
-		<cvs
-             cvsRoot=":ext:rienaBuild@build.eclipse.org:/cvsroot/rt"
-             cvsRsh="ssh"
-			 package="org.eclipse.riena/org.eclipse.riena.build3/prebuild"
-		     dest="tmp"
-             failonerror="true" tag="${FETCHTAG_PARM}"/>
-		-->
 		<copy todir="prebuild">
 			<fileset dir="${gitCache}/org.eclipse.riena.build3/prebuild"/>
 		</copy>
