@@ -1,9 +1,6 @@
 #Fri Aug 12 08:37:44 CEST 2011
 eclipse.preferences.version=1
 org.eclipse.jdt.core.builder.resourceCopyExclusionFilter=*.launch
-org.eclipse.jdt.core.classpathVariable.ECLIPSE_HOME=C\:/Develop/RCPLabs-SDK/eclipse-3.3
-org.eclipse.jdt.core.classpathVariable.JRE_LIB=C\:/Develop/j2sdk5/jre/lib/rt.jar
-org.eclipse.jdt.core.classpathVariable.JRE_SRC=C\:/Develop/j2sdk5/src.zip
 org.eclipse.jdt.core.classpathVariable.JRE_SRCROOT=
 org.eclipse.jdt.core.codeComplete.argumentPrefixes=
 org.eclipse.jdt.core.codeComplete.argumentSuffixes=
