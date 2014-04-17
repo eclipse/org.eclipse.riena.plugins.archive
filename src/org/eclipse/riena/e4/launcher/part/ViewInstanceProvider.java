@@ -73,7 +73,7 @@ public class ViewInstanceProvider {
 	public int decreaseViewCounter(final SwtViewId swtViewId) {
 		Integer count = viewUsage.get(swtViewId);
 		if (null == count) {
-			count = 1; // <---- why?
+			return -1;
 		} else {
 			count -= 1;
 		}
