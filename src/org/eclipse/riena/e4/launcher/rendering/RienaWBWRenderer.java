@@ -73,7 +73,6 @@ import org.eclipse.swt.events.ShellEvent;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -88,6 +87,7 @@ import org.eclipse.riena.e4.launcher.part.StatusLinePart;
 import org.eclipse.riena.internal.ui.swt.utils.RcpUtilities;
 import org.eclipse.riena.navigation.ApplicationNodeManager;
 import org.eclipse.riena.navigation.ui.swt.component.SwitcherComposite;
+import org.eclipse.riena.ui.swt.layout.DpiGridLayout;
 import org.eclipse.riena.ui.swt.lnf.LnfKeyConstants;
 import org.eclipse.riena.ui.swt.lnf.LnfManager;
 import org.eclipse.riena.ui.swt.lnf.renderer.DialogBorderRenderer;
@@ -546,7 +546,7 @@ public class RienaWBWRenderer extends SWTPartRenderer {
 	}
 
 	private void rienaCreateContents(final Composite clientArea) {
-		final GridLayout layout = new GridLayout();
+		final DpiGridLayout layout = new DpiGridLayout();
 		layout.marginWidth = getShellBorderWidth();
 		layout.marginHeight = getShellBorderWidth();
 		layout.horizontalSpacing = 0;
