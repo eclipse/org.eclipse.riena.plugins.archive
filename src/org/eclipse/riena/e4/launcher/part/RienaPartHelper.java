@@ -33,6 +33,7 @@ import org.eclipse.riena.e4.launcher.E4XMIConstants;
 import org.eclipse.riena.navigation.ISubApplicationNode;
 import org.eclipse.riena.navigation.ISubModuleNode;
 import org.eclipse.riena.navigation.model.SubModuleNode;
+import org.eclipse.riena.navigation.ui.swt.presentation.SwtViewId;
 import org.eclipse.riena.navigation.ui.swt.presentation.SwtViewProvider;
 import org.eclipse.riena.navigation.ui.swt.views.SubModuleView;
 import org.eclipse.riena.ui.workarea.WorkareaManager;
@@ -153,15 +154,15 @@ public class RienaPartHelper {
 	public void disposeNode(final ISubModuleNode source) {
 		final MPart part = findPart(source);
 		if (part != null) {
-			final String typeId = extractRienaCompoundId(part)[0];
+			final SwtViewId swtViewId = extractRienaCompoundId(part);
 			final Composite widget = (Composite) part.getWidget();
 			unregisterPart(part);
-			final int remainingCount = ViewInstanceProvider.getInstance().decreaseViewCounter(typeId);
+			final int remainingCount = ViewInstanceProvider.getInstance().decreaseViewCounter(swtViewId);
 			// honor reference counter (important for shared views)
 			if (remainingCount == 0) {
 				// kill zombie widget
 				widget.dispose();
-				ViewInstanceProvider.getInstance().unregisterParentComposite(typeId);
+				ViewInstanceProvider.getInstance().unregisterParentComposite(swtViewId);
 			}
 		}
 	}
@@ -174,8 +175,9 @@ public class RienaPartHelper {
 		part.getParent().getChildren().remove(part);
 	}
 
-	public static String[] extractRienaCompoundId(final MUIElement part) {
-		return part.getElementId().split(COUNTER_DELIMITER)[0].split(COMPOUND_ID_DELIMITER);
+	public static SwtViewId extractRienaCompoundId(final MUIElement part) {
+		final String[] split = part.getElementId().split(COUNTER_DELIMITER)[0].split(COMPOUND_ID_DELIMITER);
+		return new SwtViewId(split[0], split.length > 1 ? split[1] : null);
 	}
 
 	/**

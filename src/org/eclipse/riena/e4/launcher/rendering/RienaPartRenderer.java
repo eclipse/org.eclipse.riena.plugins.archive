@@ -21,6 +21,7 @@ import org.eclipse.riena.e4.launcher.part.ViewInstanceProvider;
 import org.eclipse.riena.navigation.ISubModuleNode;
 import org.eclipse.riena.navigation.listener.SubModuleNodeListener;
 import org.eclipse.riena.navigation.model.SubModuleNode;
+import org.eclipse.riena.navigation.ui.swt.presentation.SwtViewId;
 import org.eclipse.riena.navigation.ui.swt.presentation.SwtViewProvider;
 import org.eclipse.riena.navigation.ui.swt.views.SubModuleView;
 
@@ -34,24 +35,24 @@ public final class RienaPartRenderer extends ContributedPartRenderer {
 	@Override
 	public Object createWidget(final MUIElement element, final Object parent) {
 
-		final String[] rienaCompoundId = RienaPartHelper.extractRienaCompoundId(element);
+		final SwtViewId swtViewId = RienaPartHelper.extractRienaCompoundId(element);
 
 		// is node part?
-		if (isSubModuleNodePart(rienaCompoundId)) {
+		if (isSubModuleNodePart(swtViewId)) {
 			Composite parentComposite = null;
-			final String typeId = rienaCompoundId[0];
-			final String secondayId = rienaCompoundId[1];
+			final String typeId = swtViewId.getId();
+			final String secondayId = swtViewId.getSecondary();
 			final ISubModuleNode node = SwtViewProvider.getInstance().getNavigationNode(typeId, secondayId, ISubModuleNode.class);
 
 			// if the node belongs to a shared view try to lookup the view
 			if (RienaPartHelper.isSharedView(node)) {
-				parentComposite = ViewInstanceProvider.getInstance().getParentComposite(typeId);
+				parentComposite = ViewInstanceProvider.getInstance().getParentComposite(swtViewId);
 				if (null != parentComposite) {
 					// shared view found
 					if (null == element.getWidget()) {
 						// register the widget at the current element. This happens only one time for each part.
 						element.setWidget(parentComposite);
-						ViewInstanceProvider.getInstance().increaseViewCounter(typeId);
+						ViewInstanceProvider.getInstance().increaseViewCounter(swtViewId);
 					}
 				}
 			}
@@ -61,14 +62,14 @@ public final class RienaPartRenderer extends ContributedPartRenderer {
 				// create new view
 				parentComposite = (Composite) super.createWidget(element, parent);
 				// initialize and build view
-				initializeView(typeId, parentComposite, node);
+				initializeView(swtViewId, parentComposite, node);
 			} else {
 				// Cached view found! update node in view
-				updateViewNode(typeId, node);
+				updateViewNode(swtViewId, node);
 			}
 			// observe nodes related to shared views
 			if (RienaPartHelper.isSharedView(node)) {
-				node.addListener(new SharedViewNodeBinder(typeId));
+				node.addListener(new SharedViewNodeBinder(swtViewId));
 			}
 			return parentComposite;
 		}
@@ -78,15 +79,15 @@ public final class RienaPartRenderer extends ContributedPartRenderer {
 
 	}
 
-	private boolean isSubModuleNodePart(final String[] rienaCompoundId) {
-		return rienaCompoundId.length > 1;
+	private boolean isSubModuleNodePart(final SwtViewId rienaCompoundId) {
+		return rienaCompoundId.getSecondary() != null;
 	}
 
 	/**
 	 * Updates the {@link ISubModuleNode} in the {@link SubModuleView}
 	 */
-	private void updateViewNode(final String typeId, final ISubModuleNode node) {
-		final SubModuleView viewInstance = ViewInstanceProvider.getInstance().getView(typeId);
+	private void updateViewNode(final SwtViewId swtViewId, final ISubModuleNode node) {
+		final SubModuleView viewInstance = ViewInstanceProvider.getInstance().getView(swtViewId);
 		viewInstance.setNavigationNode(node);
 	}
 
@@ -94,12 +95,12 @@ public final class RienaPartRenderer extends ContributedPartRenderer {
 	 * Initializes and builds the related {@link SubModuleView}. This involves calling {@link SubModuleView#createPartControl(Composite)}
 	 * 
 	 */
-	private void initializeView(final String typeId, final Composite parentComposite, final ISubModuleNode node) {
+	private void initializeView(final SwtViewId swtViewId, final Composite parentComposite, final ISubModuleNode node) {
 		final ViewInstanceProvider viewInstanceProvider = ViewInstanceProvider.getInstance();
-		final SubModuleView viewInstance = viewInstanceProvider.getView(typeId);
+		final SubModuleView viewInstance = viewInstanceProvider.getView(swtViewId);
 		viewInstance.setE4Runtime(true);
-		viewInstanceProvider.registerParentComposite(typeId, parentComposite);
-		updateViewNode(typeId, node);
+		viewInstanceProvider.registerParentComposite(swtViewId, parentComposite);
+		updateViewNode(swtViewId, node);
 		ReflectionUtils.invokeHidden(viewInstance, "setShellProvider", RienaPartHelper.toShellProvider(parentComposite.getShell())); //$NON-NLS-1$
 		viewInstance.createPartControl(parentComposite);
 	}
@@ -109,15 +110,15 @@ public final class RienaPartRenderer extends ContributedPartRenderer {
 	 */
 	private final class SharedViewNodeBinder extends SubModuleNodeListener {
 
-		private final String typeId;
+		private final SwtViewId swtViewId;
 
-		private SharedViewNodeBinder(final String typeId) {
-			this.typeId = typeId;
+		private SharedViewNodeBinder(final SwtViewId swtViewId) {
+			this.swtViewId = swtViewId;
 		}
 
 		@Override
 		public void activated(final ISubModuleNode source) {
-			final SubModuleView viewInstance = ViewInstanceProvider.getInstance().getView(typeId);
+			final SubModuleView viewInstance = ViewInstanceProvider.getInstance().getView(swtViewId);
 			viewInstance.setNavigationNode(source);
 			viewInstance.bind(source);
 		}

@@ -19,13 +19,13 @@ import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.swt.widgets.Composite;
 
 import org.eclipse.riena.navigation.ISubModuleNode;
+import org.eclipse.riena.navigation.ui.swt.presentation.SwtViewId;
 import org.eclipse.riena.navigation.ui.swt.presentation.SwtViewProvider;
 import org.eclipse.riena.navigation.ui.swt.views.SubModuleView;
 
 /**
  * Wraps the {@link SubModuleView}.
  */
-@SuppressWarnings("restriction")
 public class PartWrapper {
 
 	public static final String VIEW_KEY = PartWrapper.class.getName() + ".rienaNavigationNodeView"; //$NON-NLS-1$
@@ -40,28 +40,25 @@ public class PartWrapper {
 		 * the elementId of the part has the following format: typeId:secondayId#partCounter
 		 */
 
-		final String[] rienaCompoundId = RienaPartHelper.extractRienaCompoundId(part);
-		final String typeId = rienaCompoundId[0];
-		final String secondayId = rienaCompoundId[1];
-
-		final ISubModuleNode node = SwtViewProvider.getInstance().getNavigationNode(typeId, secondayId, ISubModuleNode.class);
+		final SwtViewId swtViewId = RienaPartHelper.extractRienaCompoundId(part);
+		final ISubModuleNode node = SwtViewProvider.getInstance().getNavigationNode(swtViewId.getId(), swtViewId.getSecondary(), ISubModuleNode.class);
 
 		if (RienaPartHelper.isSharedView(node)) {
-			final SubModuleView viewInstance = ViewInstanceProvider.getInstance().getView(typeId);
+			final SubModuleView viewInstance = ViewInstanceProvider.getInstance().getView(swtViewId);
 			if (null != viewInstance) {
 				return;
 			}
 		}
-		createView(typeId);
+		createView(swtViewId);
 	}
 
-	private SubModuleView createView(final String typeId) {
+	private SubModuleView createView(final SwtViewId swtViewId) {
 		final IConfigurationElement[] configurationElements = extensionRegistry.getConfigurationElementsFor(VIEWS_EXT_POINT);
 		for (final IConfigurationElement element : configurationElements) {
-			if (typeId.equals(element.getAttribute("id"))) { //$NON-NLS-1$
+			if (swtViewId.getId().equals(element.getAttribute("id"))) { //$NON-NLS-1$
 				try {
 					final SubModuleView viewInstance = (SubModuleView) element.createExecutableExtension("class"); //$NON-NLS-1$
-					ViewInstanceProvider.getInstance().registerView(typeId, viewInstance);
+					ViewInstanceProvider.getInstance().registerView(swtViewId, viewInstance);
 					return viewInstance;
 				} catch (final CoreException e1) {
 					e1.printStackTrace();

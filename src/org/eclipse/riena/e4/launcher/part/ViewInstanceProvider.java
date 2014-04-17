@@ -17,6 +17,7 @@ import org.eclipse.swt.widgets.Composite;
 
 import org.eclipse.riena.core.singleton.SingletonProvider;
 import org.eclipse.riena.navigation.model.SubModuleNode;
+import org.eclipse.riena.navigation.ui.swt.presentation.SwtViewId;
 import org.eclipse.riena.navigation.ui.swt.views.SubModuleView;
 
 /**
@@ -26,75 +27,75 @@ public class ViewInstanceProvider {
 
 	private static final SingletonProvider<ViewInstanceProvider> UIS = new SingletonProvider<ViewInstanceProvider>(ViewInstanceProvider.class);
 
-	private final Map<String, SubModuleView> views;
-	private final Map<String, Composite> composites;
-	private final Map<String, Integer> viewUsage;
+	private final Map<SwtViewId, SubModuleView> views;
+	private final Map<SwtViewId, Composite> composites;
+	private final Map<SwtViewId, Integer> viewUsage;
 
 	private ViewInstanceProvider() {
-		views = new HashMap<String, SubModuleView>();
-		composites = new HashMap<String, Composite>();
-		viewUsage = new HashMap<String, Integer>();
+		views = new HashMap<SwtViewId, SubModuleView>();
+		composites = new HashMap<SwtViewId, Composite>();
+		viewUsage = new HashMap<SwtViewId, Integer>();
 	}
 
 	/**
 	 * @return the {@link SubModuleView} registered for the given typeId
 	 */
-	public SubModuleView getView(final String typeId) {
-		return views.get(typeId);
+	public SubModuleView getView(final SwtViewId swtViewId) {
+		return views.get(swtViewId);
 	}
 
 	/**
 	 * @return the parent Composite of the {@link SubModuleView} registered for the given typeId
 	 */
-	public Composite getParentComposite(final String typeId) {
-		return composites.get(typeId);
+	public Composite getParentComposite(final SwtViewId swtViewId) {
+		return composites.get(swtViewId);
 	}
 
 	/**
 	 * Registers the given {@link SubModuleView} for the given typeId
 	 */
-	public void registerView(final String typeId, final SubModuleView view) {
-		views.put(typeId, view);
-		increaseViewCounter(typeId);
+	public void registerView(final SwtViewId swtViewId, final SubModuleView view) {
+		views.put(swtViewId, view);
+		increaseViewCounter(swtViewId);
 	}
 
-	public int increaseViewCounter(final String typeId) {
-		Integer count = viewUsage.get(typeId);
+	public int increaseViewCounter(final SwtViewId swtViewId) {
+		Integer count = viewUsage.get(swtViewId);
 		if (null == count) {
 			count = 1;
 		} else {
 			count += 1;
 		}
-		viewUsage.put(typeId, count);
+		viewUsage.put(swtViewId, count);
 		return count;
 	}
 
-	public int decreaseViewCounter(final String typeId) {
-		Integer count = viewUsage.get(typeId);
+	public int decreaseViewCounter(final SwtViewId swtViewId) {
+		Integer count = viewUsage.get(swtViewId);
 		if (null == count) {
-			count = 1;
+			return -1;
 		} else {
 			count -= 1;
 		}
-		viewUsage.put(typeId, count);
+		viewUsage.put(swtViewId, count);
 		return count;
 	}
 
-	public void registerParentComposite(final String typeId, final Composite parent) {
-		composites.put(typeId, parent);
+	public void registerParentComposite(final SwtViewId swtViewId, final Composite parent) {
+		composites.put(swtViewId, parent);
 	}
 
-	public void unregisterView(final String typeId) {
-		views.remove(typeId);
+	public void unregisterView(final SwtViewId swtViewId) {
+		views.remove(swtViewId);
 	}
 
-	public void unregisterTypeId(final String typeId) {
-		unregisterParentComposite(typeId);
-		unregisterView(typeId);
+	public void unregisterTypeId(final SwtViewId swtViewId) {
+		unregisterParentComposite(swtViewId);
+		unregisterView(swtViewId);
 	}
 
-	public void unregisterParentComposite(final String typeId) {
-		composites.remove(typeId);
+	public void unregisterParentComposite(final SwtViewId swtViewId) {
+		composites.remove(swtViewId);
 	}
 
 	public static ViewInstanceProvider getInstance() {
