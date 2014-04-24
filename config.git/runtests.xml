@@ -76,6 +76,20 @@
 			<arg value="-vmargs" />
 			<arg value="-Declipse.p2.data.area=${eclipse-home}/p2" />
 		</java>
+		
+		<!-- replace the 3.8 SWT by the latest version -->
+		<delete>
+			<fileset dir="${eclipse-home}/plugins" includes="org.eclipse.swt*.jar"/>
+		</delete>
+		
+		<unzip dest="${eclipse-home}/dropins">
+			<fileset dir="${basedir}/target/swt">
+				<include name="*.zip" />
+			</fileset>
+			<patternset>
+				<include name="plugins/org.eclipse.swt*.jar" />
+			</patternset>
+		</unzip>
 	</target>
 
 	<target name="run" depends="init">
