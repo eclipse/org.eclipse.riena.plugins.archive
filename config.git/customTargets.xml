@@ -102,6 +102,20 @@
 				<repository location="file:/${builder}/../target/org.eclipse.rcp.source-${sdkVer}.zip" />
 			</source>
 		</p2.repo2runnable>
+		
+		<!-- replace the 3.8 SWT by the latest version -->
+		<delete>
+			<fileset dir="${builder}/../target/eclipse/plugins" includes="org.eclipse.swt*.jar"/>
+		</delete>
+		
+		<unzip dest="${builder}/../target/eclipse">
+			<fileset dir="${builder}/../target/swt">
+				<include name="*.zip" />
+			</fileset>
+			<patternset>
+				<include name="plugins/org.eclipse.swt*.jar" />
+			</patternset>
+		</unzip>
 	</target>
 
 	<!-- ===================================================================== -->
