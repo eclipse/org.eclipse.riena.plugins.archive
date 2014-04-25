@@ -80,7 +80,7 @@
 		<!-- replace the 3.8 SWT by the latest version -->
 		<delete>
 			<fileset dir="${eclipse-home}/plugins" includes="org.eclipse.swt*.jar" />
-			<filename>${eclipse-home}/configuration/org.eclipse.equinox.simpleconfigurator/bundles.info</filename>
+			<fileset dir="${eclipse-home}/configuration/org.eclipse.equinox.simpleconfigurator" includes="bundles.info" />
 		</delete>
 
 		<unzip dest="${eclipse-home}/dropins">
