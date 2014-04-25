@@ -12,9 +12,9 @@
 	<property name="test-name" value="org.eclipse.riena.AllTests" />
 	<!-- property name="test-name" value="org.eclipse.riena.AllFastTests"/!-->
 	<!-- property name="test-name" value="org.eclipse.riena.core.marker.AllTests"/-->
-	
+
 	<!-- compute equinox launcher jar name for the test install -->
-	<basename property="equinox.launcher.jar.base" file="${equinox.launcher.jar}"/>
+	<basename property="equinox.launcher.jar.base" file="${equinox.launcher.jar}" />
 	<property name="equinox.launcher.jar.test" value="${eclipse-home}/plugins/${equinox.launcher.jar.base}" />
 
 	<path id="pde.test.listener.class.path">
@@ -76,12 +76,13 @@
 			<arg value="-vmargs" />
 			<arg value="-Declipse.p2.data.area=${eclipse-home}/p2" />
 		</java>
-		
+
 		<!-- replace the 3.8 SWT by the latest version -->
 		<delete>
-			<fileset dir="${eclipse-home}/plugins" includes="org.eclipse.swt*.jar"/>
+			<fileset dir="${eclipse-home}/plugins" includes="org.eclipse.swt*.jar" />
+			<filename>${eclipse-home}/configuration/org.eclipse.equinox.simpleconfigurator/bundles.info</filename>
 		</delete>
-		
+
 		<unzip dest="${eclipse-home}/dropins">
 			<fileset dir="${basedir}/target/swt">
 				<include name="*.zip" />
@@ -90,6 +91,7 @@
 				<include name="plugins/org.eclipse.swt*.jar" />
 			</patternset>
 		</unzip>
+		<copy file="${basedir}/target/swt/bundles.info" tofile="${eclipse-home}/configuration/org.eclipse.equinox.simpleconfigurator/bundles.info" />
 	</target>
 
 	<target name="run" depends="init">
