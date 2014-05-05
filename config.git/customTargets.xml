@@ -104,6 +104,7 @@
 		</p2.repo2runnable>
 		
 		<!-- replace the 3.8 SWT by the latest version -->
+		<!--
 		<delete>
 			<fileset dir="${builder}/../target/eclipse/plugins" includes="org.eclipse.swt*.jar"/>
 		</delete>
@@ -116,6 +117,7 @@
 				<include name="plugins/org.eclipse.swt*.jar" />
 			</patternset>
 		</unzip>
+		-->
 	</target>
 
 	<!-- ===================================================================== -->
