@@ -44,6 +44,7 @@ import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.CanExecute;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.ui.internal.workbench.ContributionsAnalyzer;
+import org.eclipse.e4.ui.internal.workbench.RenderedElementUtil;
 import org.eclipse.e4.ui.internal.workbench.swt.Policy;
 import org.eclipse.e4.ui.internal.workbench.swt.WorkbenchSWTActivator;
 import org.eclipse.e4.ui.model.application.MApplication;
@@ -62,8 +63,6 @@ import org.eclipse.e4.ui.model.application.ui.menu.MHandledToolItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenu;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MMenuItem;
-import org.eclipse.e4.ui.model.application.ui.menu.MRenderedMenu;
-import org.eclipse.e4.ui.model.application.ui.menu.MRenderedMenuItem;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBarElement;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolItem;
 import org.eclipse.e4.ui.model.application.ui.menu.impl.MenuFactoryImpl;
@@ -485,7 +484,7 @@ public class MenuHelper {
 		final String style = element.getAttribute(IWorkbenchRegistryConstants.ATT_STYLE);
 		final String pulldown = element.getAttribute("pulldown"); //$NON-NLS-1$
 		if (IWorkbenchRegistryConstants.STYLE_PULLDOWN.equals(style) || (pulldown != null && pulldown.equals("true"))) { //$NON-NLS-1$
-			final MRenderedMenuItem item = MenuFactoryImpl.eINSTANCE.createRenderedMenuItem();
+			final MMenuItem item = RenderedElementUtil.createRenderedMenuItem();
 			item.setLabel(text);
 			if (iconUri != null) {
 				item.setIconURI(iconUri);
@@ -508,7 +507,7 @@ public class MenuHelper {
 					};
 				}
 			};
-			item.setContributionItem(generator);
+			RenderedElementUtil.setContributionManager(item, generator);
 			return item;
 		}
 
@@ -576,7 +575,7 @@ public class MenuHelper {
 		}
 
 		if (IWorkbenchRegistryConstants.STYLE_PULLDOWN.equals(style) || (pulldown != null && pulldown.equals("true"))) { //$NON-NLS-1$
-			final MRenderedMenu menu = MenuFactoryImpl.eINSTANCE.createRenderedMenu();
+			final MMenu menu = RenderedElementUtil.createRenderedMenu();
 			final ECommandService cs = app.getContext().get(ECommandService.class);
 			final ParameterizedCommand parmCmd = cs.createCommand(cmdId, null);
 			final IContextFunction generator = new ContextFunction() {
@@ -629,7 +628,7 @@ public class MenuHelper {
 					};
 				}
 			};
-			menu.setContributionManager(generator);
+			RenderedElementUtil.setContributionManager(menu, generator);
 			item.setMenu(menu);
 		}
 
