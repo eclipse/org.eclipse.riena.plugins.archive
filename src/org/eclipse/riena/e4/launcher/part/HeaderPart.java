@@ -17,7 +17,6 @@ import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.eclipse.e4.ui.model.application.ui.basic.MTrimmedWindow;
 import org.eclipse.jface.layout.GridDataFactory;
-import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.internal.WorkbenchPlugin;
@@ -27,6 +26,8 @@ import org.eclipse.ui.services.IEvaluationService;
 import org.eclipse.riena.navigation.ApplicationNodeManager;
 import org.eclipse.riena.navigation.model.ApplicationNode;
 import org.eclipse.riena.navigation.ui.swt.component.TitleComposite;
+import org.eclipse.riena.ui.swt.layout.DpiGridLayoutFactory;
+import org.eclipse.riena.ui.swt.lnf.LnfManager;
 
 /**
  * Creates the Riena header.
@@ -45,7 +46,7 @@ public class HeaderPart {
 	@Inject
 	public void create(final Composite parent, final MTrimmedWindow window, final MPart part) {
 		final Composite c = new Composite(parent, SWT.NONE);
-		GridLayoutFactory.fillDefaults().spacing(0, 0).applyTo(c);
+		DpiGridLayoutFactory.fillDefaults().spacing(0, 0).applyTo(c);
 
 		final TitleComposite titleComposite = new TitleComposite(c, (ApplicationNode) ApplicationNodeManager.getApplicationNode());
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(titleComposite);

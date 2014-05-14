@@ -25,6 +25,7 @@ import org.eclipse.riena.ui.swt.InfoFlyout;
 import org.eclipse.riena.ui.swt.lnf.LnfKeyConstants;
 import org.eclipse.riena.ui.swt.lnf.LnfManager;
 import org.eclipse.riena.ui.swt.utils.ImageStore;
+import org.eclipse.riena.ui.swt.utils.SwtUtilities;
 import org.eclipse.riena.ui.swt.utils.UIControlsFactory;
 import org.eclipse.riena.ui.swt.utils.WidgetIdentificationSupport;
 
@@ -71,7 +72,9 @@ public class ApplicationView {
 
 		final String iconName = ApplicationNodeManager.getApplicationNode().getIcon();
 		shell.setImage(ImageStore.getInstance().getImage(iconName));
-		shell.setMinimumSize(getApplicationSizeMinimum());
+		Point minimum = getApplicationSizeMinimum();
+		minimum = SwtUtilities.convertPointToDpi(minimum);
+		shell.setMinimumSize(minimum);
 
 		// prepare shell for binding
 		addUIControl(shell, SHELL_BINDING_ID);
@@ -92,7 +95,8 @@ public class ApplicationView {
 	 */
 	private Rectangle computeDesiredShellBounds(final Display display) {
 		final Rectangle screenSize = display.getBounds();
-		final Point windowSize = initApplicationSize();
+		Point windowSize = initApplicationSize();
+		windowSize = SwtUtilities.convertPointToDpi(windowSize);
 
 		// center
 		final int x = (screenSize.width - windowSize.x) / 2;
@@ -133,7 +137,6 @@ public class ApplicationView {
 		if (applicationSizeMinimum == null) {
 			initApplicationSizeMinimum();
 		}
-
 		return applicationSizeMinimum;
 	}
 

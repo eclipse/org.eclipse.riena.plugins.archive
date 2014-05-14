@@ -23,7 +23,6 @@ import org.eclipse.equinox.log.Logger;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Widget;
@@ -31,6 +30,7 @@ import org.eclipse.swt.widgets.Widget;
 import org.eclipse.riena.core.Log4r;
 import org.eclipse.riena.e4.launcher.E4XMIConstants;
 import org.eclipse.riena.internal.navigation.ui.swt.Activator;
+import org.eclipse.riena.ui.swt.layout.DpiGridLayout;
 import org.eclipse.riena.ui.swt.lnf.LnfKeyConstants;
 import org.eclipse.riena.ui.swt.lnf.LnfManager;
 
@@ -56,7 +56,7 @@ public class PerspectiveRenderer extends SWTPartRenderer {
 		}
 
 		final Composite subApplicationComposite = new Composite((Composite) parent, SWT.NONE);
-		final GridLayout layout = new GridLayout(2, false);
+		final DpiGridLayout layout = new DpiGridLayout(2, false);
 		layout.marginWidth = 0;
 		layout.marginHeight = 0;
 		layout.horizontalSpacing = 0;
