@@ -556,7 +556,7 @@ public class RienaWBWRenderer extends SWTPartRenderer {
 		header = new Composite(clientArea, SWT.NONE);
 		final GridData headerLayoutData = new GridData(GridData.FILL_HORIZONTAL);
 		final int headerPartHeight = SwitcherComposite.getShellPadding() + SwitcherComposite.getSwitchterHeight() + SwitcherComposite.getSwitchterTopMargin();
-		headerLayoutData.heightHint = headerPartHeight;
+		// headerLayoutData.heightHint = headerPartHeight;
 		header.setLayoutData(headerLayoutData);
 		header.setLayout(new FillLayout());
 

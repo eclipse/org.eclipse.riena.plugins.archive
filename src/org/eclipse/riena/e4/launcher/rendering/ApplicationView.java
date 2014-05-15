@@ -13,7 +13,6 @@ package org.eclipse.riena.e4.launcher.rendering;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
 import org.eclipse.riena.navigation.ApplicationNodeManager;
@@ -25,6 +24,7 @@ import org.eclipse.riena.ui.swt.InfoFlyout;
 import org.eclipse.riena.ui.swt.lnf.LnfKeyConstants;
 import org.eclipse.riena.ui.swt.lnf.LnfManager;
 import org.eclipse.riena.ui.swt.utils.ImageStore;
+import org.eclipse.riena.ui.swt.utils.ShellHelper;
 import org.eclipse.riena.ui.swt.utils.SwtUtilities;
 import org.eclipse.riena.ui.swt.utils.UIControlsFactory;
 import org.eclipse.riena.ui.swt.utils.WidgetIdentificationSupport;
@@ -86,23 +86,33 @@ public class ApplicationView {
 		// TODO check if this is the main window. maybe support more then one workbench window.
 		WidgetIdentificationSupport.setIdentification(shell);
 
-		return computeDesiredShellBounds(shell.getDisplay());
+		return computeDesiredShellBounds(shell);
 	}
 
 	/**
 	 * @param display
 	 * @return
 	 */
-	private Rectangle computeDesiredShellBounds(final Display display) {
-		final Rectangle screenSize = display.getBounds();
+	private Rectangle computeDesiredShellBounds(final Shell shell) {
+
 		Point windowSize = initApplicationSize();
 		windowSize = SwtUtilities.convertPointToDpi(windowSize);
+		int width = windowSize.x;
+		int height = windowSize.y;
+
+		final Rectangle maxBounds = ShellHelper.calcMaxBounds(shell);
+		if (width > maxBounds.width) {
+			width = maxBounds.width;
+		}
+		if (height > maxBounds.height) {
+			height = maxBounds.height;
+		}
 
 		// center
-		final int x = (screenSize.width - windowSize.x) / 2;
-		final int y = (screenSize.height - windowSize.y) / 2;
+		final int x = (maxBounds.width - width) / 2;
+		final int y = (maxBounds.height - height) / 2;
 
-		return new Rectangle(x, y, windowSize.x, windowSize.y);
+		return new Rectangle(x, y, width, height);
 	}
 
 	/**
