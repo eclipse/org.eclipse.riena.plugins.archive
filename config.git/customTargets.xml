@@ -102,7 +102,7 @@
 				<repository location="file:/${builder}/../target/org.eclipse.rcp.source-${sdkVer}.zip" />
 			</source>
 		</p2.repo2runnable>
-		
+
 		<!-- replace the 3.8 SWT by the latest version -->
 		<!--
 		<delete>
@@ -146,7 +146,7 @@
 			<fileset dir="${builder}/../plugins">
 			</fileset>
 		</copy>
-		
+
 		<delete dir="${builder}/../plugins"/>
 	</target>
 
@@ -248,9 +248,10 @@
 			 basedir="${buildDirectory}/buildEclipse/eclipse-helios"/>
 		
 		<delete dir="${buildDirectory}/buildEclipse/eclipse-helios"/>-->
-		<zip destfile="${buildDirectory}/N.TestBuild/Riena-target-${BUILD_QUALIFIER}-win32.zip" basedir="${buildDirectory}/buildEclipse/" />
+		<zip destfile="${buildDirectory}/N.TestBuild/Riena-${ECLIPSE_STREAM}-target-${BUILD_QUALIFIER}-win32.zip" basedir="${buildDirectory}/buildEclipse/" />
 		<!-- name the riena p2repo zip -->
-		<copy tofile="${buildDirectory}/N.TestBuild/Riena-p2repo-${BUILD_QUALIFIER}-win32.zip" file="${buildDirectory}/N.TestBuild/${rienaBuildFeature}-TestBuild-group.group.group.zip"/>
+		<copy tofile="${buildDirectory}/N.TestBuild/Riena-${ECLIPSE_STREAM}-p2repo-${BUILD_QUALIFIER}-win32.zip"
+			file="${buildDirectory}/N.TestBuild/${rienaBuildFeature}-TestBuild-group.group.group.zip" />
 	</target>
 
 	<!-- ===================================================================== -->
