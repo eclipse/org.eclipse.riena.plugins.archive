@@ -1,13 +1,14 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 compeople AG and others.
+ * Copyright (c) 2005, 2012 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    compeople AG - initial API and implementation
+ *     IBM Corporation - initial API and implementation
  *******************************************************************************/
+
 package org.eclipse.riena.e4.launcher.part;
 
 import java.util.ArrayList;
@@ -27,7 +28,6 @@ import org.eclipse.e4.ui.model.application.ui.menu.MMenuContribution;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolBarContribution;
 import org.eclipse.e4.ui.model.application.ui.menu.MTrimContribution;
 import org.eclipse.ui.internal.menus.ControlContributionRegistry;
-import org.eclipse.ui.internal.menus.EditorAction;
 import org.eclipse.ui.internal.menus.MenuFactoryGenerator;
 import org.eclipse.ui.internal.registry.IWorkbenchRegistryConstants;
 import org.eclipse.ui.internal.services.RegistryPersistence;
@@ -47,13 +47,13 @@ final public class MenuPersistence extends RegistryPersistence {
 	private final MApplication application;
 	private final IEclipseContext appContext;
 	private final ArrayList<MenuAdditionCacheEntry> cacheEntries = new ArrayList<MenuAdditionCacheEntry>();
-	private final ArrayList<EditorAction> editorActionContributions = new ArrayList<EditorAction>();
 
 	private final ArrayList<MMenuContribution> menuContributions = new ArrayList<MMenuContribution>();
 	private final ArrayList<MToolBarContribution> toolBarContributions = new ArrayList<MToolBarContribution>();
 	private final ArrayList<MTrimContribution> trimContributions = new ArrayList<MTrimContribution>();
 
 	private final Comparator<IConfigurationElement> comparer = new Comparator<IConfigurationElement>() {
+		@Override
 		public int compare(final IConfigurationElement c1, final IConfigurationElement c2) {
 			return c1.getContributor().getName().compareToIgnoreCase(c2.getContributor().getName());
 		}
@@ -87,7 +87,6 @@ final public class MenuPersistence extends RegistryPersistence {
 		application.getTrimContributions().removeAll(trimContributions);
 		menuContributions.clear();
 		cacheEntries.clear();
-		editorActionContributions.clear();
 		super.dispose();
 	}
 
@@ -111,8 +110,6 @@ final public class MenuPersistence extends RegistryPersistence {
 		super.read();
 
 		readAdditions();
-		// readActionSets();
-		readEditorActions();
 
 		final ArrayList<MMenuContribution> tmp = new ArrayList<MMenuContribution>(menuContributions);
 		menuContributions.clear();
@@ -158,30 +155,6 @@ final public class MenuPersistence extends RegistryPersistence {
 						configElement.getAttribute(IWorkbenchRegistryConstants.TAG_LOCATION_URI), configElement.getNamespaceIdentifier());
 				cacheEntries.add(menuContribution);
 				menuContribution.mergeIntoModel(menuContributions, toolBarContributions, trimContributions);
-			}
-		}
-	}
-
-	private void readEditorActions() {
-		final IExtensionRegistry registry = Platform.getExtensionRegistry();
-		final ArrayList<IConfigurationElement> configElements = new ArrayList<IConfigurationElement>();
-
-		final IConfigurationElement[] extElements = registry.getConfigurationElementsFor(IWorkbenchRegistryConstants.EXTENSION_EDITOR_ACTIONS);
-		for (final IConfigurationElement element : extElements) {
-			if (contributorFilter == null || contributorFilter.matcher(element.getContributor().getName()).matches()) {
-				configElements.add(element);
-			}
-		}
-
-		Collections.sort(configElements, comparer);
-
-		for (final IConfigurationElement element : configElements) {
-			for (final IConfigurationElement child : element.getChildren()) {
-				if (child.getName().equals(IWorkbenchRegistryConstants.TAG_ACTION)) {
-					final EditorAction editorAction = new EditorAction(application, appContext, element, child);
-					editorActionContributions.add(editorAction);
-					editorAction.addToModel(menuContributions, toolBarContributions, trimContributions);
-				}
 			}
 		}
 	}
