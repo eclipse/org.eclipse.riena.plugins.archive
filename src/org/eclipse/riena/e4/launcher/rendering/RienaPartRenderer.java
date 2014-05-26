@@ -17,6 +17,7 @@ import org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer;
 import org.eclipse.swt.widgets.Composite;
 
 import org.eclipse.riena.core.util.ReflectionUtils;
+import org.eclipse.riena.e4.launcher.part.NavigationPart;
 import org.eclipse.riena.e4.launcher.part.PartWrapper;
 import org.eclipse.riena.e4.launcher.part.RienaPartHelper;
 import org.eclipse.riena.e4.launcher.part.ViewInstanceProvider;
@@ -92,6 +93,10 @@ public final class RienaPartRenderer extends ContributedPartRenderer {
 			final Object object = ((MContribution) element).getObject();
 			if (object instanceof PartWrapper) {
 				((PartWrapper) object).getView().setFocus();
+				return;
+			}
+			if (object instanceof NavigationPart) {
+				((NavigationPart) object).getView().setFocus();
 				return;
 			}
 		}

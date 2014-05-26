@@ -28,15 +28,27 @@ public class NavigationPart {
 	@Inject
 	private EModelService modelService;
 
+	private NavigationViewPart view;
+
 	@Inject
 	public void createUI(final Composite parent) {
-		new NavigationViewPart() {
+		view = new NavigationViewPart() {
 			@Override
 			public ISubApplicationNode getSubApplicationNode() {
 				final MPerspective activePerspective = modelService.getActivePerspective(window);
 				final String perspectiveId = activePerspective.getElementId();
 				return SwtViewProvider.getInstance().getNavigationNode(perspectiveId, ISubApplicationNode.class);
 			};
-		}.createPartControl(parent);
+		};
+		view.createPartControl(parent);
+	}
+
+	/**
+	 * This method is not API.
+	 * 
+	 * @return the {@link NavigationViewPart}, wrapped by this instance
+	 */
+	public NavigationViewPart getView() {
+		return view;
 	}
 }
