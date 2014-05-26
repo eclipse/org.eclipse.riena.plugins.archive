@@ -30,9 +30,11 @@ import org.eclipse.ui.IWorkbenchPage;
 
 import org.eclipse.riena.core.wire.InjectExtension;
 import org.eclipse.riena.core.wire.Wire;
+import org.eclipse.riena.e4.launcher.RienaE4MenuUtils;
 import org.eclipse.riena.navigation.ApplicationNodeManager;
 import org.eclipse.riena.navigation.IApplicationNode;
 import org.eclipse.riena.navigation.INavigationNode;
+import org.eclipse.riena.navigation.ui.swt.component.MenuCoolBarComposite;
 import org.eclipse.riena.navigation.ui.swt.views.NavigationViewPart;
 
 /**
@@ -203,4 +205,24 @@ public class WorkbenchFacadeImpl extends WorkbenchFacade {
 		return providers.toArray(new ISourceProvider[providers.size()]);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.riena.internal.ui.swt.facades.WorkbenchFacade#switchToWindowMenu(org.eclipse.core.commands.ExecutionEvent)
+	 */
+	@Override
+	public boolean switchToWindowMenu(final ExecutionEvent event) {
+		final IEclipseContext root = getWorkbenchContext();
+		if (root == null) {
+			return false;
+		}
+
+		final MenuCoolBarComposite menu = RienaE4MenuUtils.getMenuCoolBarComposite(root);
+		if (menu != null) {
+			menu.setFocus();
+			return true;
+		}
+
+		return false;
+	}
 }
