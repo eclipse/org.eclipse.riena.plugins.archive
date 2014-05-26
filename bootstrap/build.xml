@@ -85,6 +85,7 @@
 			<arg value="-DsdkVer=${sdkVer}"/>
 			<arg value="-DequinoxSdkVer=${equinoxSdkVer}"/>
 			<arg value="-DrienaBuildFeature=${rienaBuildFeature}"/>
+			<arg value="-DECLIPSE_STREAM=${ECLIPSE_STREAM}"/>
 		</java>
 	</target>
 
@@ -107,6 +108,7 @@
 			<arg value="-DsdkVer=${sdkVer}"/>
 			<arg value="-DequinoxSdkVer=${equinoxSdkVer}"/>
 			<arg value="-DrienaBuildFeature=${rienaBuildFeature}"/>
+			<arg value="-DECLIPSE_STREAM=${ECLIPSE_STREAM}"/>
 		</java>
 	</target>
 
@@ -151,7 +153,7 @@
 			<arg value="-application"/>
 			<arg value="org.eclipse.update.core.siteOptimizer"/>
 			<arg line="-jarProcessor -processAll -repack -outputDir ${basedir}/tmp/build/N.TestBuild/repack" />
-			<arg line="${basedir}/tmp/build/N.TestBuild/Riena-p2repo-*.zip" />
+			<arg line="${basedir}/tmp/build/N.TestBuild/Riena-${ECLIPSE_STREAM}-p2repo-*.zip" />
 		</java>
 		<copy todir="${basedir}/tmp/build/N.TestBuild">
 			<fileset dir="${basedir}/tmp/build/N.TestBuild/repack"/>
@@ -170,7 +172,7 @@
 			<arg value="-application"/>
 			<arg value="org.eclipse.update.core.siteOptimizer"/>
 			<arg line="-jarProcessor -processAll -pack -outputDir ${basedir}/signed/pack200" />
-			<arg line="${basedir}/signed/Riena-p2repo-*.zip" />
+			<arg line="${basedir}/signed/Riena-${ECLIPSE_STREAM}-p2repo-*.zip" />
 		</java>
 
 		<echo>Unzip repo for generating metadata</echo>
