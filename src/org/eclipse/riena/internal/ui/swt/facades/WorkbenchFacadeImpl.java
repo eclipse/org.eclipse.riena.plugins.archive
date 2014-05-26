@@ -33,6 +33,7 @@ import org.eclipse.riena.core.wire.Wire;
 import org.eclipse.riena.navigation.ApplicationNodeManager;
 import org.eclipse.riena.navigation.IApplicationNode;
 import org.eclipse.riena.navigation.INavigationNode;
+import org.eclipse.riena.navigation.ui.swt.views.NavigationViewPart;
 
 /**
  * Eclipse e4 specific implementation.
@@ -97,7 +98,7 @@ public class WorkbenchFacadeImpl extends WorkbenchFacade {
 	 * @see org.eclipse.riena.internal.ui.swt.facades.WorkbenchFacade#switchToWorkarea(java.lang.String, org.eclipse.core.commands.ExecutionEvent)
 	 */
 	@Override
-	public boolean switchToWorkarea(final String viewId, final ExecutionEvent event) {
+	public boolean switchToWorkarea(final ExecutionEvent event) {
 		final IEclipseContext root = getWorkbenchContext();
 		if (root == null) {
 			return false;
@@ -112,6 +113,36 @@ public class WorkbenchFacadeImpl extends WorkbenchFacade {
 			return false;
 		}
 		final List<MPart> parts = modelService.findElements(root.get(MApplication.class), partId, MPart.class, null, EModelService.IN_ANY_PERSPECTIVE);
+		final MPart mPart = parts.get(0);
+
+		if (mPart == null) {
+			return false;
+		}
+
+		final Object widget = mPart.getWidget();
+		if (widget instanceof Control) {
+			((Control) widget).setFocus();
+			return true;
+		}
+
+		return false;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.riena.internal.ui.swt.facades.WorkbenchFacade#switchToNavigation(org.eclipse.core.commands.ExecutionEvent)
+	 */
+	@Override
+	public boolean switchToNavigation(final ExecutionEvent event) {
+		final IEclipseContext root = getWorkbenchContext();
+		if (root == null) {
+			return false;
+		}
+
+		final EModelService modelService = root.get(EModelService.class);
+		final List<MPart> parts = modelService.findElements(root.get(MApplication.class), NavigationViewPart.ID, MPart.class, null,
+				EModelService.IN_ANY_PERSPECTIVE);
 		final MPart mPart = parts.get(0);
 
 		if (mPart == null) {
