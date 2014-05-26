@@ -33,6 +33,7 @@ public class PartWrapper {
 
 	@Inject
 	private IExtensionRegistry extensionRegistry;
+	private SubModuleView view;
 
 	@Inject
 	public void create(final Composite parent, final MPart part) {
@@ -49,7 +50,16 @@ public class PartWrapper {
 				return;
 			}
 		}
-		createView(swtViewId);
+		view = createView(swtViewId);
+	}
+
+	/**
+	 * This method is not API.
+	 * 
+	 * @return the {@link SubModuleView}, wrapped by this instance
+	 */
+	public SubModuleView getView() {
+		return view;
 	}
 
 	private SubModuleView createView(final SwtViewId swtViewId) {

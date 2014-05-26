@@ -10,12 +10,14 @@
  *******************************************************************************/
 package org.eclipse.riena.e4.launcher.rendering;
 
+import org.eclipse.e4.ui.model.application.MContribution;
 import org.eclipse.e4.ui.model.application.ui.MUIElement;
 import org.eclipse.e4.ui.model.application.ui.basic.impl.PartImpl;
 import org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer;
 import org.eclipse.swt.widgets.Composite;
 
 import org.eclipse.riena.core.util.ReflectionUtils;
+import org.eclipse.riena.e4.launcher.part.PartWrapper;
 import org.eclipse.riena.e4.launcher.part.RienaPartHelper;
 import org.eclipse.riena.e4.launcher.part.ViewInstanceProvider;
 import org.eclipse.riena.navigation.ISubModuleNode;
@@ -77,6 +79,24 @@ public final class RienaPartRenderer extends ContributedPartRenderer {
 		// not related to a SubModuleNode. Nothing special here. Just create composite
 		return super.createWidget(element, parent);
 
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer#forceFocus(org.eclipse.e4.ui.model.application.ui.MUIElement)
+	 */
+	@Override
+	public void forceFocus(final MUIElement element) {
+		if (element instanceof MContribution) {
+			final Object object = ((MContribution) element).getObject();
+			if (object instanceof PartWrapper) {
+				((PartWrapper) object).getView().setFocus();
+				return;
+			}
+		}
+
+		super.forceFocus(element);
 	}
 
 	private boolean isSubModuleNodePart(final SwtViewId rienaCompoundId) {
