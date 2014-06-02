@@ -172,7 +172,7 @@
 			<arg value="-application"/>
 			<arg value="org.eclipse.update.core.siteOptimizer"/>
 			<arg line="-jarProcessor -processAll -pack -outputDir ${basedir}/signed/pack200" />
-			<arg line="${basedir}/signed/Riena-${ECLIPSE_STREAM}-p2repo-*.zip" />
+			<arg line="${basedir}/signed/Riena-*-p2repo-*.zip" />
 		</java>
 
 		<echo>Unzip repo for generating metadata</echo>
@@ -207,6 +207,7 @@
 
 		<echo>Delete pack200 dir</echo>
 		<delete dir="${basedir}/signed/pack200"/>
+
 	</target>
 
 	<target name="update">

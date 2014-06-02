@@ -40,7 +40,6 @@ if '%1' EQU 'runtestse4' GOTO :RUNTESTSE4
 if '%1' EQU 'beforesign' GOTO :BEFORESIGN
 if '%1' EQU 'beforesigne4' GOTO :BEFORESIGNE4
 if '%1' EQU 'aftersign' GOTO :AFTERSIGN
-if '%1' EQU 'aftersigne4' GOTO :AFTERSIGNE4
 if '%1' EQU 'update' GOTO :UPDATE
 if '%1' EQU 'buildReleaseRepo' GOTO :RELEASE
 
@@ -98,10 +97,6 @@ GOTO :EOF
 
 :AFTERSIGN
 ant -f build.xml -DECLIPSE_STREAM=3x aftersign
-GOTO :EOF
-
-:AFTERSIGNE4
-ant -f build.xml -DECLIPSE_STREAM=e4 aftersign
 GOTO :EOF
 
 :UPDATE
