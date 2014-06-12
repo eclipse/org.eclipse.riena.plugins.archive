@@ -479,7 +479,20 @@ v1.0
          version="0.0.0"/>
 
    <plugin
+         id="org.junit.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
          id="org.easymock"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.easymock.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -535,6 +548,13 @@ v1.0
          unpack="false"/>
 
    <plugin
+         id="org.pushingpixels.trident.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="org.eclipse.riena.communication.client.ui"
          download-size="0"
          install-size="0"
@@ -564,6 +584,13 @@ v1.0
 
    <plugin
          id="org.hamcrest.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.hamcrest.core.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
