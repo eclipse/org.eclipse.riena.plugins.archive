@@ -80,6 +80,25 @@
 	</target>
 	
 	<target name="prepareTarget" unless="has.target">
+		<!-- equinox SDK -->
+		<echo>repo2runable: src= file:/${builder}/../target/${targetPlatformEquinoxSDK}</echo>
+		<p2.repo2runnable failonerror="false"
+			destination="${builder}/../target/eclipse">
+			<source>
+				<repository location="file:/${builder}/../target/${targetPlatformEquinoxSDK}" />
+			</source>
+		</p2.repo2runnable>
+
+		<!-- rcp -->
+		<echo>repo2runable: src= file:/${builder}/../target/${targetPlatformRCP}</echo>
+		<p2.repo2runnable 
+			destination="${builder}/../target/eclipse">
+			<source>
+				<repository location="file:/${builder}/../target/${targetPlatformRCP}" />
+			</source>
+		</p2.repo2runnable>
+		
+		
 		<!--
 		<echo>repo2runnable: </echo>
 		<echo>  src= file:/${builder}/../target/equinox-SDK-${equinoxSdkVer}.zip</echo>
@@ -94,8 +113,9 @@
 		<echo>Copying files that we add to eclipse target platform from directory 'dropins'</echo>
 		<copy todir="${builder}/../target/eclipse/plugins">
 		    <fileset dir="${builder}/../target/dropins"/>
-		  </copy>
+		</copy>
 		
+		<!--
         <echo>repo2runnable: </echo>
 		<echo>  src= file:/${builder}/../target/org.eclipse.platform-${sdkVer}.zip</echo>
 		<echo>  dest= ${builder}/../target/eclipse</echo>
@@ -104,6 +124,7 @@
 				<repository location="file:/${builder}/../target/org.eclipse.platform-${sdkVer}.zip" />
 			</source>
 		</p2.repo2runnable>
+		-->
 	</target>
 	
 	<!-- ===================================================================== -->
