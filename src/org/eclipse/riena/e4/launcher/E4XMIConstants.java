@@ -12,6 +12,8 @@ package org.eclipse.riena.e4.launcher;
 
 /**
  * Constants used in <tt>Application.e4xmi</tt>
+ * 
+ * @since 6.0
  */
 public class E4XMIConstants {
 

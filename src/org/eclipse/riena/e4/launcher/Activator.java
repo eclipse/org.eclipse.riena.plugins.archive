@@ -13,6 +13,9 @@ package org.eclipse.riena.e4.launcher;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
+/**
+ * @since 6.0
+ */
 public class Activator implements BundleActivator {
 	public static String PLUGIN_ID = "org.eclipse.riena.e4.launcher"; //$NON-NLS-1$
 
