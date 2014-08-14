@@ -36,6 +36,7 @@ import org.eclipse.swt.widgets.Composite;
 
 import org.eclipse.riena.e4.launcher.part.uielements.CoolBarComposite;
 import org.eclipse.riena.navigation.ui.swt.component.IEntriesProvider;
+import org.eclipse.riena.ui.swt.utils.SwtUtilities;
 
 /**
  * Displays the window main tool bar
@@ -76,6 +77,7 @@ public class MainToolBarPart {
 
 				// now consider only contributions to the parents found above
 				// other contributions (e.g. view menu contributions) will be not considered
+				final E4ImageReplacer imageReplacer = E4ImageReplacer.getInstance();
 				for (final MToolBarContribution c : application.getToolBarContributions()) {
 					if (ContributionsAnalyzer.isVisible(c, eContext) && parents.contains(c.getParentId())) {
 						for (final MToolBarElement e : c.getChildren()) {
@@ -87,6 +89,9 @@ public class MainToolBarPart {
 							if (e instanceof MHandledItem) {
 								// => HandledContributionItem
 								final IContributionItem item = helper.createHandledContributionItem((MHandledItem) e);
+								if (SwtUtilities.isDpiScalingEnabled()) {
+									imageReplacer.replaceImages(null, item);
+								}
 								items.add(item);
 							} else if (e instanceof MToolBarSeparator) {
 								// => Separator

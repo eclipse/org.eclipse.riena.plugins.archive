@@ -41,6 +41,8 @@ import org.eclipse.swt.widgets.Composite;
 
 import org.eclipse.riena.navigation.ui.swt.component.IEntriesProvider;
 import org.eclipse.riena.navigation.ui.swt.component.MenuCoolBarComposite;
+import org.eclipse.riena.navigation.ui.swt.views.ImageReplacer;
+import org.eclipse.riena.ui.swt.utils.SwtUtilities;
 
 /**
  * Displays the window main menu
@@ -84,6 +86,16 @@ public class MainMenuPart {
 				}
 
 				final Collection<IContributionItem> c = getOrCreateMapElement(parentIdToElement, "org.eclipse.ui.main.menu");
+
+				final ImageReplacer imageReplacer = E4ImageReplacer.getInstance();
+				if (SwtUtilities.isDpiScalingEnabled()) {
+					for (final IContributionItem contributionItem : c) {
+						if (contributionItem instanceof IContributionManager) {
+							imageReplacer.replaceImagesOfManager((IContributionManager) contributionItem);
+						}
+					}
+				}
+
 				return c.toArray(new IContributionItem[parentIdToElement.size()]);
 			}
 		});
