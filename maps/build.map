@@ -14,6 +14,7 @@ feature@org.eclipse.riena.build.feature.core.sdk.e4=GIT,tag=orgin/rienaOnE4,repo
 
 # list of riena plugins
 plugin@com.caucho.hessian=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=com.caucho.hessian
+plugin@com.kitfox.svg=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=com.kitfox.svg
 plugin@org.eclipse.riena.beans.common=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.beans.common
 plugin@org.eclipse.riena.client=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.client
 plugin@org.eclipse.riena.client.communication=GIT,tag=orgin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.client.communication
