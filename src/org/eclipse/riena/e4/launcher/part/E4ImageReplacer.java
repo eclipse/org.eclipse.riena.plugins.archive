@@ -30,6 +30,8 @@ import org.eclipse.riena.ui.swt.utils.ImageStore;
 
 /**
  * Class to replace in {@link CommandContributionItem} or {@link HandledContributionItem} not scaled images with scaled images.
+ * 
+ * @since 6.0
  */
 public class E4ImageReplacer extends ImageReplacer {
 

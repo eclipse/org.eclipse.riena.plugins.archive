@@ -22,6 +22,7 @@ import org.eclipse.riena.e4.launcher.part.uielements.CoolBarComposite;
 import org.eclipse.riena.navigation.ui.swt.component.MenuCoolBarComposite;
 
 /**
+ * @since 6.0
  *
  */
 public class RienaE4MenuUtils {
