@@ -196,6 +196,16 @@
 		<copy
 			tofile="${buildDirectory}/N.TestBuild/Riena-on-RAP-p2repo-${BUILD_QUALIFIER}.zip"
 			file="${buildDirectory}/N.TestBuild/org.eclipse.riena.build.feature.rap.sdk-TestBuild-group.group.group.zip"/>
+		
+		<!-- copy build artefacts to lastest output dir -->
+		<property name="latestOutputDir" value="${buildDirectory}/../latestOutput" />
+		<delete failonerror="false" verbose="true">
+		    <fileset dir="${latestOutputDir}" includes="Riena-on-RAP-target*.zip"/>
+		    <fileset dir="${latestOutputDir}" includes="Riena-on-RAP-p2repo*.zip"/>
+		</delete>
+		<copy todir="${latestOutputDir}">
+			<fileset dir="${buildDirectory}/N.TestBuild" includes="*" />
+		</copy>
 	</target>
 
 	<!-- ===================================================================== -->
