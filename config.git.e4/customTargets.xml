@@ -257,7 +257,17 @@
 		<delete dir="${buildDirectory}/buildEclipse/eclipse-helios"/>-->
 		<zip destfile="${buildDirectory}/N.TestBuild/Riena-${ECLIPSE_STREAM}-target-${BUILD_QUALIFIER}-win32.zip" basedir="${buildDirectory}/buildEclipse/"/>
 		<!-- name the riena p2repo zip -->
-		<copy tofile="${buildDirectory}/N.TestBuild/Riena-${ECLIPSE_STREAM}-p2repo-${BUILD_QUALIFIER}-win32.zip" file="${buildDirectory}/N.TestBuild/${rienaBuildFeature}-TestBuild-group.group.group.zip"/>
+		<move tofile="${buildDirectory}/N.TestBuild/Riena-${ECLIPSE_STREAM}-p2repo-${BUILD_QUALIFIER}-win32.zip" file="${buildDirectory}/N.TestBuild/${rienaBuildFeature}-TestBuild-group.group.group.zip"/>
+		
+		<!-- copy build artefacts to lastest output dir -->
+		<property name="latestOutputDir" value="${buildDirectory}/../latestOutput" />
+		<delete failonerror="false" verbose="true">
+		    <fileset dir="${latestOutputDir}" includes="Riena-${ECLIPSE_STREAM}-target-*-win32.zip"/>
+		    <fileset dir="${latestOutputDir}" includes="Riena-${ECLIPSE_STREAM}-p2repo-*-win32.zip"/>
+		</delete>
+		<copy todir="${latestOutputDir}">
+			<fileset dir="${buildDirectory}/N.TestBuild" includes="*" />
+		</copy>
 	</target>
 
 	<!-- ===================================================================== -->

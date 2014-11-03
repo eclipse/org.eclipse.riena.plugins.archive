@@ -193,7 +193,7 @@
 		<zip
 			destfile="${buildDirectory}/N.TestBuild/Riena-on-RAP-target-${BUILD_QUALIFIER}.zip"
 			basedir="${buildDirectory}/buildEclipse/"/>
-		<copy
+		<move
 			tofile="${buildDirectory}/N.TestBuild/Riena-on-RAP-p2repo-${BUILD_QUALIFIER}.zip"
 			file="${buildDirectory}/N.TestBuild/org.eclipse.riena.build.feature.rap.sdk-TestBuild-group.group.group.zip"/>
 		
