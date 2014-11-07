@@ -1,5 +1,5 @@
 set TOOLSROOT=c:\build3\tools
-set JAVA_HOME=%TOOLSROOT%\jdk1.6.0_21
+set JAVA_HOME=%TOOLSROOT%\jdk1.7.0_55
 set ANT_HOME=%TOOLSROOT%\apache-ant-1.7.1
 set CVS_SSH=ssh -l rienaBuild
 SET PATH=%JAVA_HOME%\bin;%ANT_HOME%\bin;%PATH%
