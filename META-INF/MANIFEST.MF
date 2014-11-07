@@ -6,8 +6,8 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: Eclipse.org - Riena
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.riena.e4.launcher;bundle-version="6.0.0",
- org.eclipse.riena.client;bundle-version="6.0.0",
- org.eclipse.riena.tests;bundle-version="6.0.0",
+Require-Bundle: org.eclipse.riena.e4.launcher;bundle-version="6.1.0",
+ org.eclipse.riena.client;bundle-version="6.1.0",
+ org.eclipse.riena.tests;bundle-version="6.1.0",
  org.eclipse.e4.ui.model.workbench,
  org.eclipse.e4.ui.workbench
