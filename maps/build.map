@@ -81,9 +81,9 @@ plugin@org.eclipse.riena.ui.swt.e4=GIT,tag=origin/rienaOnE4,repo=ssh://rienaBuil
 
 # these plugins only needed when building against RAP
 #plugin@org.eclipse.equinox.security=CVS,v20100301,:pserver:anonymous@dev.eclipse.org:/cvsroot/rt,,org.eclipse.equinox/security/bundles/org.eclipse.equinox.security
-plugin@org.eclipse.equinox.security=GET,file:///C:/build3/prebuild/plugins/org.eclipse.equinox.security_1.1.0.v20110502.jar
+#plugin@org.eclipse.equinox.security=GET,file:///C:/build3/prebuild/plugins/org.eclipse.equinox.security_1.1.0.v20110502.jar
 #plugin@org.eclipse.equinox.log=CVS,v20100118,:pserver:anonymous@dev.eclipse.org:/cvsroot/rt,,org.eclipse.equinox/compendium/bundles/org.eclipse.equinox.log
-plugin@org.eclipse.equinox.log=GET,file:///C:/build3/prebuild/plugins/org.eclipse.equinox.log_1.2.200.v20110502.jar
+#plugin@org.eclipse.equinox.log=GET,file:///C:/build3/prebuild/plugins/org.eclipse.equinox.log_1.2.200.v20110502.jar
 
 # external libs - from orbit, target using p2
 

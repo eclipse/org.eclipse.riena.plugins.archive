@@ -73,7 +73,7 @@
 		<antcall target="prepareTarget"/>
 	</target>
 
-	<target name="prepareTarget" unless="has.target">
+	<target name="prepareTarget">
 		<delete dir="${builder}/../target/rap/eclipse"/>
 
 		<echo>prepare target, copy dropins, unzip rap runtime </echo>
