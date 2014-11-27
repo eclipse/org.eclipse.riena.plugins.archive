@@ -661,6 +661,22 @@ v1.0
          unpack="false"/>
 
    <plugin
+         id="org.eclipse.riena.navigation.ui.swt.rcp.fragment"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.riena.navigation.ui.swt.rcp.fragment.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
          id="com.kitfox.svg"
          download-size="0"
          install-size="0"
