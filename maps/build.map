@@ -45,6 +45,9 @@ plugin@org.eclipse.riena.monitor.common=GIT,tag=origin/master,repo=ssh://rienaBu
 plugin@org.eclipse.riena.navigation=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.navigation
 plugin@org.eclipse.riena.navigation.ui=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.navigation.ui
 plugin@org.eclipse.riena.navigation.ui.swt=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.navigation.ui.swt
+plugin@org.eclipse.riena.navigation.ui.swt.3x=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.navigation.ui.swt.3x
+plugin@org.eclipse.riena.navigation.ui.swt.e4=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.navigation.ui.swt.e4
+plugin@org.eclipse.riena.navigation.ui.swt.presentation=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.navigation.ui.swt.presentation
 plugin@org.eclipse.riena.navigation.ui.swt.rcp=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.navigation.ui.swt.rcp
 plugin@org.eclipse.riena.navigation.ui.swt.rap=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.rap.git,path=org.eclipse.riena.navigation.ui.swt.rap
 plugin@org.eclipse.riena.objecttransaction=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.objecttransaction
