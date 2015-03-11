@@ -2,7 +2,7 @@
 	
 	<target name="upload">
 	    <echo>Upload to ${host}:${path} from directory ${workspace} include ${artifacts}</echo>
-		<scp todir="${user}:${password}@${host}:${path}" sftp="yes" trust="yes" failonerror="false">
+		<scp todir="${user}:${password}@${host}:${path}" sftp="yes" trust="yes" failonerror="false" port="${port}">
 			<fileset dir="${workspace}" includes="${artifacts}"/>
 		</scp>
 	</target>
