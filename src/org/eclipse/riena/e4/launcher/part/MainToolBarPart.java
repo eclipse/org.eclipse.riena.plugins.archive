@@ -40,6 +40,8 @@ import org.eclipse.riena.ui.swt.utils.SwtUtilities;
 
 /**
  * Displays the window main tool bar
+ * 
+ * @since 6.1
  */
 public class MainToolBarPart {
 	public static final String COOLBAR_COMPOSITE_KEY = MainToolBarPart.class.getName() + ".rienaCoolBarComposite"; //$NON-NLS-1$
@@ -90,7 +92,7 @@ public class MainToolBarPart {
 								// => HandledContributionItem
 								final IContributionItem item = helper.createHandledContributionItem((MHandledItem) e);
 								if (SwtUtilities.isDpiScalingEnabled()) {
-									imageReplacer.replaceImages(null, item);
+									imageReplacer.replaceImages(item);
 								}
 								items.add(item);
 							} else if (e instanceof MToolBarSeparator) {

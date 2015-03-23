@@ -53,7 +53,7 @@ import org.eclipse.ui.services.IEvaluationService;
  * handler.
  * </p>
  * 
- * @since 3.0
+ * @since 6.1
  */
 public final class HandlerProxy extends AbstractHandlerWithState implements IElementUpdater {
 
@@ -420,7 +420,7 @@ public final class HandlerProxy extends AbstractHandlerWithState implements IEle
 		if (commandId == null || !(handler instanceof IElementUpdater) && (checkedState == null && radioState == null)) {
 			return;
 		}
-		final ICommandService cs = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
+		final ICommandService cs = PlatformUI.getWorkbench().getService(ICommandService.class);
 		cs.refreshElements(commandId, null);
 	}
 

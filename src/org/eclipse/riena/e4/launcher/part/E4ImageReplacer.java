@@ -17,7 +17,6 @@ import org.eclipse.e4.ui.model.application.ui.menu.MItem;
 import org.eclipse.e4.ui.workbench.IPresentationEngine;
 import org.eclipse.e4.ui.workbench.renderers.swt.HandledContributionItem;
 import org.eclipse.jface.action.IContributionItem;
-import org.eclipse.jface.action.IContributionManager;
 import org.eclipse.ui.menus.CommandContributionItem;
 
 import org.eclipse.riena.core.singleton.SessionSingletonProvider;
@@ -31,7 +30,7 @@ import org.eclipse.riena.ui.swt.utils.ImageStore;
 /**
  * Class to replace in {@link CommandContributionItem} or {@link HandledContributionItem} not scaled images with scaled images.
  * 
- * @since 6.0
+ * @since 6.1
  */
 public class E4ImageReplacer extends ImageReplacer {
 
@@ -43,13 +42,13 @@ public class E4ImageReplacer extends ImageReplacer {
 	}
 
 	@Override
-	public void replaceImages(final IContributionManager contributionManager, final IContributionItem item) {
+	public void replaceImages(final IContributionItem item) {
 
 		if (item instanceof HandledContributionItem) {
 			final MHandledItem handledItem = ((HandledContributionItem) item).getModel();
 			replaceImages(handledItem);
 		} else {
-			super.replaceImages(contributionManager, item);
+			super.replaceImages(item);
 		}
 	}
 
