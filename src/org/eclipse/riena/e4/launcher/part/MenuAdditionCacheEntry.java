@@ -49,6 +49,9 @@ import org.eclipse.ui.internal.menus.MenuLocationURI;
 import org.eclipse.ui.internal.registry.IWorkbenchRegistryConstants;
 import org.eclipse.ui.internal.services.ServiceLocator;
 
+/**
+ * @since 6.1
+ */
 public class MenuAdditionCacheEntry {
 	final static String MAIN_TOOLBAR = "org.eclipse.ui.main.toolbar"; //$NON-NLS-1$
 

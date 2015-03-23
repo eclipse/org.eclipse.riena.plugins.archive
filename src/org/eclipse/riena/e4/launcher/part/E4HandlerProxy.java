@@ -41,7 +41,7 @@ import org.eclipse.ui.commands.IElementUpdater;
 import org.eclipse.ui.menus.UIElement;
 
 /**
- * @since 3.5
+ * @since 6.1
  * 
  */
 public class E4HandlerProxy implements IHandlerListener, IElementUpdater {

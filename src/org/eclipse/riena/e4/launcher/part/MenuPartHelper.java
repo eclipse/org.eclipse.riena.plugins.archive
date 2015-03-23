@@ -21,6 +21,8 @@ import org.eclipse.jface.action.IContributionItem;
 
 /**
  * Helper class for menu and tool bar.
+ * 
+ * @since 6.1
  */
 public class MenuPartHelper {
 

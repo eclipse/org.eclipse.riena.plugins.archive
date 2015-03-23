@@ -22,6 +22,8 @@ import org.eclipse.riena.navigation.ui.swt.views.SubModuleView;
 
 /**
  * Manages {@link SubModuleView} instances for {@link SubModuleNode}s.
+ * 
+ * @since 6.1
  */
 public class ViewInstanceProvider {
 

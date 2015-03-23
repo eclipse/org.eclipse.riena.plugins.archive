@@ -40,6 +40,7 @@ import org.eclipse.riena.ui.swt.lnf.LnfManager;
  * Creates the Riena status line.
  * 
  * @author jdu
+ * @since 6.1
  * 
  */
 public class StatusLinePart {

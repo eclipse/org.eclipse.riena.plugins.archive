@@ -33,6 +33,7 @@ import org.eclipse.riena.ui.swt.lnf.LnfManager;
  * Creates the Riena header.
  * 
  * @author jdu
+ * @since 6.1
  * 
  */
 @SuppressWarnings("restriction")

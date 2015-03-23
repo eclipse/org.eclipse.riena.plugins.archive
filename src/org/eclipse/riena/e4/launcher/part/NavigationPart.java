@@ -21,6 +21,9 @@ import org.eclipse.riena.navigation.ISubApplicationNode;
 import org.eclipse.riena.navigation.ui.swt.presentation.SwtViewProvider;
 import org.eclipse.riena.navigation.ui.swt.views.NavigationViewPart;
 
+/**
+ * @since 6.1
+ */
 public class NavigationPart {
 	@Inject
 	private MWindow window;

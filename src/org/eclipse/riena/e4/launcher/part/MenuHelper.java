@@ -98,6 +98,9 @@ import org.eclipse.ui.internal.util.Util;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
 
+/**
+ * @since 6.1
+ */
 public class MenuHelper {
 
 	public static void trace(final String msg, final Throwable error) {
