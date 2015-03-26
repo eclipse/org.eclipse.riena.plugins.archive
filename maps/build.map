@@ -38,6 +38,7 @@ plugin@org.eclipse.riena.demo.common=GIT,tag=origin/master,repo=ssh://rienaBuild
 plugin@org.eclipse.riena.demo.server=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.demo.server
 plugin@org.eclipse.riena.documents=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.documents
 plugin@org.eclipse.riena.example.client=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.example.client
+fragment@org.eclipse.riena.example.client.rap=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.rap.git,path=org.eclipse.riena.example.client.rap
 plugin@org.eclipse.riena.example.client.optional=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.example.client.optional
 plugin@org.eclipse.riena.example.ping.client=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.example.ping.client
 plugin@org.eclipse.riena.monitor.client=GIT,tag=origin/master,repo=ssh://rienaBuild@build.eclipse.org/gitroot/riena/org.eclipse.riena.git,path=org.eclipse.riena.monitor.client
