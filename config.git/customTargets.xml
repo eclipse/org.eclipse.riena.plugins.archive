@@ -80,6 +80,13 @@
 	</target>
 
 	<target name="prepareTarget" unless="has.target">
+		<echo>Copying target platform from git repository 'org.eclipse.riena.3xtargets'</echo>
+		<copy todir="${builder}/../target/eclipse">
+			<fileset dir="${gitTargetPlatform}/org.eclipse.riena.target3x/rcp" />
+		</copy>
+
+		
+		<!--
 		<echo>repo2runable: </echo>
 		<echo>  src= file:/${builder}/../target/equinox-SDK-${sdkVer}.zip</echo>
 		<echo>  dest= ${builder}/../target/eclipse</echo>
@@ -102,6 +109,7 @@
 				<repository location="file:/${builder}/../target/org.eclipse.rcp.source-${sdkVer}.zip" />
 			</source>
 		</p2.repo2runnable>
+		-->
 
 		<!-- replace the 3.8 SWT by the latest version -->
 		<!--

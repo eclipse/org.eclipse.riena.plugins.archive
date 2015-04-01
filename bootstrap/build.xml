@@ -3,6 +3,7 @@
 	<property name="pluginDir" value="${basedir}/tools/eclipse.${ECLIPSE_STREAM}.sdk/eclipse/plugins"/>
 	<property name="fetchCacheLocation" value="c:/scmCache"/>
 	<property name="gitCache" value="${fetchCacheLocation}/ssh___rienaBuild_build_eclipse_org_gitroot_riena_org_eclipse_riena_git"/>
+	<property name="gitTargetPlatform" value="${fetchCacheLocation}/ssh___rienaBuild_build_eclipse_org_gitroot_riena_org_eclipse_3xtargets_git"/>
 
 	<!-- compute equinox launcher jar name for use with the java calls -->
 	<fileset id="equinox.launcher.fileset" dir="${pluginDir}" includes="**/org.eclipse.equinox.launcher_*.jar" />
@@ -81,6 +82,7 @@
 			<arg value="-DFETCHTAG_GIT_PARM=${FETCHTAG_GIT_PARM}"/>
 			<arg value="-DBUILD_QUALIFIER=${qualifier}"/>
 			<arg value="-DgitCache=${gitCache}"/>
+			<arg value="-DgitTargetPlatform=${gitTargetPlatform}"/>
 			<arg value="-DfetchCacheLocation=${fetchCacheLocation}"/>
 			<arg value="-DsdkVer=${sdkVer}"/>
 			<arg value="-DequinoxSdkVer=${equinoxSdkVer}"/>
