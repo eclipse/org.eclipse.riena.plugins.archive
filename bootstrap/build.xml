@@ -110,6 +110,8 @@
 			<arg value="-DsdkVer=${sdkVer}"/>
 			<arg value="-DequinoxSdkVer=${equinoxSdkVer}"/>
 			<arg value="-DrienaBuildFeature=${rienaBuildFeature}"/>
+			<arg value="-DtargetPlatformEquinoxSDK=${targetPlatformEquinoxSDK}"/>
+			<arg value="-DtargetPlatformRCP=${targetPlatformRCP}"/>
 			<arg value="-DECLIPSE_STREAM=${ECLIPSE_STREAM}"/>
 		</java>
 	</target>
