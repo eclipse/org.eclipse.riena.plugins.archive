@@ -150,7 +150,7 @@
 		<delete file="${builder}/../artifacts.jar"/>
 		<delete file="${builder}/../content.jar"/>
 
-		<copy todir="${builder}/../tmp/build/plugins">
+		<copy todir="${builder}/../tmp/build/plugins" failonerror="false">
 			<fileset dir="${builder}/../plugins">
 			</fileset>
 		</copy>
