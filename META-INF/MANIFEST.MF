@@ -5,7 +5,7 @@ Bundle-SymbolicName: com.kitfox.svg;singleton:=true
 Bundle-Version: 0.1.29.qualifier
 Bundle-Vendor: SVG Salamander created by kitfox.com / plugin created for Riena
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Bundle-ClassPath: svgSalamander-0.1.29.jar,
- .
+Bundle-ClassPath: .,
+ svgSalamander-0.1.29.jar
 Export-Package: com.kitfox.svg,
  com.kitfox.svg.animation
