@@ -110,8 +110,21 @@ plugin@org.pushingpixels.trident.source,1.2.0=p2IU,id=org.pushingpixels.trident.
 plugin@org.hamcrest.core,1.3.0=p2IU,id=org.hamcrest.core,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/
 plugin@org.hamcrest.core.source,1.3.0=p2IU,id=org.hamcrest.core.source,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/
 
-# nebula
+# apache batik
+plugin@org.apache.batik.bridge,1.7.0=p2IU,id=org.apache.batik.bridge,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20170120165020/repository/
+plugin@org.apache.batik.css,1.7.0=p2IU,id=org.apache.batik.css,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20170120165020/repository/
+plugin@org.apache.batik.dom.svg,1.7.0=p2IU,id=org.apache.batik.dom.svg,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20170120165020/repository/
+plugin@org.apache.batik.dom,1.7.0=p2IU,id=org.apache.batik.dom,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20170120165020/repository/
+plugin@org.apache.batik.ext.awt,1.7.0=p2IU,id=org.apache.batik.ext.awt,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20170120165020/repository/
+plugin@org.apache.batik.extension,1.7.0=p2IU,id=org.apache.batik.extension,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20170120165020/repository/
+plugin@org.apache.batik.parser,1.7.0=p2IU,id=org.apache.batik.parser,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20170120165020/repository/
+plugin@org.apache.batik.svggen,1.7.0=p2IU,id=org.apache.batik.svggen,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20170120165020/repository/
+plugin@org.apache.batik.transcoder,1.7.0=p2IU,id=org.apache.batik.transcoder,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20170120165020/repository/
+plugin@org.apache.batik.util.gui,1.7.0=p2IU,id=org.apache.batik.util.gui,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20170120165020/repository/
+plugin@org.apache.batik.util,1.7.0=p2IU,id=org.apache.batik.util,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20170120165020/repository/
+plugin@org.apache.batik.xml,1.7.0=p2IU,id=org.apache.batik.xml,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20170120165020/repository/
 
+# nebula
 plugin@org.eclipse.nebula.widgets.compositetable,1.0.0=p2IU,id=org.eclipse.nebula.widgets.compositetable,repository=http://download.eclipse.org/technology/nebula/snapshot/
 plugin@org.eclipse.nebula.widgets.compositetable.source,1.0.0=p2IU,id=org.eclipse.nebula.widgets.compositetable.source,repository=http://download.eclipse.org/technology/nebula/snapshot/
 plugin@org.eclipse.nebula.widgets.grid,1.0.0=p2IU,id=org.eclipse.nebula.widgets.grid,repository=http://download.eclipse.org/technology/nebula/snapshot/
