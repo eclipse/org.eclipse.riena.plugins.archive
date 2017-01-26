@@ -3,7 +3,7 @@ set JAVA_HOME=%TOOLSROOT%\jdk1.8.0_60
 set ANT_HOME=%TOOLSROOT%\apache-ant-1.7.1
 set CVS_SSH=ssh -l rienaBuild
 SET PATH=%JAVA_HOME%\bin;%ANT_HOME%\bin;%PATH%
-set FETCHTAG_GIT_PARM=origin/master
+set FETCHTAG_GIT_PARM=origin/develop
 set BUILD_QUALIFIER=HEAD
 
 c:
