@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: com.kitfox.svg;singleton:=true
+Export-Package: com.kitfox.svg,com.kitfox.svg.animation
+Bundle-Name: SVG Salamander
+Bundle-Version: 0.1.29.201703301402
+Bundle-ClassPath: .,svgSalamander-0.1.29.jar
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: SVG Salamander created by kitfox.com / plugin created f
+ or Riena
+
