@@ -129,7 +129,7 @@ plugin@org.w3c.dom.smil,1.0.1=p2IU,id=org.w3c.dom.smil,repository=http://downloa
 plugin@org.w3c.dom.svg,1.1.0=p2IU,id=org.w3c.dom.svg,repository=http://download.eclipse.org/tools/orbit/downloads/drops/R20170120165020/repository/
 
 # nebula
-plugin@org.eclipse.nebula.widgets.compositetable,1.0.0=p2IU,id=org.eclipse.nebula.widgets.compositetable,repository=http://download.eclipse.org/technology/nebula/snapshot/
-plugin@org.eclipse.nebula.widgets.compositetable.source,1.0.0=p2IU,id=org.eclipse.nebula.widgets.compositetable.source,repository=http://download.eclipse.org/technology/nebula/snapshot/
-plugin@org.eclipse.nebula.widgets.grid,1.0.0=p2IU,id=org.eclipse.nebula.widgets.grid,repository=http://download.eclipse.org/technology/nebula/snapshot/
-plugin@org.eclipse.nebula.widgets.grid.source,1.0.0=p2IU,id=org.eclipse.nebula.widgets.grid.source,repository=http://download.eclipse.org/technology/nebula/snapshot/
+plugin@org.eclipse.nebula.widgets.compositetable,1.0.0=p2IU,id=org.eclipse.nebula.widgets.compositetable,repository=http://download.eclipse.org/nebula/releases/1.0.0
+plugin@org.eclipse.nebula.widgets.compositetable.source,1.0.0=p2IU,id=org.eclipse.nebula.widgets.compositetable.source,repository=http://download.eclipse.org/nebula/releases/1.0.0
+plugin@org.eclipse.nebula.widgets.grid,1.0.0=p2IU,id=org.eclipse.nebula.widgets.grid,repository=http://download.eclipse.org/nebula/releases/1.0.0
+plugin@org.eclipse.nebula.widgets.grid.source,1.0.0=p2IU,id=org.eclipse.nebula.widgets.grid.source,repository=http://download.eclipse.org/nebula/releases/1.0.0
