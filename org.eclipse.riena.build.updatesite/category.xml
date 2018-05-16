@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/org.eclipse.riena.build.feature.core.sdk_4.0.0.qualifier.jar" id="org.eclipse.riena.build.feature.core.sdk" version="4.0.0.qualifier"/>
-   <feature url="features/org.eclipse.riena.build.feature.samples.sdk_4.0.0.qualifier.jar" id="org.eclipse.riena.build.feature.samples.sdk" version="4.0.0.qualifier"/>
-   <feature url="features/org.eclipse.rcp" id="org.eclipse.rcp" version="3.7.0.qualifier"/>
-   <feature url="features/org.eclipse.equinox.sdk" id="org.eclipse.equinox.sdk" version="3.7.0.qualifier"/>
-   <feature url="features/org.eclipse.equinox.executable" id="org.eclipse.equinox.executable" version="3.5.0.qualifier"/>
-</site>
